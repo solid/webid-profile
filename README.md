@@ -12,7 +12,7 @@ The term `profile` will be used here to refer to the data that can be gathered i
 
 Profiles contain two major types of information : 1) identifiying information such as a person or group's name, purpose, contacts,etc. and 2) organizing information such as what types of data the user has, where it is stored, and who has access to it. This document will focus on the later - the information that an app can use to learn how to interact with the data associated with the Social Agent's WebId.
 
-There is great variability in what information is found in the profile and which documents the information is stored in.  The [interoperability panel]() is in the process of creating new organization of the profile information. So, there can be more than one discovery process.  This specification aims to describe the discovery process as it is currently in use.
+There is great variability in what information is found in the profile and which documents the information is stored in.  The [interoperability panel](https://solid.github.io/data-interoperability-panel/specification/) is in the process of creating new organization of the profile information. So, there can be more than one discovery process.  This specification aims to describe the discovery process as it is currently in use.
 
 To sum up, this document aims to cover
 
@@ -34,6 +34,7 @@ The following predicates will be the main foucs of the documention :
 
 ## Related Resources
 * [Minutes of meetings](https://github.com/solid/webid-profile/tree/main/meetings)
+* Prior work : [Original Interop Issue](https://github.com/solid/data-interoperability-panel/issues/209)
 * Prior work : [Solid WebId Profiles](https://github.com/solid/solid-spec/blob/master/solid-webid-profiles.md)
 * Prior work : [Applications Discovery](https://github.com/solid/solid/blob/main/proposals/data-discovery.md)
 
