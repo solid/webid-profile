@@ -24,6 +24,7 @@ To sum up, this document aims to cover
 The following predicates will be the main foucs of the documention :
 
 * foaf:primaryTopic
+* foaf:isPrimaryTopicOf
 * solid:oidcIssuer
 * solid:account
 * solid:publicTypeIndex
@@ -31,9 +32,12 @@ The following predicates will be the main foucs of the documention :
 * pim:storage
 * pim:preferencesFile
 * acl:trustedApp (possibly omit this for this spec?)
+* owl:sameAs
+* rdfs:seeAlso
 
 ## Related Resources
 * [Minutes of meetings](https://github.com/solid/webid-profile/tree/main/meetings)
+* Prior work : [WebId Specifcation](https://www.w3.org/2005/Incubator/webid/spec/identity/)
 * Prior work : [Original Interop Issue](https://github.com/solid/data-interoperability-panel/issues/209)
 * Prior work : [Solid WebId Profiles](https://github.com/solid/solid-spec/blob/master/solid-webid-profiles.md)
 * Prior work : [Applications Discovery](https://github.com/solid/solid/blob/main/proposals/data-discovery.md)
