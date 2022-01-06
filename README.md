@@ -2,7 +2,7 @@
 
 ## Overview
 
-When an app allows a user to log in to a Solid Identity Provider, the app receives back an authenticated identifier for the user - their WebID.  The general purpose of this document is to describe what an app can discover based on the WebID.  More specific purposes are described below.
+When an app allows a user to log in to a Solid Identity Provider, the app receives back data that establishes the identity of the user in terms of a WebID URI.  The general purpose of this document is to describe what an app can discover based on the WebID.  More specific purposes are described below.
 
 A Social Agent - a person, group, or organization - may own one or more WebIDs.  Each WebID is a URI that can be dereferenced to point to exactly one document, hereafter called a `profile document`.  The term 'profile document', as used here, means a `Social Agent WebID Document` and does not include WebID documents associated with Software Agents.  
 
