@@ -2,7 +2,7 @@
 
 ## Overview
 
-When an app allows a user to log in to a Solid Identity Provider, the app receives back data that establishes the identity of the user in terms of a WebID URI.  The general purpose of this document is to describe what an app can discover based on the WebID.  More specific purposes are described below.
+When an app allows a user to log in to a Solid Identity Provider, the app receives back data that establishes the identity of the user in terms of a WebID URI.  An app can also obtain a WebID URI through input from a user or by parsing documents that contain the URI.  The general purpose of this document is to describe what an app can discover based on the WebID.  More specific purposes are described below.
 
 A Social Agent - a person, group, or organization - may own one or more WebIDs.  Each WebID is a URI that can be dereferenced to point to exactly one document, hereafter called a `profile document`.  The term 'profile document', as used here, means a `Social Agent WebID Document` and does not include WebID documents associated with Software Agents.  
 
@@ -10,7 +10,7 @@ Profile documents may optionally point, through various means, to other document
 
 The term `profile` will be used here to refer to the data that can be gathered in the profile document and all extended profile documents it points to.
 
-Profiles contain two major types of information : 1) identifiying information such as a person or group's name, purpose, contacts, etc. and 2) organizing information such as what types of data the user has, where it is stored, and who has access to it. This document will focus on the latter - the information that an app can use to learn how to interact with the data associated with the Social Agent's WebID.
+Profiles contain two major types of information : 1) identifiying information such as a person or organization's name, purpose, contacts, etc. and 2) infrastructure information such as what types of data the user has, where it is stored, and who has access to it. This document will focus on the latter - the information that an app can use to learn how to interact with the data associated with the Social Agent's WebID.  This repo will eventually contain three documents - this one on infrastructure discovery, one on personal profile information, and one on organizational profiles.
 
 There is great variability in what information is found in the profile and which documents the information is stored in.  The [interoperability panel](https://solid.github.io/data-interoperability-panel/specification/) is in the process of developing alternative discovery processes. So, there can be more than one discovery process.  This specification aims to describe the discovery process as it is currently in use.
 
