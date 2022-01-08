@@ -8,8 +8,8 @@ The object of the `pim:preferencesFile` predicate can be assumed to be a private
 
   * <#WebID> **foaf:isPrimaryTopicOf** <?AnyDocument> .
   * <#WebID> **pim:preferencesFile**   <?PrivateDocument> .
-  * <#WebID> **owl:sameAs**            <?AnyDocument> .
-  * <#WebID> **rdfs:seeAlso**          <?AnyDocument> .
+  * <#WebID> **owl:sameAs**            <?AnyDocument#SomeSubject> .
+  * <#WebID> **rdfs:seeAlso**          <?AnyDocument#SomeSubject> .
 
 Developers should be aware that each of these predicates can take multiple objects.
 
