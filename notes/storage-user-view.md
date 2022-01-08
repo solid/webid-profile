@@ -2,7 +2,7 @@
 
 ### Making Storages Discoverable
 
-A WebID owner MAY have zero or more storage spaces associated with the WebID and MAY choose, for each one, to advertise it publicly, privately, or not at all.
+A WebID owner MAY have zero or more storage spaces associated with the WebID and MAY choose, for each one, to make it discoverable by the general public, by a selected audience, or not at all. If a storage space is discoverable by someone, that only means they can know it exists.  It does not imply that they have read or write access to it - those permissions are defined elsewhere.
 
 WebID owners who wish their storage spaces to be discoverable by the general public, SHOULD advertise the space publicly by having a triple like this one in their profile document or in a publicly accessible extended profile document.
 ```
@@ -11,8 +11,6 @@ WebID owners who wish their storage spaces to be discoverable by the general pub
 The object of the triple may be on the same host as the document the triple occurs in or on a different host.
 
 A storage triple is usually created by the pod provider on pod creation but if it is missing, the WebID owner SHOULD create it if they want the storage discoverable.  
-
-If a storage space is discoverable by someone, that only means they can know it exists.  It does not imply that they have read or write access to it - those permissions are defined elsewhere.
 
 A WebID owner wishing to disallow the public from discovering a storage SHOULD NOT use pim:storage predicates for that storage in any publicly accessible document and should remove any such statements put there by a pod provider.  
 
