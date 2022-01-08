@@ -20,4 +20,4 @@ A WebID owner wishing to make a private storage space available to selected Agen
 
 A WebID owner MAY add as many public or private storages as they want.
 
-A WebID owner also has the option to register for a WebID but not have it associated with a storage space.  The WebID could be used for accessing other people's sites without storing any information under that identity.
+A WebID owner also has the option to register for a WebID but not have it associated with a storage space.  The WebID could be used for accessing other people's sites without storing any information on a site owned by that identity.
