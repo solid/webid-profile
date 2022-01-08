@@ -8,12 +8,16 @@ WebID owners who wish their storage spaces to be discoverable by the general pub
 ```
    <#me> <http://www.w3.org/ns/pim/space#storage> </> .
 ```
-This triple is usually created by the pod provider on pod creation but if it is missing, the WebID owner SHOULD create it if they want the storage discoverable. 
+The object of the triple may be on the same host as the document the triple occurs in or on a different host.
+
+A storage triple is usually created by the pod provider on pod creation but if it is missing, the WebID owner SHOULD create it if they want the storage discoverable.  
 
 If a storage space is discoverable by someone, that only means they can know it exists.  It does not imply that they have read or write access to it - those permissions are defined elsewhere.
 
 A WebID owner wishing to disallow the public from discovering a storage SHOULD NOT use pim:storage predicates for that storage in any publicly accessible document and should remove any such statements put there by a pod provider.  
 
 A WebID owner wishing to make a private storage space available to selected Agents, SHOULD create a pim:storage triple in a document only accessible by those Agents.
+
+A WebID owner MAY add as many public or private storages as they want.
 
 A WebID owner also has the option to register for a WebID but not have it associated with a storage space.  The WebID could be used for accessing other people's sites without storing any information under that identity.
