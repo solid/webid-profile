@@ -14,7 +14,7 @@ A storage triple is usually created by the pod provider on pod creation but if i
 
 A WebID owner wishing to disallow the public from discovering a storage SHOULD NOT use pim:storage predicates for that storage in any publicly accessible document and should remove any such statements put there by a pod provider.  
 
-A WebID owner wishing to make a private storage space available to selected Agents, SHOULD create a pim:storage triple in a document only accessible by those Agents.
+A WebID owner wishing to make a storage space undiscoverable by the public but discoverable by selected Agents, SHOULD create a `pim:storage` triple in a document only accessible by those Agents.  For example if the storage triple is in the `pim:preferences` document, it will be undiscoverable by the public.  If the storage triple is in an `owl:sameAs` document restricted to three people, only those three people will be abl to discover the storage.
 
 A WebID owner MAY add as many public or private storages as they want.
 
