@@ -4,7 +4,7 @@ It is possible to have all profile information in a single WebID document but a 
 
 In order to retrieve a complete profile, An app MUST load the WebID document and MUST look for triples with the WebID as subject and `foaf:isPrimaryTopicOf` as predicate and, if found, load the object(s) of the triple(s).
 
-Once those steps are taken , the app should examine the objects of all triples found in what has been loaded so far that have the WebID as subject and a predicate consisting of one of `pim:preferencesFile`, `owl:sameAs`, or `rdfs:seeAlso`.  For each object found that dereferences to a document accessible to the app, the app MUST load that document if it wishes to obtain a complete profile.
+Once those steps are taken and regardless of whether any `foaf:primaryTopicOf` triples were found, the app should examine the objects of all triples found in what has been loaded so far that have the WebID as subject and a predicate consisting of one of `pim:preferencesFile`, `owl:sameAs`, or `rdfs:seeAlso`.  For each object found that dereferences to a document accessible to the app, the app MUST load that document if it wishes to obtain a complete profile.
 
 The object of the `pim:preferencesFile` predicate can be assumed to be a private document.  The other documents may be either public or private.  These are the key kinds of triples that point to extended profile documents:
 
