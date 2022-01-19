@@ -1,6 +1,33 @@
 # solid:oidcIssuer
 
+An OIDC Issuer is the service which authenticates a Solid WebID, sometimes called an `Identity Provider` or `IdP`.
+
+An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer in order to login. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>.`  There may be zero or more such triples.
+
+If no Issuer is found in the WebID document, the app SHOULD prompt the user to enter an Issuer URL.
+
+If a single Issuer triple is found, the app wanting to login SHOULD redirect to the URL specifed by the value of ?Issuer.  
+
+If multiple Issuer's are found, the app should offer the user a choice and redirect to the chosen Issuer.
+
+
+## Background notes
+
+### Implicit Trust
 See [revant discussion about having an implicitly trusted issuer](https://github.com/solid/solid-oidc/issues/51) (i.e. server determines it rather than it occurring in the WebID document).  
+
+Aaron sums up in gitter :
+<blockquote>
+Jeff Zucker @jeff-zucker 13:38
+So with implicitly trusted issuers if such continues to be a thing, the app finds no oidcIssuer triple so then munges the WebID URI to find the Issuer? and/or looks in a link header?
+
+Aaron Coburn @acoburn 14:02
+We have discussed implicitly trusted issuers in the authN panel, and the general consensus at present is to not allow such implicit trust. There are a number of cases where that implicit trust becomes a major problem. Generally, when defining trust models, any "implicit trust" that is outside of the user's control becomes (potentially) really problematic from a security perspective.
+
+Short answer: don't rely on implicit trust. If you do, don't expect that you will be able to interoperate with other Solid servers
+</blockquote>
+
+### One WebID with Multiple oidcIssuers
 
 Also note that @acoburn confirms in gitter that a single WebID can have multiple issuers and describes the app discovery process when there are multiple:
 <blockquote>
@@ -27,4 +54,14 @@ From an app/user interaction perspective, the pattern I would follow is this: fi
 the set of OIDC issuers to provide them a login flow -- if there is a single issuer, immediately direct a user to that IdP;
 if there are multiple issuers, ask the user to choose from that set (but there is no need to offer a login flow with an IdP
 that is not trusted for a given WebID)
+  </blockquote>
+  
+### Zero oidcIssuers
+<bockquote>  
+Jeff Zucker @jeff-zucker 14:03
+Again, very helpful, thanks.
+So if I'm an app and I don't find any solid:oidcIssuer triles in the WebID document, all I can do is ask the user
+
+Aaron Coburn @acoburn 14:05
+Yes, the fallback can always be "ask the user"
   </blockquote>
