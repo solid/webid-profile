@@ -41,6 +41,7 @@ The following predicates will be the main foucs of the documention :
 * Prior work : [Applications Discovery](https://github.com/solid/solid/blob/main/proposals/data-discovery.md)
 * Prior work : [Original Interop Issue](https://github.com/solid/data-interoperability-panel/issues/209)
 * Prior work : [WebID Draft Specification](https://www.w3.org/2005/Incubator/webid/spec/identity/)
+* Prior work : [Universal Identity for the Web](https://csarven.ca/linked-research-decentralised-web#universal-identity-for-the-web)
 
 ## Team
 * Virginia Balseiro
