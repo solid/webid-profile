@@ -4,11 +4,11 @@ An OIDC Issuer is the service which provides login and authentication for a Soli
 
 An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>.
 
-If the app needs to login on behalf of the WebID owner and can not find a triple with the solid:oidcIssuer predicate, it SHOULD inform the WebID owner that their WebID document is broken.
+If the app needs to login on behalf of the WebID owner and can not find a triple with the solid:oidcIssuer predicate, it MAY inform the WebID owner that their WebID document is broken.
 
 If a single Issuer triple is found, the app wanting to login SHOULD redirect to the URL specifed by the value of ?Issuer.  
 
-If multiple Issuer's are found, the app should offer the user a choice and redirect to the chosen Issuer.
+If multiple Issuer's are found, the app SHOULD offer the user a choice and redirect to the chosen Issuer.
 
 
 ## Background notes
@@ -65,3 +65,19 @@ So if I'm an app and I don't find any solid:oidcIssuer triles in the WebID docum
 Aaron Coburn @acoburn 14:05
 Yes, the fallback can always be "ask the user"
   </blockquote>
+  
+But, as Elf points out :
+<blockquote>
+elf Pavlik @elf-pavlik 18:44
+So if I'm an app and I don't find any solid:oidcIssuer triles in the WebID document, all I can do is ask the user
+
+I think app can just let user know that their WebID document misses AuthN required information.
+Even if app asks user of IdP, Authorization Server (associated with Resource Server) will not be able to validate the ID Token pushed as claim
+
+In short, how AS receiving ID Token as claim supposed to know that OP who issued it is the one designated by the user identified by WebID ?
+
+Jeff Zucker @jeff-zucker 18:56
+Yep. That's true. So, practically speaking there must be one or more issuers in the WebID document and an app discovering zero should let the user know it's broken.
+One might have a profile document that had identifying information that could be used by public apps in a similar way to the way they use a WebID document, but it wouldn't be a (functioning) WebID document
+
+</blockquote>
