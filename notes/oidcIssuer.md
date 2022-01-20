@@ -1,10 +1,10 @@
-# solid:oidcIssuer
+# solid:oidcIssuer (draft WiP)
 
-An OIDC Issuer is the service which authenticates a Solid WebID, sometimes called an `Identity Provider` or `IdP`.
+An OIDC Issuer is the service which provides login and authentication for a Solid WebID owner. An OIDC Issuer may be run as part of a Solid`Identity Provider` or `IdP`. 
 
-An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer in order to login. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>.`  There may be zero or more such triples.
+An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>.
 
-If no Issuer is found in the WebID document, the app SHOULD prompt the user to enter an Issuer URL.
+If the app needs to login on behalf of the WebID owner and can not find a triple with the solid:oidcIssuer predicate, it SHOULD inform the WebID owner that their WebID document is broken.
 
 If a single Issuer triple is found, the app wanting to login SHOULD redirect to the URL specifed by the value of ?Issuer.  
 
