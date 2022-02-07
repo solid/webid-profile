@@ -1,0 +1,198 @@
+@prefix : <http://www.w3.org/ns/shacl#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix forms_: <profileFormText.ttl#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pp: <http://paymentpointers.org/ns#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix shapes: <contact-shapes-from-form.ttl#> .
+@prefix shapes_: <profile-shapes-from-form.ttl#> .
+@prefix solid: <http://www.w3.org/ns/solid/terms#> .
+@prefix ui: <http://www.w3.org/ns/ui#> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+shapes:ProfileShape      a :NodeShape;
+    dct:title "contact shape from form";
+    :closed true;
+    :property  [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :path vcard:note ],
+            [
+        a :PropertyShape;
+        :name "Born";
+        :path vcard:bday ],
+            [
+        a :PropertyShape;
+        :path vcard:hasTelephone ],
+            [
+        a :PropertyShape;
+        :path vcard:hasEmail ],
+            [
+        a :PropertyShape;
+        :path vcard:hasAddress ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :maxLength "128";
+        :path pp:PaymentPointer ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :maxLength "128";
+        :path vcard:organization-name ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :maxLength "128";
+        :path vcard:role ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :maxLength "128";
+        :name "Name";
+        :path vcard:fn ];
+    :targetClass schema:Person,
+           vcard:Individual,
+           foaf:Person .
+
+<hand-profile-shape.ttl>     dct:title "Profile shape edited by hand" .
+
+shapes:ProfileShape     a :NodeShape;
+    dct:title "Profile shape from form";
+    :property  [
+        a :PropertyShape;
+        :datatype xsd:color;
+        :name "Highlight color";
+        :path solid:profileHighlightColor;
+        :pattern "^\\s*#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f])?\\s*$" ],
+            [
+        a :PropertyShape;
+        :datatype xsd:color;
+        :name "Background color";
+        :path solid:profileBackgroundColor;
+        :pattern "^\\s*#[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]([0-9a-f][0-9a-f])?\\s*$" ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :name "his/hers/theirs...";
+        :path solid:preferredRelativePronoun ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :name "him/her/them...";
+        :path solid:preferredObjectPronoun ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :name "he/she/they...";
+        :path solid:preferredSubjectPronoun ],
+            [
+        a :PropertyShape;
+        :name "Involvement with Organization";
+        :node  [
+            a :NodeShape;
+            :property  [
+                a :PropertyShape;
+                :datatype xsd:string;
+                :name "Describe your role";
+                :path schema:description ],
+                    [
+                a :PropertyShape;
+                :name "Organization"@en,
+                       "Organization"@fr;
+                :path org:organization ],
+                    [
+                a :PropertyShape;
+                :name "occupation";
+                :path org:role ],
+                    [
+                a :PropertyShape;
+                :datatype xsd:string;
+                :path vcard:role ] ];
+        :path [:inversePath org:member ] ],
+            [
+        a :PropertyShape;
+        :name "Skills";
+        :node  [
+            a :NodeShape;
+            :property  [
+                a :PropertyShape;
+                :name "skill";
+                :path solid:publicId ] ];
+        :path schema:skills ],
+            [
+        a :PropertyShape;
+        :name "Languages";
+        :path schema:knowsLanguage;
+        :property  [
+            a :PropertyShape;
+            :node  [
+                a :NodeShape;
+                :property  [
+                    :node  [
+                        a :NodeShape;
+                        :property  [
+                            a :PropertyShape;
+                            :name "Language";
+                            :path solid:publicId ] ];
+                    :path  (
+                    [
+                            :zeroOrMorePath rdf:rest ]
+                   rdf:first ) ] ];
+            :path schema:knowsLanguage;
+            :targetClass rdf:Collection ] ],
+            [
+        a :PropertyShape;
+        :datatype xsd:string;
+        :name "Short name for chats, etc."@en,
+               "nom court"@fr;
+        :path foaf:nick ],
+            [
+        a :PropertyShape;
+        :min 1;
+        :name "Set type";
+        :path rdf:type;
+        :targetVale schema:Person ],
+            [
+        a :PropertyShape;
+        :name "Set type";
+        :path rdf:type;
+        :targetVale foaf:Person ],
+            [
+        a :PropertyShape;
+        :name "Set type";
+        :path rdf:type;
+        :targetValue vcard:Individual ],
+            [
+        a :PropertyShape;
+        :name "Friends";
+        :path foaf:knows;
+        :targetClass foaf:Person ];
+
+        sh:property [
+          a sh:PropertyShape;
+          sh:name "Mugshots";
+          sh:path vcard:hasPhoto;
+          sh:targetClass dct:Image;
+        ]
+    :targetClass schema:Person,
+           vcard:Individual,
+           foaf:Person .
+
+
+solid:InterestingOrganization     owl:disjointUnionOf  (
+   schema:Corporation
+   schema:EducationalOrganization
+   schema:GovernmentOrganization
+   schema:MedicalOrganization
+   schema:NGO
+   schema:MusicGroup
+   schema:Project
+   schema:SportsOrganization )
+  .
