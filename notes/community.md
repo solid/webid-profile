@@ -1,4 +1,5 @@
 From the [chat](https://gitter.im/solid/profile-spec?at=6209476003f270478232fa54)
+```
 Jeff Zucker @jeff-zucker Feb 13 10:01
 @timbl - In your type index diagram the solid:Community class refers to something labeled as "An Organization". Do you see "Community" as a replacement for "Orgainization" or are they two different things? Would an enterprise list its Agent type as solid:Community?
 Tim Berners-Lee @timbl Feb 13 10:02
@@ -110,3 +111,4 @@ Timea
 @theRealImy
 03:03
 ok, agree.
+```
