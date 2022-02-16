@@ -4,13 +4,13 @@ A Social Agent MAY have multiple WebIDs.  Each WebID belongs to exactly one Agen
 
 ## Background Notes
 
-There isn't a way (or reason) to forbid people from having multiple WebIDs.  So this should be a MAY.
+There isn't a way (or reason) to forbid people from having multiple WebIDs. So this should be a MAY.
 
-I had this interesting chat with Fred Gibson of Trinpod.  I don't think it impacts what we should say about multiple WebIDs, but is related.
+I had this interesting chat with Fred Gibson of Trinpod. I don't think it impacts what we should say about multiple WebIDs, but is related.
 
 ```
 Jeff Zucker @jeff-zucker 11:38
-Hey Fred, I'm am working on a spec for app knowledge discovery from profile and/or WebID documents. Could you take a look at this diagram and let me know in what ways, if any, this would conflict with trinpod ? https://github.com/solid/webid-profile/blob/main/notes/profile-infrastructure.png
+Hey Fred, I'm am working on a spec for app knowledge discovery from profile and/or WebID documents. Could you take a look at this diagram and let me know in what ways, if any, this would conflict with trinpod? https://github.com/solid/webid-profile/blob/main/notes/profile-infrastructure.png
 Fred Gibson @gibsonf1 11:45
 :thumbsup:
 We actually treat the webid as the uri that represents that person (or company, or project, or building, or car etc) in the world
@@ -49,7 +49,7 @@ Fred Gibson @gibsonf1 11:51
 that you silo your public from your private in different locations
 you can just use acls
 Jeff Zucker @jeff-zucker 11:52
-what if I don't even want the keeper of my pubic webid to even know I have a second?
+what if I don't even want the keeper of my public webid to even know I have a second?
 Fred Gibson @gibsonf1 11:52
 as what you want public vs private can change alot
 Jeff Zucker @jeff-zucker 11:52
@@ -58,7 +58,7 @@ Fred Gibson @gibsonf1 11:52
 There is nothing preventing anyone from having a secret webid etc
 But in theory, having a webid doesn't give anyone access to anything you don't want them to access
 Jeff Zucker @jeff-zucker 11:54
-If both my pubic and private webids are on the same IdP, that IdP knows I own both
+If both my public and private webids are on the same IdP, that IdP knows I own both
 Fred Gibson @gibsonf1 11:54
 How? If you use different emails for example
 we just have a verified email address per pod, so you can go crazy making them and we wouldn't know a thing

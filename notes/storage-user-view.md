@@ -2,7 +2,7 @@
 
 ### Making Storages Discoverable
 
-A WebID owner MAY have zero or more storage spaces associated with the WebID and MAY choose, for each one, to make it discoverable by the general public, by a selected audience, or not at all. If a storage space is discoverable by someone, that only means they can know it exists.  It does not imply that they have read or write access to it - those permissions are defined elsewhere.
+A WebID owner MAY have zero or more storage spaces associated with the WebID and MAY choose, for each one, to make it discoverable by the general public, by a selected audience, or not at all. If a storage space is discoverable by someone, that only means they can know it exists. It does not imply that they have read or write access to it - those permissions are defined elsewhere.
 
 WebID owners who wish their storage spaces to be discoverable by the general public, SHOULD advertise the space publicly by having a triple like this one in their profile document or in a publicly accessible extended profile document.
 ```

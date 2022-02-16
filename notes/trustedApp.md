@@ -7,4 +7,3 @@ This predicate is not part of the ACL vocabulary and is not described in the WAC
 
 > @jeff-zucker jeff-zucker 12 days ago
 However acl:trustedApp is in use and is kind of central to the current app ecosystem. Hopefully we can think of a way to document it while pointing to alternatives.
-

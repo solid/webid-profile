@@ -1,22 +1,22 @@
 # solid:oidcIssuer (draft WiP)
 
-An OIDC Issuer is the service which provides login and authentication for a Solid WebID owner. An OIDC Issuer may be run as part of a Solid`Identity Provider` or `IdP`. 
+An OIDC Issuer is the service which provides login and authentication for a Solid WebID owner. An OIDC Issuer may be run as part of a Solid`Identity Provider` or short `IdP`.
 
-An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>.
+An app operating on behalf of a WebID owner that wants to login needs to find the OIDC Issuer. Such an app  SHOULD look for triples in the WebID document in the form `<?WebID> solid:oidcIssuer <?Issuer>`.
 
-If the app needs to login on behalf of the WebID owner and can not find a triple with the solid:oidcIssuer predicate, it MAY inform the WebID owner that their WebID document is broken.
+If the app needs to login on behalf of the WebID owner and can not find a triple with the `solid:oidcIssuer` predicate, it MAY inform the WebID owner that their WebID document is broken.
 
-If a single Issuer triple is found, the app wanting to login SHOULD redirect to the URL specifed by the value of ?Issuer.  
+If a single Issuer triple is found, the app wanting to login SHOULD redirect to the URL specifed by the value of `?Issuer`.  
 
-If multiple Issuer's are found, the app SHOULD offer the user a choice and redirect to the chosen Issuer.
-
+If multiple Issuers are found, the app SHOULD offer the user a choice and redirect to the chosen Issuer.
 
 ## Background notes
 
 ### Implicit Trust
+
 See [revant discussion about having an implicitly trusted issuer](https://github.com/solid/solid-oidc/issues/51) (i.e. server determines it rather than it occurring in the WebID document).  
 
-Aaron sums up in gitter :
+Aaron sums up in gitter:
 <blockquote>
 Jeff Zucker @jeff-zucker 13:38
 So with implicitly trusted issuers if such continues to be a thing, the app finds no oidcIssuer triple so then munges the WebID URI to find the Issuer? and/or looks in a link header?
@@ -57,6 +57,7 @@ that is not trusted for a given WebID)
   </blockquote>
   
 ### Zero oidcIssuers
+
 <bockquote>  
 Jeff Zucker @jeff-zucker 14:03
 Again, very helpful, thanks.

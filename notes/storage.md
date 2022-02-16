@@ -1,14 +1,15 @@
 ### Discovering Storage Spaces
 
-An app wishing to find out about the WebID owner's storages should look for triples with the WebID as subject, `pim:storage` as predicate, and the container at the root of the storage as the object.  For example :
+An app wishing to find out about the WebID owner's storages should look for triples with the WebID as subject, `pim:storage` as predicate, and the container at the root of the storage as the object. For example:
 ```
    <#WebID> <http://www.w3.org/ns/pim/space#storage> </> .
 ```
-In this example the storage space and the document which references it are located on the same host.  This is not required, the storage space may be on any host.
 
-If no storage space is found through profile triples, the app MAY use the process described in [Solid Protocol 0.9](https://solidproject.org/TR/protocol#storage) to find the closest storage to the WebID document and check for a link header marking the storage as owned by the owner of the WebID.  There is no guarantee this will succeed.
+In this example the storage space and the document which references it are located on the same host. This is not required, the storage space may be on any host.
 
-If no storage space is found through either the profile triples or finding the closest storage, the only option is to ask the WebID owner. 
+If no storage space is found through profile triples, the app MAY use the process described in [Solid Protocol 0.9](https://solidproject.org/TR/protocol#storage) to find the closest storage to the WebID document and check for a link header marking the storage as owned by the owner of the WebID. There is no guarantee this will succeed.
+
+If no storage space is found through either the profile triples or finding the closest storage, the only option is to ask the WebID owner.
 
 Applications SHOULD NOT try guessing a storage location based on the WebID URI.
 
