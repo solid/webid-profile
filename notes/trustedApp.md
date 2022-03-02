@@ -58,7 +58,7 @@ In our research we noticed that there are different ways how to go about authori
 
 * [Web Access Control (WAC)](https://solidproject.org/TR/wac).
 
-## APC
+## ACP
 
 * [Access Control Policies (ACPs)](https://solid.github.io/authorization-panel/acp-specification/).
 
