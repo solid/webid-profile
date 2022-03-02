@@ -14,7 +14,8 @@ However acl:trustedApp is in use and is kind of central to the current app ecosy
 
 In our research we noticed that there are different ways how to go about authorization. We found the following options:
 * NSS uses trusted apps and an authorization page (not part of WAC yet)
-* Authorization Panel which works towards ACP 
+* WAC
+* ACP 
 * Data interoperability panel which uses the Authorization Agent
 
 ## NSS
@@ -53,9 +54,13 @@ In our research we noticed that there are different ways how to go about authori
 
 * The acl:trustedApp is not part of the WAC specification as of now. However, there is a request to add it: <https://github.com/solid/vocab/issues/64>.
 
-## Authorization Panel
+## WAC
 
-* In the [authorization panel](https://github.com/solid/authorization-panel) the work is going towards [Access Control Policies (ACPs)](https://solid.github.io/authorization-panel/acp-specification/).
+* [Web Access Control (WAC)](https://solidproject.org/TR/wac).
+
+## APC
+
+* [Access Control Policies (ACPs)](https://solid.github.io/authorization-panel/acp-specification/).
 
 ## Data Interoperability Panel
 
