@@ -13,9 +13,9 @@ However acl:trustedApp is in use and is kind of central to the current app ecosy
 ## Introduction
 
 In our research we noticed that there are different ways how to go about authorization. We found the following options:
-* NSS uses trusted apps and an authorization page
-* ACP
-* data interoperability panel which uses the Authorization Agent
+* NSS uses trusted apps and an authorization page (not part of WAC yet)
+* Authorization Panel which works towards ACP 
+* Data interoperability panel which uses the Authorization Agent
 
 ## NSS
 
