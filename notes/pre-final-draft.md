@@ -1,4 +1,4 @@
-# Discovering Resourcers in a Solid Profile
+# Discovering Resources in a Solid Profile
 
 ## Pre-Draft 2022-04-01
         
@@ -30,9 +30,9 @@ This is a draft meant for the editors to discuss among themselves what belongs i
 
 ## Audience and Scope
 
-This document is aimed at application developers. It describes the process Solid aplications can use to discover information about the structure of resources in a social agent's profile.
+This document is aimed at application developers. It describes the process Solid applications can use to discover information about the structure of resources in a social agent's profile.
 
-This documet does not cover the WebID authentication process (see [OIDC specification](TBD)) or data specific to a given type of social agent (see forthcomig [Creating Personal Profiles](TBD) and [Creating Orgaizational Profiles](TBD)).  Alternate discovery pocesses (for examle [proposed Interoperability-Spec](TBD)) are also out of scope for this document although they will be mentioned where relevant.
+This document does not cover the WebID authentication process (see [OIDC specification](TBD)) or data specific to a given type of social agent (see forthcoming [Creating Personal Profiles](TBD) and [Creating Organizational Profiles](TBD)).  Alternate discovery processes (for example [proposed Interoperability-Spec](TBD)) are also out of scope for this document although they will be mentioned where relevant.
 
 ## 1. Introduction
 
@@ -40,11 +40,11 @@ This section is non-normative.
 
 A social agent - a person or organization - can establish an identity in the Solidverse by obtaining a unique identifier called a `WebID` and by describing themselves in a set of documents associated with the WebID. These documents, referred to here collectively as a `Solid Profile`, both describe the social agent and provide links to their resources.  
 
-A Solid profile, like most Solid resources, can include a combination of pubicly readable data, data restricted to named audiences, and data meant only for the social agent themselves.  For example, Keisha's Solid profile might list her name publicly, her phone number only for friends, and the configuration settings for her "notes to self"  only for apps operating on her own behalf. Solid supports these options by splitting the profile into documents with separate access restrictions.  So the first task of an application is to load all of the profile documents it has access to.
+A Solid profile, like most Solid resources, can include a combination of publicly readable data, data restricted to named audiences, and data meant only for the social agent themselves.  For example, Keisha's Solid profile might list her name publicly, her phone number only for friends, and the configuration settings for her "notes to self"  only for apps operating on her own behalf. Solid supports these options by splitting the profile into documents with separate access restrictions.  So the first task of an application is to load all of the profile documents it has access to.
 
 Profiles can contain and apps are free to follow any kind of links to related documents.  In order to promote interoperability and limit the burden on apps, this specification recommends a limited number of related documents which a well-behaved profile should contain and a well-behaved app should discover. 
 
-The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`.  This document must be pubicly readable and should contain  pointers to a `Preferences File` containing settings & resources meant only for the WebID owner, `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
+The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`.  This document must be publicly readable and should contain  pointers to a `Preferences File` containing settings & resources meant only for the WebID owner, `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
 
 <img src="https://github.com/solid/webid-profile/blob/main/notes/discovery2.png">
 
@@ -53,7 +53,7 @@ Once an app has loaded all of the needed profile documents it can then look for 
 |predicate|information conveyed|
 |-|-|           
 |solid:oidcIssuer | location(s) where the WebID owner logs in |
-|acl:trustedApp | origin & permissions of aplications the WebID owner has given access to  |
+|acl:trustedApp | origin & permissions of applications the WebID owner has given access to  |
 |solid:storage | location(s) of the WebID owner's storage space(s) |                        
 |solid:instance, solid:instanceContainer | locations of specific types of resources|
 |ldp:inbox| location of the WebID owner's Solid inbox |
@@ -78,7 +78,7 @@ An app operating on behalf of the WebID owner that wants to read or write prefer
 
 When an app operating on behalf of the WebID owner can not discover a `pim:preferencesFile` triple, has write and control access, and wishes to write preference data, it MAY create a document accessible only to the WebID owner and SHOULD insert a triple in the `WebID Profile Document` with the WebID as subject, `pim:preferencesFile` as predicate, and the URL of the created document as object. 
 
-When an app wants to store data only accessibe to itself, or only to a specified audience, it SHOULD create an [Extended Profile Document](TBD), give it the appropriate permissions, and create a triple in the `Preferences File` with the WebID as subject, `rdfs:seeAlso` as predicate and the created document as object.   
+When an app wants to store data only accessible to itself, or only to a specified audience, it SHOULD create an [Extended Profile Document](TBD), give it the appropriate permissions, and create a triple in the `Preferences File` with the WebID as subject, `rdfs:seeAlso` as predicate and the created document as object.   
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
 
@@ -86,7 +86,7 @@ When an app wants to store data only accessibe to itself, or only to a specified
 
 ### 3.a Reading Extended Profile Documents
 
-An app wanting to load a comlplete `Solid Profile` SHOULD examine statements in the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended Profile Document` as object. When the app has loaded those two documents, it SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples found and SHOULD treat all statements in the linked documents that have the WebID as subject as part of the `Solid Profile`.  An app MAY, but is not required to, examine other statements in the linked documents.
+An app wanting to load a complete `Solid Profile` SHOULD examine statements in the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended Profile Document` as object. When the app has loaded those two documents, it SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples found and SHOULD treat all statements in the linked documents that have the WebID as subject as part of the `Solid Profile`.  An app MAY, but is not required to, examine other statements in the linked documents.
 
 ### 3.b Writing Extended Profile Documents
 
@@ -102,7 +102,7 @@ When an app operating on behalf of a WebID owner wants to login, it SHOULD look 
 ```
 <?WebID> <http://www.w3.org/ns/solid/terms#oidcIssuer> <?Issuer> .
 ```
-If a single statement with the solid:oidcIsuer predicate is found, the app wanting to login SHOULD redirect to the URL specifed by the value of `?Issuer`.
+If a single statement with the solid:oidcIssuer predicate is found, the app wanting to login SHOULD redirect to the URL specified by the value of `?Issuer`.
 
 If multiple Issuers are found, the app SHOULD offer the user a choice and redirect to the chosen `?Issuer`.
 
