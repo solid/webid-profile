@@ -3,16 +3,16 @@
 ## Pre-Draft 2022-04-01
         
 <blockquote>
-"A city has public places where I can do all kinds of things, and also a private house with a private room which may be just mine. In that house there are spaces where I do things with family, friends, colleagues. The web must, like a well-designed building, provide a gradient of intimacy between the private and the public, so I can easily recognize the difference, easily know which I am in,, and easily welcome people to come into the more intimate parts, as I want to." -- timbl
+"A city has public places where I can do all kinds of things, and also a private house with a private room which may be just mine. In that house there are spaces where I do things with family, friends, colleagues. The web must, like a well-designed building, provide a gradient of intimacy between the private and the public, so I can easily recognize the difference, easily know which I am in, and easily welcome people to come into the more intimate parts, as I want to." -- timbl
 </blockquote>
 
 If the web is this well-designed building, the Solid Profile is it's lobby - the place the public can discover which parts of the interior  the building's owner has given consent for them to see, where the owner can hide or put on display parts of their identity as they see fit.
 
 **Editors**
-* Virginia Balserio
+* Virginia Balseiro
 * Tim Berners-Lee
 * Sarven Capadisli
-* Timea Timmons
+* Timea Turdean
 * Jeff Zucker
 
 **Created**
@@ -26,13 +26,13 @@ If the web is this well-designed building, the Solid Profile is it's lobby - the
                                                                                       
 ## Status of this document
 
-This is a draft meant for the editors to discuss among themselves what belongs in the public draft which will almost certainly differ from this.  We intend to release a public draft once we have finished our discussions.  At the time of the pubic draft release, we will welcome and solicit feedback and PRs but ask commenters other than members of the editorial team wait until that release to comment.
+This is a draft meant for the editors to discuss among themselves what belongs in the public draft which will almost certainly differ from this.  We intend to release a public draft once we have finished our discussions.  At the time of the public draft release, we will welcome and solicit feedback and PRs but ask commenters other than members of the editorial team wait until that release to comment.
 
 ## Audience and Scope
 
 This document is aimed at application developers. It describes the process Solid applications can use to discover information about the structure of resources in a social agent's profile.
 
-This document does not cover the WebID authentication process (see [OIDC specification](TBD)) or data specific to a given type of social agent (see forthcoming [Creating Personal Profiles](TBD) and [Creating Organizational Profiles](TBD)).  Alternate discovery processes (for example [proposed Interoperability-Spec](TBD)) are also out of scope for this document although they will be mentioned where relevant.
+This document does not cover the WebID authentication process (see [OIDC specification](TBD)) or data specific to a given type of social agent (see forthcoming [Creating Personal Profiles](TBD) and [Creating Organizational Profiles](TBD)). Alternate discovery processes (for example [proposed Interoperability-Spec](TBD)) are also out of scope for this document although they will be mentioned where relevant.
 
 ## 1. Introduction
 
@@ -40,15 +40,15 @@ This section is non-normative.
 
 A social agent - a person or organization - can establish an identity in the Solidverse by obtaining a unique identifier called a `WebID` and by describing themselves in a set of documents associated with the WebID. These documents, referred to here collectively as a `Solid Profile`, both describe the social agent and provide links to their resources.  
 
-A Solid profile, like most Solid resources, can include a combination of publicly readable data, data restricted to named audiences, and data meant only for the social agent themselves.  For example, Keisha's Solid profile might list her name publicly, her phone number only for friends, and the configuration settings for her "notes to self"  only for apps operating on her own behalf. Solid supports these options by splitting the profile into documents with separate access restrictions.  So the first task of an application is to load all of the profile documents it has access to.
+A Solid profile, like most Solid resources, can include a combination of publicly readable data, data restricted to named audiences, and data meant only for the social agent themselves. For example, Keisha's Solid profile might list her name publicly, her phone number only for friends, and the configuration settings for her "notes to self" only for apps operating on her own behalf. Solid supports these options by splitting the profile into documents with separate access restrictions. So the first task of an application is to load all of the profile documents it has access to.
 
-Profiles can contain and apps are free to follow any kind of links to related documents.  In order to promote interoperability and limit the burden on apps, this specification recommends a limited number of related documents which a well-behaved profile should contain and a well-behaved app should discover. 
+Profiles can contain and apps are free to follow any kind of links to related documents. In order to promote interoperability and limit the burden on apps, this specification recommends a limited number of related documents which a well-behaved profile should contain and a well-behaved app should discover. 
 
-The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`.  This document must be publicly readable and should contain  pointers to a `Preferences File` containing settings & resources meant only for the WebID owner, `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
+The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`. This document must be publicly readable and should contain pointers to a `Preferences File` containing settings & resources meant only for the WebID owner, `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
 
 <img src="https://github.com/solid/webid-profile/blob/main/notes/discovery2.png">
 
-Once an app has loaded all of the needed profile documents it can then look for a fixed set of predicates holding information about the structure and location of the WebID owner's resources.  These are listed below and described in further detail in [Sections 3-8](TBD).
+Once an app has loaded all of the needed profile documents it can then look for a fixed set of predicates holding information about the structure and location of the WebID owner's resources. These are listed below and described in further detail in [Sections 3-8](TBD).
 
 |predicate|information conveyed|
 |-|-|           
@@ -60,7 +60,7 @@ Once an app has loaded all of the needed profile documents it can then look for 
 
 ## 2. Discovering a complete Solid profile
 
-**Note** : It is possible to have all profile information in a single WebID Profile Document but a more likely situation is that some information is in that document and some is in extended profile documents. With a couple of exceptions noted below, there is no guarantee that any specific piece of data is located in a given document.  Therefore it is almost always best to load all profile documents, to do so in a recommended order, and to treat the `Solid Profile` as a graph assembled by loading documents rather than as a set of documents.
+**Note** : It is possible to have all profile information in a single WebID Profile Document but a more likely situation is that some information is in that document and some is in extended profile documents. With a couple of exceptions noted below, there is no guarantee that any specific piece of data is located in a given document. Therefore it is almost always best to load all profile documents, to do so in a recommended order, and to treat the `Solid Profile` as a graph assembled by loading documents rather than as a set of documents.
 
 When an app wants to retrieve a complete profile, it SHOULD
 
@@ -72,9 +72,9 @@ When an app wants to retrieve a complete profile, it SHOULD
 
 ## 3. Private Preferences - pim:preferencesFile
 
-**Note** : The `Preferences File` is a document intended to hold information only accessible to an app that is logged in and authenticated as the WebID owner.  An app operating on behalf of the owner can gather configuration settings from the owner, store them in the `Preferences File`, and then read them there on subsequent visits.  Such an app might also record private information (for example, a driver's license number) and later, at the direction of the owner, retrieve the information to fill out a form.
+**Note** : The `Preferences File` is a document intended to hold information only accessible to an app that is logged in and authenticated as the WebID owner. An app operating on behalf of the owner can gather configuration settings from the owner, store them in the `Preferences File`, and then read them there on subsequent visits. Such an app might also record private information (for example, a driver's license number) and later, at the direction of the owner, retrieve the information to fill out a form.
 
-An app operating on behalf of the WebID owner that wants to read or write preference data SHOULD look in the `WebID Profile Document` for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL of a document as object.  If the app finds a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed.
+An app operating on behalf of the WebID owner that wants to read or write preference data SHOULD look in the `WebID Profile Document` for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL of a document as object. If the app finds a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed.
 
 When an app operating on behalf of the WebID owner can not discover a `pim:preferencesFile` triple, has write and control access, and wishes to write preference data, it MAY create a document accessible only to the WebID owner and SHOULD insert a triple in the `WebID Profile Document` with the WebID as subject, `pim:preferencesFile` as predicate, and the URL of the created document as object. 
 
@@ -82,15 +82,15 @@ When an app wants to store data only accessible to itself, or only to a specifie
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
 
-**Note** : Solid Profile owners may use the `rdfs:seeAlso` predicate to link to extended profile documents which contain information that they do not want in the `WebID Profile Document` or in the `Preferences File`.  This can be done to help organize information - for example to keep all friends (objects of `foaf:knows` predicates) in a separate `rdfs:seeAlso` document.  It can also be done to limit access to the data - for example to store a phone number where only trusted friends can view it.  
+**Note** : Solid Profile owners may use the `rdfs:seeAlso` predicate to link to extended profile documents which contain information that they do not want in the `WebID Profile Document` or in the `Preferences File`.  This can be done to help organize information - for example to keep all friends (objects of `foaf:knows` predicates) in a separate `rdfs:seeAlso` document. It can also be done to limit access to the data - for example to store a phone number where only trusted friends can view it.  
 
 ### 3.a Reading Extended Profile Documents
 
-An app wanting to load a complete `Solid Profile` SHOULD examine statements in the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended Profile Document` as object. When the app has loaded those two documents, it SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples found and SHOULD treat all statements in the linked documents that have the WebID as subject as part of the `Solid Profile`.  An app MAY, but is not required to, examine other statements in the linked documents.
+An app wanting to load a complete `Solid Profile` SHOULD examine statements in the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended Profile Document` as object. When the app has loaded those two documents, it SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples found and SHOULD treat all statements in the linked documents that have the WebID as subject as part of the `Solid Profile`. An app MAY, but is not required to, examine other statements in the linked documents.
 
 ### 3.b Writing Extended Profile Documents
 
-When an app wants to write data in an `Extended Profile Document`, it SHOULD give the document appropriate permissions depending on the needs of the WebID owner.  If the document is private, the app should create an `rdfs:seeAlso` triple pointing to it in the [Preferences File](TBD).  If the document is pubic or for a restricted audience, the triple should be created in the `WebID Profile Document`.
+When an app wants to write data in an `Extended Profile Document`, it SHOULD give the document appropriate permissions depending on the needs of the WebID owner. If the document is private, the app should create an `rdfs:seeAlso` triple pointing to it in the [Preferences File](TBD). If the document is pubic or for a restricted audience, the triple should be created in the `WebID Profile Document`.
 
 ## 4. Type Indexes
 
@@ -204,7 +204,7 @@ An app wishing to find out about the WebID owner's storages SHOULD look for trip
 ```
 <?WebID> pim:storage <?StorageSpace>.
 ```
-If no storage space is found through profile triples, the app MAY use the process described in [Solid Protocol 0.9](TBD) to find the closest storage to the WebID document and check for a link header marking the storage as owned by the owner of the WebID. There is no guarantee this will succeed.
+If no storage space is found through profile triples, the app MAY use the process described in [Solid Protocol 0.9](https://solidproject.org/TR/protocol) to find the closest storage to the WebID document and check for a link header marking the storage as owned by the owner of the WebID. There is no guarantee this will succeed.
 
 If no storage space is found through either the profile triples or finding the closest storage, the only option is to ask the WebID owner.
 
@@ -214,11 +214,11 @@ Applications SHOULD NOT try guessing a storage location based on the WebID URI.
 
 **Note** : A Solid inbox is a Solid-specific messaging system that is similar to but not the same as an email inbox.
 
-An app wanting to read or write mail in a WebID owner's Solid inbox SHOULD look in the profile for a single triple with the WebID as subject, `ldp:inbox` as predicate, and a container intended to hold messages as object.  For example:
+An app wanting to read or write mail in a WebID owner's Solid inbox SHOULD look in the profile for a single triple with the WebID as subject, `ldp:inbox` as predicate, and a container intended to hold messages as object. For example:
 ```
 <?WebID> ldp:inbox <?InboxContainer>.
 ```
-If no inbox is found and the app is operating on behalf of a WebID owner, and the app has both write and control access, the app MAY offer to create an inbox.  If a WebID owner confirms inbox creation, the app SHOULD create a container and access control for it that gives read and write permissions to the WebID owner and append but not read or write permissions to everyone else.  The app should also place a triple in the `WebID Profile Document` or in an `Extended Profile Document` with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
+If no inbox is found and the app is operating on behalf of a WebID owner, and the app has both write and control access, the app MAY offer to create an inbox. If a WebID owner confirms inbox creation, the app SHOULD create a container and access control for it that gives read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an `Extended Profile Document` with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
 
 ## Applications - acl:trustedApp
 
