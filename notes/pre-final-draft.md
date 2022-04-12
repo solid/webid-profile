@@ -51,10 +51,10 @@ applications can use to discover information about the structure of resources in
 a social agent's profile.
 
 This document does not cover the WebID authentication process (see [OIDC
-specification](TBD)) or data specific to a given type of social agent (see
-forthcoming [Creating Personal Profiles](TBD) and [Creating Organizational
-Profiles](TBD)). Alternate discovery processes (for example [proposed
-Interoperability-Spec](TBD)) are also out of scope for this document although
+specification]TBD) or data specific to a given type of social agent (see
+forthcoming [Creating Personal Profiles]TBD and [Creating Organizational
+Profiles]TBD)). Alternate discovery processes (for example [proposed
+Interoperability-Spec]TBD) are also out of scope for this document although
 they will be mentioned where relevant.
 
 ## 1. Introduction
@@ -79,13 +79,13 @@ of the profile documents it has access to.
 Profiles can contain, and apps are free to follow, any kind of links to related
 documents. In order to promote interoperability and limit the burden on apps,
 this specification recommends a limited number of related documents which a
-well-behaved profile should contain and a well-behaved app should discover.
+well-behaved profile ought to contain and a well-behaved app ought discover.
 
 The discovery process starts with the WebID, a URI that points to exactly one
 document, referred to here as a [WebID Profile Document](TBD). This document
-must be publicly readable and should contain pointers to a `Preferences File`
+can be expected to contain pointers to a `Preferences File Document`
 containing settings & resources meant only for the WebID owner, `Type Index
-Files` containing links to specific types of resources, and zero or more
+Documents` containing links to specific types of resources, and might also contain
 [Extended Profile Document](TBD) containing additional information about the
 WebID owner. The documents which make up a Solid Profile are illustrated below
 and described in more detail in [Section 2](TBD).
@@ -108,7 +108,7 @@ detail in [Sections 3-8](TBD).
 
 ## 2. Discovering a complete Solid profile
 
-**Note** : It is possible to have all profile information in a single WebID
+It is possible to have all profile information in a single WebID
 Profile Document, but a more likely situation is that some information is in
 that document and some is in extended profile documents. With a couple of
 exceptions noted below, there is no guarantee that any specific piece of data is
@@ -127,7 +127,7 @@ When an app wants to retrieve a complete profile, it SHOULD
    `rdfs:seeAlso`, `solid:publicTypeIndex`, or `solid:privateTypeIndex` as
    predicate and load the objects of those triples.
 
-**Note** : Once all of the accessible extended profile documents have been
+Once all of the accessible extended profile documents have been
 loaded, the profile will consist of all statements with the WebID as subject,
 regardless of which document the statements occurred in. An app with only public
 permissions will see only statements from publicly accessible extended profile
@@ -136,7 +136,7 @@ extended profile documents they have access to.
 
 ## 3. Private Preferences - pim:preferencesFile
 
-**Note** : The `Preferences File` is a document intended to hold information
+The `Preferences File` is a document intended to hold information
 only accessible to an app that is logged in and authenticated as the WebID
 owner. An app operating on behalf of the owner can gather configuration settings
 from the owner, store them in the `Preferences File`, and then read them there
@@ -165,7 +165,7 @@ as object.
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
 
-**Note** : Solid Profile owners may use the `rdfs:seeAlso` predicate to link to
+Solid Profile owners may use the `rdfs:seeAlso` predicate to link to
 extended profile documents which contain information that they do not want in
 the [WebID Profile Document](TBD) or in the `Preferences File`.  This can be
 done to help organize information - for example to keep all friends (objects of
@@ -364,7 +364,7 @@ Applications SHOULD NOT try guessing a storage location based on the WebID URI.
 
 ## 7. Inbox - ldp:inbox
 
-**Note** : A Solid inbox is a Solid-specific messaging system that is similar to
+A Solid inbox is a Solid-specific messaging system that is similar to
 but not the same as an email inbox.
 
 An app wanting to read or write mail in a WebID owner's Solid inbox SHOULD look
