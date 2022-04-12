@@ -44,7 +44,7 @@ A Solid profile, like most Solid resources, can include a combination of publicl
 
 Profiles can contain and apps are free to follow any kind of links to related documents. In order to promote interoperability and limit the burden on apps, this specification recommends a limited number of related documents which a well-behaved profile should contain and a well-behaved app should discover. 
 
-The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`. This document must be publicly readable and should contain pointers to a `Preferences File` containing settings & resources meant only for the WebID owner, `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
+The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a `WebID Profile Document`. This document MUST be publicly readable and SHOULD contain pointers to zero or one `Preferences File` containing settings & resources meant only for the WebID owner, zero or more `Type Index Files` containing links to specific types of resources, and zero or more `Extended profile Documents` containing additional information about the WebID owner. The documents which make up a Solid Profile are illustrated below and described in more detail in [Section 2](TBD).
 
 <img src="https://github.com/solid/webid-profile/blob/main/notes/discovery2.png">
 
