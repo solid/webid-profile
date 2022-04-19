@@ -165,7 +165,7 @@ as object.
 
 Solid Profile owners may use the `rdfs:seeAlso` predicate to link to
 extended profile documents which contain information that they do not want in
-the [WebID Profile Document](TBD) or in the `Preferences File`.  This can be
+the [WebID Profile Document](TBD) or in the `Preferences Document`.  This can be
 done to help organize information - for example to keep all friends (objects of
 `foaf:knows` predicates) in a separate `rdfs:seeAlso` document. It can also be
 done to limit access to the data - for example to store a phone number where
@@ -174,7 +174,7 @@ only trusted friends can view it.
 ### 3.a Reading Extended Profile Documents
 
 An app wanting to load a complete `Solid Profile` SHOULD examine statements in
-the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the
+the [WebID Profile Document](TBD) and the [Preferences Document](TBD) that have the
 WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended
 Profile Document` as object. When the app has loaded those two documents, it
 SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples
@@ -186,9 +186,9 @@ to, examine other statements in the linked documents.
 
 When an app wants to write data in an [Extended Profile Document](TBD), it
 SHOULD give the document appropriate permissions depending on the needs of the
-WebID owner. If the document is private, the app should create an `rdfs:seeAlso`
+WebID owner. If the document is private, the app SHOULD create an `rdfs:seeAlso`
 triple pointing to it in the [Preferences File](TBD). If the document is public
-or for a restricted audience, the triple should be created in the [WebID Profile
+or for a restricted audience, the triple SHOULD be created in the [WebID Profile
 Document](TBD).
 
 ## 4. Type Indexes
