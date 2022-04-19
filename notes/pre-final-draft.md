@@ -123,7 +123,8 @@ When an app wants to retrieve a complete profile, it SHOULD
 2. If the app is operating on behalf of the WebID owner, find a triple in that
    document with the WebID as subject and `pim:preferencesFile` as predicate,
    then load the object of that triple.
-3. Find all triples loaded so far that have the WebID as subject, and either
+2a. If the app does not operate on behalf of the WebID owner....
+3. From all triples loaded so far, find the ones that have the WebID as subject, and either
    `rdfs:seeAlso`, `solid:publicTypeIndex`, or `solid:privateTypeIndex` as
    predicate and load the objects of those triples.
 
