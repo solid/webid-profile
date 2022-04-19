@@ -136,22 +136,20 @@ extended profile documents they have access to.
 
 ## 3. Private Preferences - pim:preferencesFile
 
-The `Preferences File` is a document intended to hold information
+The `Preferences Document` is a resource intended to hold information
 only accessible to an app that is logged in and authenticated as the WebID
 owner. An app operating on behalf of the owner can gather configuration settings
-from the owner, store them in the `Preferences File`, and then read them there
+from the owner, store them in the `Preferences Document`, and then read them there
 on subsequent visits. Such an app might also record private information (for
 example, a driver's license number) and later, at the direction of the owner,
 retrieve the information to fill out a form.
 
 An app operating on behalf of the WebID owner that wants to read or write
-preference data SHOULD look in the [WebID Profile Document](TBD) for a single
-triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL
-of a document as object. If the app finds a `pim:preferencesFile` triple, it MAY
-read and/or write to the file as needed.
+preference data SHOULD look in the [WebID Profile Document](TBD) for the location of the `Preferences Document`. To determin its location the app SHULD look for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL
+of a document as object. The object containing the URL of a document is then the location of the `Preferences Document`. If the app finds a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed if it has the right permission.
 
-When an app operating on behalf of the WebID owner can not discover a
-`pim:preferencesFile` triple, has write and control access, and wishes to write
+When an app operating on behalf of the WebID owner cannot discover a
+`pim:preferencesFile` triple, and has write and control access, and wishes to write
 preference data, it MAY create a document accessible only to the WebID owner and
 SHOULD insert a triple in the [WebID Profile Document](TBD) with the WebID as
 subject, `pim:preferencesFile` as predicate, and the URL of the created document
@@ -159,8 +157,8 @@ as object.
 
 When an app wants to store data only accessible to itself, or only to a
 specified audience, it SHOULD create an [Extended Profile Document](TBD), give
-it the appropriate permissions, and create a triple in the `Preferences File`
-with the WebID as subject, `rdfs:seeAlso` as predicate and the created document
+it the appropriate permissions, and create a triple in the `Preferences Document`
+with the WebID as subject, `rdfs:seeAlso` as predicate and the URL of the created document
 as object.
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
