@@ -106,6 +106,8 @@ detail in [Sections 3-8](TBD).
 |solid:instance, solid:instanceContainer | locations of specific types of resources|
 |ldp:inbox| location of the WebID owner's Solid inbox |
 
+Further we structure this document as following: [Section 2](#2-discovering-a-complete-solid-profile) is about discovering a complete Solid profile, [Section 3](#3-discovering-the-structure-and-location-of-the-webid-owners-resources) si about discovering the structure and location of the WebId owner's resources and [Section 4](#4-solidoidcissuer-acltrustedapp-ldpinbox) is about the solid:oidcIssues and ldp:inbox predicates.
+
 ## 2. Discovering a complete Solid profile
 
 It is possible to have all profile information in a single WebID
@@ -134,7 +136,7 @@ permissions will see only statements from publicly accessible extended profile
 documents while other apps will see statements from public and also private
 extended profile documents they have access to.
 
-## 3. Private Preferences - pim:preferencesFile
+### 2.1. Private Preferences - pim:preferencesFile
 
 The `Preferences File` is a document intended to hold information
 only accessible to an app that is logged in and authenticated as the WebID
@@ -163,7 +165,7 @@ it the appropriate permissions, and create a triple in the `Preferences File`
 with the WebID as subject, `rdfs:seeAlso` as predicate and the created document
 as object.
 
-## 3. Extended Profile Documents - rdfs:seeAlso
+### 2.2. Extended Profile Documents - rdfs:seeAlso
 
 Solid Profile owners may use the `rdfs:seeAlso` predicate to link to
 extended profile documents which contain information that they do not want in
@@ -173,7 +175,7 @@ done to help organize information - for example to keep all friends (objects of
 done to limit access to the data - for example to store a phone number where
 only trusted friends can view it.  
 
-### 3.a Reading Extended Profile Documents
+#### 2.2.1. Reading Extended Profile Documents
 
 An app wanting to load a complete `Solid Profile` SHOULD examine statements in
 the [WebID Profile Document](TBD) and the [Preferences File](TBD) that have the
@@ -184,7 +186,7 @@ found and SHOULD treat all statements in the linked documents that have the
 WebID as subject as part of the `Solid Profile`. An app MAY, but is not required
 to, examine other statements in the linked documents.
 
-### 3.b Writing Extended Profile Documents
+#### 2.2.2. Writing Extended Profile Documents
 
 When an app wants to write data in an [Extended Profile Document](TBD), it
 SHOULD give the document appropriate permissions depending on the needs of the
@@ -193,9 +195,13 @@ triple pointing to it in the [Preferences File](TBD). If the document is public
 or for a restricted audience, the triple should be created in the [WebID Profile
 Document](TBD).
 
-## 4. Type Indexes
+## 3. Discovering the structure and location of the WebId owner's resources
 
-### What is a Type Index?
+Loading the WebID Profile Documents is the first step which helps us find a WebID owner's resources. The WebID Profile structure can help us find the needed resources. For this purpose the Type Indexe Documents and the WebId Storage can help. We describe them next.
+
+### 3.1. Type Indexes
+
+#### What is a Type Index?
 
 A Type Index is a document containing statements that link specific types of
 data to specific locations. An app might ask a user where they want to store
@@ -209,7 +215,7 @@ to keep private, there are two Type Indexes - one readable by any app (publicly
 discoverable) and one only readable by apps operating on behalf of the WebID
 owner (not publicly discoverable).
 
-### Where to find the Type Indexes
+#### Where to find the Type Indexes
 
 To find the Type Indexes, an app SHOULD load the Profile Document (WebID
 document, WebID Helper Document, Extended profile document) or the Preference
@@ -218,7 +224,7 @@ and the following predicates: for the Public Type Index document the
 `solid:publicTypeIndex` predicate, and for the Private Type Index document the
 `solid:privateTypeIndex` predicate.
 
-#### Examples
+##### Examples
 
 An example for a Public Type Index Resource that is located in `settings` and is
 called `publicTypeIndex.ttl` linked from the profile is:
@@ -237,7 +243,7 @@ An example for a Private Type Index Resourcelocated in `settings` and is called
 Here is a diagram showing an example set of Type Indexes: ![Type Registry Index
 diagram](../diagrams/type-indexes.svg)
 
-### Public Type Index (usually called publicTypeIndex.ttl)
+#### Public Type Index (usually called publicTypeIndex.ttl)
 
 The Public Type Index document MUST be of type `solid:ListedDocument` and
 `solid:TypeIndex`.
@@ -268,7 +274,7 @@ Example of a Public Type Index document. This contains a public resource of type
     solid:instance </public/myBookmarks/>.
 ```
 
-### Private Type Index (usually called privateTypeIndex.ttl)
+#### Private Type Index (usually called privateTypeIndex.ttl)
 
 The Private Type Index document contains registration entries that are private
 to the user and their apps, for types that are *not* publicly discoverable.
@@ -298,7 +304,7 @@ type `vcard:AddressBook` located at the resource address
 
 ```
 
-### Type Index registration entries
+#### Type Index registration entries
 
 The type index documents MAY contain any number of statements of type
 `solid:TypeRegistration` which map RDF classes/types to their locations in a
@@ -307,41 +313,22 @@ WebID owner's dataspace/root storage.
 The registration entries map a type to a location and MUST use one of two
 predicates:
 
-#### `solid:instance`
+##### `solid:instance`
 
 maps a type to an individual Solid *resource*, typically an index or a directory
 listing resource such as an Address Book.
 
-#### `solid:instanceContainer`
+##### `solid:instanceContainer`
 
 maps a type to a Solid *container* which the client would have to list to get
 the instances of that type.
 
-### Reference
+#### Reference
 
 * [link 1](https://github.com/solid/solid/blob/main/proposals/data-discovery.md)
 
-## 5. Identity Provider - solid:oidcIssuer
 
-When an app operating on behalf of a WebID owner wants to login, it SHOULD look
-for statements with the WebID as subject, `solid:oidcIssuer` as predicate and
-the URL of an OIDC Issuer (Identity Provider) as the object. For example:
-
-```
-<?WebID> <http://www.w3.org/ns/solid/terms#oidcIssuer> <?Issuer> .
-```
-
-If a single statement with the solid:oidcIssuer predicate is found, the app
-wanting to login SHOULD redirect to the URL specified by the value of `?Issuer`.
-
-If multiple Issuers are found, the app SHOULD offer the user a choice and
-redirect to the chosen `?Issuer`.
-
-If the WebID Profile document does not contain any statements with the
-`solid:oidcIssuer` predicate, the application MAY inform the WebID owner that
-their WebID document is broken.
-
-## 6. Storage - pim:storage
+### 3.2. Storage - pim:storage
 
 An app wishing to find out about the WebID owner's storages SHOULD look for
 triples with the WebID as subject, `pim:storage` as predicate, and the container
@@ -362,7 +349,29 @@ closest storage, the only option is to ask the WebID owner.
 
 Applications SHOULD NOT try guessing a storage location based on the WebID URI.
 
-## 7. Inbox - ldp:inbox
+## 4. solid:oidcIssuer, acl:trustedApp, ldp:inbox
+
+### 4.1. Identity Provider - solid:oidcIssuer
+
+When an app operating on behalf of a WebID owner wants to login, it SHOULD look
+for statements with the WebID as subject, `solid:oidcIssuer` as predicate and
+the URL of an OIDC Issuer (Identity Provider) as the object. For example:
+
+```
+<?WebID> <http://www.w3.org/ns/solid/terms#oidcIssuer> <?Issuer> .
+```
+
+If a single statement with the solid:oidcIssuer predicate is found, the app
+wanting to login SHOULD redirect to the URL specified by the value of `?Issuer`.
+
+If multiple Issuers are found, the app SHOULD offer the user a choice and
+redirect to the chosen `?Issuer`.
+
+If the WebID Profile document does not contain any statements with the
+`solid:oidcIssuer` predicate, the application MAY inform the WebID owner that
+their WebID document is broken.
+
+### 4.2. Inbox - ldp:inbox
 
 A Solid inbox is a Solid-specific messaging system that is similar to
 but not the same as an email inbox.
@@ -384,6 +393,6 @@ also place a triple in the `WebID Profile Document` or in an `Extended Profile D
 with the WebID as subject, `ldp:inbox` as predicate and the newly
 created container as object.
 
-## Applications - acl:trustedApp
+### 4.3. Applications - acl:trustedApp
 
 TBD
