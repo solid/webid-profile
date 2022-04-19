@@ -177,8 +177,8 @@ only trusted friends can view it.
 
 An app wanting to load a complete `Solid Profile` SHOULD examine statements in
 the [WebID Profile Document](TBD) and the [Preferences Document](TBD) that have the
-WebID as subject, `rdfs:seeAlso` as predicate. The found objects will contain the URL of a resource, the `Extended
-Profile Document`. When the app has loaded those two documents, it
+WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended
+Profile Document` as object. When the app has loaded those two documents, it
 SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples
 found and SHOULD treat all statements in the linked documents that have the
 WebID as subject as part of the `Solid Profile`. An app MAY, but is not required
