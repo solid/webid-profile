@@ -86,7 +86,7 @@ document, referred to here as a [WebID Profile Document](TBD). This document
 can be expected to contain pointers to a `Preferences File Document`
 containing settings & resources meant only for the WebID owner, `Type Index
 Documents` containing links to specific types of resources, and might also contain
-[Extended Profile Document](TBD) containing additional information about the
+[Extended Profile Documents](TBD) containing additional information about the
 WebID owner. The documents which make up a Solid Profile are illustrated below
 and described in more detail in [Section 2](TBD).
 
@@ -95,7 +95,7 @@ src="https://github.com/solid/webid-profile/blob/main/notes/discovery2.png">
 
 Once an app has loaded all of the needed profile documents, it can then look for
 a fixed set of predicates holding information about the structure and location
-of the WebID owner's resources. These are listed below and described in further
+of the WebID owner's resources. These predicates are listed below and described in further
 detail in [Sections 3-8](TBD).
 
 |predicate|information conveyed|
