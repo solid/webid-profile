@@ -145,7 +145,7 @@ example, a driver's license number) and later, at the direction of the owner,
 retrieve the information to fill out a form.
 
 An app operating on behalf of the WebID owner that wants to read or write
-preference data SHOULD look in the [WebID Profile Document](TBD) for the location of the `Preferences Document`. To determin its location the app SHULD look for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL
+preference data SHOULD look in the [WebID Profile Document](TBD) for the location of the `Preferences Document`. To determin its location the app SHOULD look for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL
 of a document as object. The object containing the URL of a document is then the location of the `Preferences Document`. If the app finds a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed if it has the right permission.
 
 When an app operating on behalf of the WebID owner cannot discover a
