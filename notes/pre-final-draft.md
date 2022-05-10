@@ -54,8 +54,8 @@ This document does not cover the WebID authentication process (see [OIDC
 specification]TBD) or data specific to a given type of social agent (see
 forthcoming [Creating Personal Profiles]TBD and [Creating Organizational
 Profiles]TBD)). Alternate discovery processes (for example [proposed
-Interoperability-Spec]TBD) are also out of scope for this document although
-they will be mentioned where relevant.
+Interoperability-Spec]TBD) are also out of scope for this document although they
+will be mentioned where relevant.
 
 ## 1. Introduction
 
@@ -82,10 +82,10 @@ this specification recommends a limited number of related documents which a
 well-behaved profile ought to contain and a well-behaved app ought discover.
 
 The discovery process starts with the WebID, a URI that points to exactly one
-document, referred to here as a [WebID Profile Document](TBD). This document
-can be expected to contain pointers to a `Preferences File Document`
-containing settings & resources meant only for the WebID owner, `Type Index
-Documents` containing links to specific types of resources, and might also contain
+document, referred to here as a [WebID Profile Document](TBD). This document can
+be expected to contain pointers to a `Preferences File Document` containing
+settings & resources meant only for the WebID owner, `Type Index Documents`
+containing links to specific types of resources, and might also contain
 [Extended Profile Documents](TBD) containing additional information about the
 WebID owner. The documents which make up a Solid Profile are illustrated below
 and described in more detail in [Section 2](TBD).
@@ -95,8 +95,8 @@ src="https://github.com/solid/webid-profile/blob/main/notes/discovery2.png">
 
 Once an app has loaded all of the needed profile documents, it can then look for
 a fixed set of predicates holding information about the structure and location
-of the WebID owner's resources. These predicates are listed below and described in further
-detail in [Sections 3-8](TBD).
+of the WebID owner's resources. These predicates are listed below and described
+in further detail in [Sections 3-8](TBD).
 
 |predicate|information conveyed|
 |-|-|
@@ -108,14 +108,13 @@ detail in [Sections 3-8](TBD).
 
 ## 2. Discovering a complete Solid profile
 
-It is possible to have all profile information in a single WebID
-Profile Document, but a more likely situation is that some information is in
-that document and some is in extended profile documents. With a couple of
-exceptions noted below, there is no guarantee that any specific piece of data is
-located in a given document. Therefore it is almost always best to load all
-profile documents, to do so in a recommended order, and to treat the `Solid
-Profile` as a graph assembled by loading documents rather than as a set of
-documents.
+It is possible to have all profile information in a single WebID Profile
+Document, but a more likely situation is that some information is in that
+document and some is in extended profile documents. With a couple of exceptions
+noted below, there is no guarantee that any specific piece of data is located in
+a given document. Therefore it is almost always best to load all profile
+documents, to do so in a recommended order, and to treat the `Solid Profile` as
+a graph assembled by loading documents rather than as a set of documents.
 
 When an app wants to retrieve a complete profile, it SHOULD
 
@@ -127,46 +126,54 @@ When an app wants to retrieve a complete profile, it SHOULD
    `rdfs:seeAlso`, `solid:publicTypeIndex`, or `solid:privateTypeIndex` as
    predicate and load the objects of those triples.
 
-Once all of the accessible extended profile documents have been
-loaded, the profile will consist of all statements with the WebID as subject,
-regardless of which document the statements occurred in. An app with only public
-permissions will see only statements from publicly accessible extended profile
-documents while other apps will see statements from public and also private
-extended profile documents they have access to.
+Once all of the accessible extended profile documents have been loaded, the
+profile will consist of all statements with the WebID as subject, regardless of
+which document the statements occurred in. An app with only public permissions
+will see only statements from publicly accessible extended profile documents
+while other apps will see statements from public and also private extended
+profile documents they have access to.
 
 ## 3. Private Preferences - pim:preferencesFile
 
-The `Preferences Document` is a resource intended to hold information
-only accessible to an app that is logged in and authenticated as the WebID
-owner. An app operating on behalf of the owner can gather configuration settings
-from the owner, store them in the `Preferences Document`, and then read them there
-on subsequent visits. Such an app might also record private information (for
+The `Preferences Document` is a resource intended to hold information only
+accessible to an app that is logged in and authenticated as the WebID owner,
+including settings and preferences, language and display preferences, and so on
+and also user's personal data, be it contacts, pictures or health data.
+
+An app operating on behalf of the owner can gather configuration settings from
+the owner, store them in the `Preferences Document`, and then read them there on
+subsequent visits. Such an app might also record private information (for
 example, a driver's license number) and later, at the direction of the owner,
 retrieve the information to fill out a form.
 
 An app operating on behalf of the WebID owner that wants to read or write
-preference data SHOULD look in the [WebID Profile Document](TBD) for the location of the `Preferences Document`. To determin its location the app SHOULD look for a single triple with the WebID as subject, `pim:preferencesFile` as predicate and the URL
-of a document as object. The object containing the URL of a document is then the location of the `Preferences Document`. If the app finds a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed if it has the right permission.
+preference data SHOULD look in the [WebID Profile Document](TBD) for the
+location of the `Preferences Document`. To determine its location the app SHOULD
+look for a single triple with the WebID as subject, `pim:preferencesFile` as
+predicate and the URL of a document as object. The object containing the URL of
+a document is then the location of the `Preferences Document`. If the app finds
+a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed
+if it has the right permission.
 
 When an app operating on behalf of the WebID owner cannot discover a
-`pim:preferencesFile` triple, and has write and control access, and wishes to write
-preference data, it MAY create a document accessible only to the WebID owner and
-SHOULD insert a triple in the [WebID Profile Document](TBD) with the WebID as
-subject, `pim:preferencesFile` as predicate, and the URL of the created document
-as object.
+`pim:preferencesFile` triple, and has write and control access, and wishes to
+write preference data, it MAY create a document accessible only to the WebID
+owner and SHOULD insert a triple in the [WebID Profile Document](TBD) with the
+WebID as subject, `pim:preferencesFile` as predicate, and the URL of the created
+document as object.
 
 When an app wants to store data only accessible to itself, or only to a
 specified audience, it SHOULD create an [Extended Profile Document](TBD), give
-it the appropriate permissions, and create a triple in the `Preferences Document`
-with the WebID as subject, `rdfs:seeAlso` as predicate and the URL of the created document
-as object.
+it the appropriate permissions, and create a triple in the `Preferences
+Document` with the WebID as subject, `rdfs:seeAlso` as predicate and the URL of
+the created document as object.
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
 
-Solid Profile owners may use the `rdfs:seeAlso` predicate to link to
-extended profile documents which contain information that they do not want in
-the [WebID Profile Document](TBD) or in the `Preferences Document`.  This can be
-done to help organize information - for example to keep all friends (objects of
+Solid Profile owners may use the `rdfs:seeAlso` predicate to link to extended
+profile documents which contain information that they do not want in the [WebID
+Profile Document](TBD) or in the `Preferences Document`.  This can be done to
+help organize information - for example to keep all friends (objects of
 `foaf:knows` predicates) in a separate `rdfs:seeAlso` document. It can also be
 done to limit access to the data - for example to store a phone number where
 only trusted friends can view it.  
@@ -174,8 +181,8 @@ only trusted friends can view it.
 ### 3.a Reading Extended Profile Documents
 
 An app wanting to load a complete `Solid Profile` SHOULD examine statements in
-the [WebID Profile Document](TBD) and the [Preferences Document](TBD) that have the
-WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended
+the [WebID Profile Document](TBD) and the [Preferences Document](TBD) that have
+the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended
 Profile Document` as object. When the app has loaded those two documents, it
 SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples
 found and SHOULD treat all statements in the linked documents that have the
@@ -362,8 +369,8 @@ Applications SHOULD NOT try guessing a storage location based on the WebID URI.
 
 ## 7. Inbox - ldp:inbox
 
-A Solid inbox is a Solid-specific messaging system that is similar to
-but not the same as an email inbox.
+A Solid inbox is a Solid-specific messaging system that is similar to but not
+the same as an email inbox.
 
 An app wanting to read or write mail in a WebID owner's Solid inbox SHOULD look
 in the profile for a single triple with the WebID as subject, `ldp:inbox` as
@@ -378,8 +385,8 @@ the app has both write and control access, the app MAY offer to create an inbox.
 If a WebID owner confirms inbox creation, the app SHOULD create a container and
 access control for it that gives read and write permissions to the WebID owner
 and append but not read or write permissions to everyone else. The app should
-also place a triple in the `WebID Profile Document` or in an `Extended Profile Document`
-with the WebID as subject, `ldp:inbox` as predicate and the newly
+also place a triple in the `WebID Profile Document` or in an `Extended Profile
+Document` with the WebID as subject, `ldp:inbox` as predicate and the newly
 created container as object.
 
 ## Applications - acl:trustedApp
