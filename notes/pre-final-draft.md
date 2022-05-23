@@ -216,10 +216,7 @@ owner (not publicly discoverable).
 
 ### Where to find the Type Indexes
 
-To find the Type Indexes, an app SHOULD load the Profile Document (WebID
-document, WebID Helper Document, Extended profile document) or the Preference
-File. In these loaded documents one can find triples where the WebID as subject
-and the following predicates: for the Public Type Index document the
+To find the Type Indexes, an app SHOULD load the WebID Profile Document and if the app has access, also the Preferences Document. In these loaded documents one can find triples where the WebID as subject and the following predicates: for the Public Type Index document the
 `solid:publicTypeIndex` predicate, and for the Private Type Index document the
 `solid:privateTypeIndex` predicate.
 
@@ -244,13 +241,7 @@ diagram](../diagrams/type-indexes.svg)
 
 ### Public Type Index (usually called publicTypeIndex.ttl)
 
-The Public Type Index document MUST be of type `solid:ListedDocument` and
-`solid:TypeIndex`.
-
-The Public Type Index document contains registration entries that are
-*discoverable by outside users and applications*. For example, think of a
-registration like a phone number in a public phonebook, which contains
-publicly-discoverable mappings of people's names to phone numbers and addresses.
+The Public Type Index document contains registration entries that are *discoverable* by outside users and applications but which are not necessarily *accessible* to all applications or users.  For example, suppose I have one address book that is only for myself, one that is for a specific group of colleagues, and one that is for the general public.  The one that is only for me should be listed in the private type index.  The other two should be listed in the public type index. The fully public listing will point to a publicly accessible resource while the one just for my colleagues will point to a resource restricted by access control methods.  Both the public and restricted reesources are discoverable in the public type index because an app that is not operating as the WebID owner can not see the private type index.
 
 Example of a Public Type Index document. This contains a public resource of type
 `vcard:AddressBook` located at the resource address
@@ -276,10 +267,7 @@ Example of a Public Type Index document. This contains a public resource of type
 ### Private Type Index (usually called privateTypeIndex.ttl)
 
 The Private Type Index document contains registration entries that are private
-to the user and their apps, for types that are *not* publicly discoverable.
-
-The Private Type Index document MUST be of type `solid:UnlistedDocument` and
-`solid:TypeIndex`.
+to the user and their apps. It is intended for types of resources meant only to be accessed by the WebID owner.  
 
 Example of a Private Type Index document. This contains a private resource of
 type `vcard:AddressBook` located at the resource address
@@ -321,6 +309,12 @@ listing resource such as an Address Book.
 
 maps a type to a Solid *container* which the client would have to list to get
 the instances of that type.
+
+### Supplying missing type index documents
+
+If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod SHOULD warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile
+
+If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
 
 ### Reference
 
