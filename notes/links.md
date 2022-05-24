@@ -7,7 +7,7 @@ This file is intended to hold links to background materials to serve as document
 * [trustedApp - Tim's request to add to solid:vocab](https://github.com/solid/vocab/issues/64)
 * [trustedApp - ESS App Registration Documentation](https://docs.inrupt.com/ess/1.2/services/service-application-registration/)
 * [trustedApp - ESS Allow-List Documentation](https://docs.inrupt.com/ess/1.2/services/service-authorization/#cmdoption-authzconfig-arg-INRUPT_AUTHORIZATION_CLIENT_ID_ALLOW_LIST)
-* [trustedApp - ESS Access Grant Documentation(https://solid-client-access-grants-js.vercel.app/)
+* [trustedApp - ESS Access Grant Documentation](https://solid-client-access-grants-js.vercel.app/)
 * [trustedApp - ESS access grant script](https://github.com/inrupt/test-app-access-grants)
 * [trustedApp - CSS Joachim Van Herwegen on app authorization](https://gitter.im/CommunitySolidServer/community?at=62897f594e38f759e280772e)
 * [trustedApp - CSS client credentials documentation](https://github.com/CommunitySolidServer/CommunitySolidServer/blob/main/documentation/client-credentials.md)
