@@ -9,6 +9,7 @@ This file is intended to hold links to background materials to serve as document
 * [trustedApp - Inrupt Allow-List](https://docs.inrupt.com/ess/1.2/services/service-authorization/#cmdoption-authzconfig-arg-INRUPT_AUTHORIZATION_CLIENT_ID_ALLOW_LIST)
 * [trustedApp - Inrupt access grant script](https://github.com/inrupt/test-app-access-grants)
 * [trustedApp - Joachim Van Herwegen on CSS app authorization](https://gitter.im/CommunitySolidServer/community?at=62897f594e38f759e280772e)
+* [trustedApp - CSS docs on client credentials](https://github.com/CommunitySolidServer/CommunitySolidServer/blob/main/documentation/client-credentials.md)
 * [trustedApp - WAC spec on origins](https://solidproject.org/TR/wac#authorization-conformance)
 
 
