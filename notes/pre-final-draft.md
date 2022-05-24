@@ -157,7 +157,7 @@ For example:
 When an app operating on behalf of the WebID owner cannot discover a
 `pim:preferencesFile` triple, and has write and control access, and wishes to
 write preference data, it MAY create a document accessible only to the WebID
-owner.  Am app that creates a Preference Document SHOULD insert a triple in the
+owner.  An app that creates a Preference Document SHOULD insert a triple in the
 WebID Profile Document with the WebID as subject, `pim:preferencesFile` as predicate,
 and the URL of the created document as object.
 
