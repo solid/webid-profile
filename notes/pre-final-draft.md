@@ -370,7 +370,7 @@ predicate, and a container intended to hold messages as object. For example:
 <?WebID> ldp:inbox <?InboxContainer>.
 ```
 
-If no inbox is found a Pod Mangement App MAY create an inbox by creating a container. In that case, the app SHOULD also create access controls for the container that give read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an Extended Profile Document with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
+If no inbox is found a Pod Management App MAY create an inbox by creating a container. In that case, the app SHOULD also create access controls for the container that give read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an Extended Profile Document with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
 
 ## Applications - acl:trustedApp
 
