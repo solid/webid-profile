@@ -312,7 +312,7 @@ the instances of that type.
 
 ### Supplying missing type index documents
 
-If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod SHOULD warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile
+If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod SHOULD warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile.
 
 If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
 
