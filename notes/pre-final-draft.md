@@ -101,7 +101,7 @@ in further detail in [Sections 3-8](TBD).
 |predicate|information conveyed|
 |-|-|
 |solid:oidcIssuer | location(s) where the WebID owner logs in |
-|acl:trustedApp | origin & permissions of applications the WebID owner has given access to  |
+<!-- |acl:trustedApp | origin & permissions of applications the WebID owner has given access to  | -->
 |solid:storage | location(s) of the WebID owner's storage space(s) |
 |solid:instance, solid:instanceContainer | locations of specific types of resources|
 |ldp:inbox| location of the WebID owner's Solid inbox |
@@ -304,7 +304,7 @@ the instances of that type.
 
 ### Supplying missing type index documents
 
-If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod SHOULD warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile.
+If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod MAY warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile.
 
 If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
 
@@ -368,4 +368,6 @@ If no inbox is found a Pod Management App MAY create an inbox by creating a cont
 
 ## Other predicates                                                           
                                                                               
-A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encouter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.                        
+A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encouter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.     
+
+Note : The background for the decision not to include trustedApp in this spec is [here](https://github.com/solid/webid-profile/blob/main/meetings/2022-05-24.md) and the section Jeff wrote on trustedApp but removed is [here](https://github.com/solid/webid-profile/blob/main/notes/trustedApp-jeff-notes.md).
