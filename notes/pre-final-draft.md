@@ -136,9 +136,10 @@ profile documents they have access to.
 ## 3. Private Preferences - pim:preferencesFile
 
 The `Preferences Document` is a resource intended to hold information only
-accessible to an app that is logged in and authenticated as the WebID owner,
-including settings and preferences, language and display preferences, and so on
-and also user's personal data, be it contacts, pictures or health data.
+accessible to an app that is logged in and authenticated as the WebID owner
+or as an agent delegated by the WebID owner to act in their behalf.  The preference
+Document can include settings and preferences, and pointers to the owner's
+personal, private data, be it contacts, pictures or health data.
 
 An app operating on behalf of the owner can gather configuration settings from
 the owner, store them in the `Preferences Document`, and then read them there on
@@ -146,27 +147,19 @@ subsequent visits. Such an app might also record private information (for
 example, a driver's license number) and later, at the direction of the owner,
 retrieve the information to fill out a form.
 
-An app operating on behalf of the WebID owner that wants to read or write
-preference data SHOULD look in the [WebID Profile Document](TBD) for the
-location of the `Preferences Document`. To determine its location the app SHOULD
-look for a single triple with the WebID as subject, `pim:preferencesFile` as
-predicate and the URL of a document as object. The object containing the URL of
-a document is then the location of the `Preferences Document`. If the app finds
-a `pim:preferencesFile` triple, it MAY read and/or write to the file as needed
-if it has the right permission.
+A well-formed `WebID Profile Document` MUST have exactly one triple with the WebID 
+as subject, `pim:preferencesFile` as predicate, and the location of the `Preferences Document` as object.
 
+For example:                                                                
+```                                                                         
+<?WebID> <http://www.w3.org/ns/pim/space#preferencesFile> <?PreferencesDocument>                                                                          
+```                                                                         
 When an app operating on behalf of the WebID owner cannot discover a
 `pim:preferencesFile` triple, and has write and control access, and wishes to
 write preference data, it MAY create a document accessible only to the WebID
-owner and SHOULD insert a triple in the [WebID Profile Document](TBD) with the
-WebID as subject, `pim:preferencesFile` as predicate, and the URL of the created
-document as object.
-
-When an app wants to store data only accessible to itself, or only to a
-specified audience, it SHOULD create an [Extended Profile Document](TBD), give
-it the appropriate permissions, and create a triple in the `Preferences
-Document` with the WebID as subject, `rdfs:seeAlso` as predicate and the URL of
-the created document as object.
+owner.  An app that creates a Preference Document SHOULD insert a triple in the
+WebID Profile Document with the WebID as subject, `pim:preferencesFile` as predicate,
+and the URL of the created document as object.
 
 ## 3. Extended Profile Documents - rdfs:seeAlso
 
@@ -180,23 +173,22 @@ only trusted friends can view it.
 
 ### 3.a Reading Extended Profile Documents
 
-An app wanting to load a complete `Solid Profile` SHOULD examine statements in
+An app wanting to load a complete `Solid Profile` MUST examine statements in
 the [WebID Profile Document](TBD) and the [Preferences Document](TBD) that have
 the WebID as subject, `rdfs:seeAlso` as predicate and the URL of an `Extended
 Profile Document` as object. When the app has loaded those two documents, it
 SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples
 found and SHOULD treat all statements in the linked documents that have the
-WebID as subject as part of the `Solid Profile`. An app MAY, but is not required
-to, examine other statements in the linked documents.
+WebID as subject as part of the `Solid Profile`.  An app may but can not be expected
+to load the obects of `rdfs:seeAlso` triples found in documents that are themselves
+the obect of an `rdfs:seeAlso` triple.  In other words, look in the WebID Profile Document and in the Preferences Document for `rdfs:seeAlso` triples but don't necessarily follow any additional `rdfs:seeAlso` triples found in those documents.  An app MAY, but is not required
+to, examine statements in the linked documents that don't have the WebID as subect.
 
 ### 3.b Writing Extended Profile Documents
 
 When an app wants to write data in an [Extended Profile Document](TBD), it
 SHOULD give the document appropriate permissions depending on the needs of the
-WebID owner. If the document is private, the app SHOULD create an `rdfs:seeAlso`
-triple pointing to it in the [Preferences File](TBD). If the document is public
-or for a restricted audience, the triple SHOULD be created in the [WebID Profile
-Document](TBD).
+WebID owner. If the document is meant only for the WebID owner, the app SHOULD create an `rdfs:seeAlso` triple pointing to it in the [Preferences File](TBD). If the document is meant for the public or for a restricted audience, the triple SHOULD be created in the [WebID Profile Document](TBD).
 
 ## 4. Type Indexes
 
@@ -328,9 +320,9 @@ the instances of that type.
 
 ## 5. Identity Provider - solid:oidcIssuer
 
-When an app operating on behalf of a WebID owner wants to login, it SHOULD look
-for statements with the WebID as subject, `solid:oidcIssuer` as predicate and
-the URL of an OIDC Issuer (Identity Provider) as the object. For example:
+The `solid:oidcIssuer` predicate is used to indicate the address of a Solid Identity Provider capable of authenticating the WebID owner.  Apps wanting to facilitate login will need to look for this predicate. Apps not needing to facilitate login can ignore the predicate.
+ 
+As stated in the [Solid OIDC specification](TBD), "The WebID Profile Document MUST include one or more statements matching the OIDC issuer pattern." This means that a well-formed `WebID Profile Document` MUST contain at least one triple with the WebID as subject, `solid:oidcIssuer` as predicate, and the URL of the domain of an OIDC Issuer (Identity Provider) as the object. For example :
 
 ```
 <?WebID> <http://www.w3.org/ns/solid/terms#oidcIssuer> <?Issuer> .
@@ -348,24 +340,22 @@ their WebID document is broken.
 
 ## 6. Storage - pim:storage
 
-An app wishing to find out about the WebID owner's storages SHOULD look for
-triples with the WebID as subject, `pim:storage` as predicate, and the container
-at the root of the storage as the object.  For example:
+The `pim:storage` predicate is used to indicate where a WebID owner stores their data. An app wanting to access the WebID owner's Pod should find its location using the `pim:storage` predicate.  Apps looking to access particular types of data should look for specific locations in the [typeIndex typeIndex documents](TBD) rather than looking for the `pim:storage` predicate, which indicates instead the Pod location, not the location of particular resources in the Pod.
 
+A well-formed `Solid Profile` SHOULD contain at least one triple with the WebID as subject, `pim:storage` as predicate, and the root container of the storage as the object.  For example:
 ```
-<?WebID> pim:storage <?StorageSpace>.
+<?WebID> <http://www.w3.org/ns/pim/space#storage> <?StorageSpace>.
 ```
-
 If no storage space is found through profile triples, the app MAY use the
 process described in [Solid Protocol 0.9](https://solidproject.org/TR/protocol)
-to find the closest storage to the WebID document and check for a link header
-marking the storage as owned by the owner of the WebID. There is no guarantee
-this will succeed.
+to find the closest storage, but this method is not guaranteed to work.
 
 If no storage space is found through either the profile triples or finding the
-closest storage, the only option is to ask the WebID owner.
+closest storage, an app MAY prompt the user to find a location to access data. 
 
-Applications SHOULD NOT try guessing a storage location based on the WebID URI.
+A Pod Management App MAY offer to create a triple by prompting the user for the Pod location and desired discoverability of the Pod.  For example, Jose might want their Pod only to store private data and not even let anyone discover that they own the Pod.  In that case the app should write the `pim:storage` triple in the `pim:preferencesFile` rather than in the `WebID Profile Document` or a publicly available extended profile document.
+
+Applications SHOULD NOT depend on guessing a storage location based on the WebID URI because the WebID Profile Document may or may not be on the same server as the Pod.
 
 ## 7. Inbox - ldp:inbox
 
@@ -380,14 +370,7 @@ predicate, and a container intended to hold messages as object. For example:
 <?WebID> ldp:inbox <?InboxContainer>.
 ```
 
-If no inbox is found and the app is operating on behalf of a WebID owner, and
-the app has both write and control access, the app MAY offer to create an inbox.
-If a WebID owner confirms inbox creation, the app SHOULD create a container and
-access control for it that gives read and write permissions to the WebID owner
-and append but not read or write permissions to everyone else. The app should
-also place a triple in the `WebID Profile Document` or in an `Extended Profile
-Document` with the WebID as subject, `ldp:inbox` as predicate and the newly
-created container as object.
+If no inbox is found a Pod Management App MAY create an inbox by creating a container. In that case, the app SHOULD also create access controls for the container that give read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an Extended Profile Document with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
 
 ## Other predicates                                                           
                                                                               
