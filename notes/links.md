@@ -1,6 +1,8 @@
 This file is intended to hold links to background materials to serve as documentation of how we arrived at decisions about the spec.  Some of the links should also be included in the reference section of the document.  This is just a start, I will be adding as I go through my notes.  Please add your links as well.
 
 ### acl:trustedApp
+* [trustedApp - old WAC spec on trustedApp](https://github.com/solid/web-access-control-spec/blob/main/README-v0.5.0.md#referring-to-origins-ie-web-apps)
+* [trustedApp - Background on CORS](https://solid.github.io/web-access-control-spec/Background)
 * [trustedApp - history of the decision point for NSS](https://www.w3.org/community/solid/wiki/Supporting_material:_Details_on_decision_point_about_strict_origin_checking_and_acl:trustedApp)
 * [trustedApp - databrowser how2](https://github.com/SolidOS/userguide#manage-your-trusted-applications)
 * [trustedApp - Timea's notes](https://github.com/solid/webid-profile/blob/main/notes/trustedApp.md)
