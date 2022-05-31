@@ -10,22 +10,29 @@
 > which I am in, and easily welcome people to come into the more intimate parts,
 > as I want to." -- timbl
 
-If the web is this well-designed building, the Solid Profile is its lobby - the
-place the public can discover which parts of the interior  the building's owner
+If the web is like a well-designed building, the Solid Profile is its lobby - the
+place the public can discover which parts of the interior the building's owner
 has given consent for them to see, where the owner can hide or put on display
 parts of their identity as they see fit.
 
 ### Editors
 
 * Virginia Balseiro
-* Tim Berners-Lee
-* Sarven Capadisli
 * Timea Turdean
 * Jeff Zucker
+
+### Contributors
+
+* Tim Berners-Lee
+* Sarven Capadisli
 
 ### Created
 
 * 2022-04-01
+
+### Modified
+
+* 2022-05-31
 
 ### Language
 
@@ -37,12 +44,13 @@ parts of their identity as they see fit.
 
 ## Status of this document
 
-This is a draft meant for the editors to discuss among themselves what belongs
-in the public draft which will almost certainly differ from this.  We intend to
-release a public draft once we have finished our discussions.  At the time of
-the public draft release, we will welcome and solicit feedback and PRs but ask
-commenters other than members of the editorial team wait until that release to
-comment.
+This is an Unofficial Draft of editors that describes the work on WebID
+profiles in Solid. It does not represent consensus of the W3C Solid Community
+Group. An initial Editor's Draft of this document is intended to be proposed
+as a Work Item to the W3C Solid Community Group once we have finished our
+discussions. At the time of the public release, we will welcome and solicit
+feedback and PRs but ask commenters other than members of the editorial team
+wait until that release to comment.
 
 ## Audience and Scope
 
@@ -50,8 +58,10 @@ This document is aimed at application developers. It describes the process Solid
 applications can use to discover information about the structure of resources in
 a social agent's profile.
 
-This document does not cover the WebID authentication process (see [OIDC
-specification]TBD) or data specific to a given type of social agent (see
+This document does not cover the WebID authentication process (see [Solid
+Protocol's
+Authentication](https://solidproject.org/TR/protocol#authentication))
+or data specific to a given type of social agent (see
 forthcoming [Creating Personal Profiles]TBD and [Creating Organizational
 Profiles]TBD)). Alternate discovery processes (for example [proposed
 Interoperability-Spec]TBD) are also out of scope for this document although they
@@ -62,7 +72,7 @@ will be mentioned where relevant.
 This section is non-normative.
 
 A social agent - a person or organization - can establish an identity in the
-Solidverse by obtaining a unique identifier called a `WebID` and by describing
+Solid ecosystem by obtaining a unique identifier called a `WebID` and by describing
 themselves in a set of documents associated with the WebID. These documents,
 referred to here collectively as a `Solid Profile`, both describe the social
 agent and provide links to their resources.  
@@ -73,13 +83,13 @@ for the social agent themselves. For example, Keisha's Solid profile might list
 her name publicly, her phone number only for friends, and the configuration
 settings for her "notes to self" only for apps operating on her own behalf.
 Solid supports these options by splitting the profile into documents with
-separate access restrictions. So the first task of an application is to load all
-of the profile documents it has access to.
+separate access restrictions. So the first task of an application may be to load all
+of the profile documents it has access to or load them on a need to basis.
 
 Profiles can contain, and apps are free to follow, any kind of links to related
 documents. In order to promote interoperability and limit the burden on apps,
 this specification recommends a limited number of related documents which a
-well-behaved profile ought to contain and a well-behaved app ought discover.
+profile ought to contain so that apps can discover them.
 
 The discovery process starts with the WebID, a URI that points to exactly one
 document, referred to here as a [WebID Profile Document](TBD). This document can
@@ -101,10 +111,10 @@ in further detail in [Sections 3-8](TBD).
 |predicate|information conveyed|
 |-|-|
 |solid:oidcIssuer | location(s) where the WebID owner logs in |
-<!-- |acl:trustedApp | origin & permissions of applications the WebID owner has given access to  | -->
-|solid:storage | location(s) of the WebID owner's storage space(s) |
+|pim:storage | location(s) of the WebID owner's storage space(s) |
 |solid:instance, solid:instanceContainer | locations of specific types of resources|
 |ldp:inbox| location of the WebID owner's Solid inbox |
+<!-- |acl:trustedApp | origin & permissions of applications the WebID owner has given access to  | -->
 
 ## 2. Discovering a complete Solid profile
 
@@ -147,17 +157,19 @@ subsequent visits. Such an app might also record private information (for
 example, a driver's license number) and later, at the direction of the owner,
 retrieve the information to fill out a form.
 
-A well-formed `WebID Profile Document` MUST have exactly one triple with the WebID 
+A Solid `WebID Profile Document` MUST have exactly one triple with the WebID
 as subject, `pim:preferencesFile` as predicate, and the location of the `Preferences Document` as object.
 
-For example:                                                                
-```                                                                         
-<?WebID> <http://www.w3.org/ns/pim/space#preferencesFile> <?PreferencesDocument>                                                                          
-```                                                                         
+For example:
+
+```
+<?WebID> <http://www.w3.org/ns/pim/space#preferencesFile> <?PreferencesDocument> .
+```
+
 When an app operating on behalf of the WebID owner cannot discover a
 `pim:preferencesFile` triple, and has write and control access, and wishes to
-write preference data, it MAY create a document accessible only to the WebID
-owner.  An app that creates a Preference Document SHOULD insert a triple in the
+write preference data, it could create a document accessible only to the WebID
+owner.  An app that creates a Preference Document can insert a triple in the
 WebID Profile Document with the WebID as subject, `pim:preferencesFile` as predicate,
 and the URL of the created document as object.
 
@@ -180,9 +192,8 @@ Profile Document` as object. When the app has loaded those two documents, it
 SHOULD load the documents specified in the URLs of all `rdfs:seeAlso` triples
 found and SHOULD treat all statements in the linked documents that have the
 WebID as subject as part of the `Solid Profile`.  An app may but can not be expected
-to load the obects of `rdfs:seeAlso` triples found in documents that are themselves
-the obect of an `rdfs:seeAlso` triple.  In other words, look in the WebID Profile Document and in the Preferences Document for `rdfs:seeAlso` triples but don't necessarily follow any additional `rdfs:seeAlso` triples found in those documents.  An app MAY, but is not required
-to, examine statements in the linked documents that don't have the WebID as subect.
+to load the objects of `rdfs:seeAlso` triples found in documents that are themselves
+the object of an `rdfs:seeAlso` triple.  In other words, look in the WebID Profile Document and in the Preferences Document for `rdfs:seeAlso` triples but don't necessarily follow any additional `rdfs:seeAlso` triples found in those documents.  An app can examine any statement found in the linked documents for other purpose, which are not described by this specification.
 
 ### 3.b Writing Extended Profile Documents
 
@@ -200,8 +211,8 @@ items of type Bookmark and then write that location in the Type Index.
 Thereafter another app can find the bookmarks by looking for the location in the
 Type Index.
 
-Well-behaved apps will always read from and write to the Type Index so that the
-user's choices are remembered. Since users will undoubtedly have data they want
+Apps that want to remember user's choices will read from and write to the Type Index.
+Since users will undoubtedly have data they want
 to keep private, there are two Type Indexes - one readable by any app (publicly
 discoverable) and one only readable by apps operating on behalf of the WebID
 owner (not publicly discoverable).
@@ -221,7 +232,7 @@ called `publicTypeIndex.ttl` linked from the profile is:
    <#WebID> <http://www.w3.org/ns/solid/terms#publicTypeIndex> </settings/publicTypeIndex.ttl> .
 ```
 
-An example for a Private Type Index Resourcelocated in `settings` and is called
+An example for a Private Type Index Resource located in `settings` and is called
 `privateTypeIndex.ttl` linked from the profile is:
 
 ```
@@ -231,11 +242,11 @@ An example for a Private Type Index Resourcelocated in `settings` and is called
 Here is a diagram showing an example set of Type Indexes: ![Type Registry Index
 diagram](../diagrams/type-indexes.svg)
 
-### Public Type Index (usually called publicTypeIndex.ttl)
+### Public Type Index
 
-The Public Type Index document contains registration entries that are *discoverable* by outside users and applications but which are not necessarily *accessible* to all applications or users.  For example, suppose I have one address book that is only for myself, one that is for a specific group of colleagues, and one that is for the general public.  The one that is only for me should be listed in the private type index.  The other two should be listed in the public type index. The fully public listing will point to a publicly accessible resource while the one just for my colleagues will point to a resource restricted by access control methods.  Both the public and restricted reesources are discoverable in the public type index because an app that is not operating as the WebID owner can not see the private type index.
+The Public Type Index document contains registration entries that are *discoverable* by outside users and applications but which are not necessarily *accessible* to all applications or users.  For example, suppose I have one address book that is only for myself, one that is for a specific group of colleagues, and one that is for the general public.  The one that is only for me should be listed in the private type index.  The other two should be listed in the public type index. The fully public listing will point to a publicly accessible resource while the one just for my colleagues will point to a resource restricted by access control methods.  Both the public and restricted resources are discoverable in the public type index because an app that is not operating as the WebID owner can not see the private type index.
 
-Example of a Public Type Index document. This contains a public resource of type
+Example of a Public Type Index that is a Linked Document. This contains a public resource of type
 `vcard:AddressBook` located at the resource address
 `</public/contacts/myPublicAddressBook.ttl>` and a resources of type
 `bk:Bookmark` located in the container address `</public/myBookmarks/>`:
@@ -253,15 +264,15 @@ Example of a Public Type Index document. This contains a public resource of type
 
 <#bq1r5e> a solid:TypeRegistration;
     solid:forClass bk:Bookmark;
-    solid:instance </public/myBookmarks/>.
+    solid:instanceContainer </public/myBookmarks/>.
 ```
 
-### Private Type Index (usually called privateTypeIndex.ttl)
+### Private Type Index
 
 The Private Type Index document contains registration entries that are private
 to the user and their apps. It is intended for types of resources meant only to be accessed by the WebID owner.  
 
-Example of a Private Type Index document. This contains a private resource of
+Example of a Private Type Index that is an Unlisted Document, This contains a private resource of
 type `vcard:AddressBook` located at the resource address
 `</private/contacts/myPublicAddressBook.ttl>` and a resources of type
 `bk:Bookmark` located in the container address `</private/myBookmarks/>`:
@@ -279,7 +290,7 @@ type `vcard:AddressBook` located at the resource address
 
 <#bq1r5e> a solid:TypeRegistration;
     solid:forClass bk:Bookmark;
-    solid:instance </private/myBookmarks/>.
+    solid:instanceContainer </private/myBookmarks/>.
 
 ```
 
@@ -306,7 +317,7 @@ the instances of that type.
 
 If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod MAY warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile.
 
-If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
+If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writeable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writeable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
 
 ### Reference
 
@@ -316,33 +327,28 @@ If one or both of the type index documents are missing and the app does have Wri
 
 The `solid:oidcIssuer` predicate is used to indicate the address of a Solid Identity Provider capable of authenticating the WebID owner.  Apps wanting to facilitate login will need to look for this predicate. Apps not needing to facilitate login can ignore the predicate.
  
-As stated in the [Solid OIDC specification](TBD), "The WebID Profile Document MUST include one or more statements matching the OIDC issuer pattern." This means that a well-formed `WebID Profile Document` MUST contain at least one triple with the WebID as subject, `solid:oidcIssuer` as predicate, and the URL of the domain of an OIDC Issuer (Identity Provider) as the object. For example :
+As stated in the [Solid OIDC specification](https://solidproject.org/TR/oidc), "The WebID Profile Document MUST include one or more statements matching the OIDC issuer pattern." This means that a `WebID Profile Document` MUST contain at least one triple with the WebID as subject, `solid:oidcIssuer` as predicate, and the URL of the domain of an OIDC Issuer (Identity Provider) as the object. For example :
 
 ```
 <?WebID> <http://www.w3.org/ns/solid/terms#oidcIssuer> <?Issuer> .
 ```
 
-If a single statement with the solid:oidcIssuer predicate is found, the app
+If a single statement with the `solid:oidcIssuer` predicate is found, the app
 wanting to login SHOULD redirect to the URL specified by the value of `?Issuer`.
 
 If multiple Issuers are found, the app SHOULD offer the user a choice and
 redirect to the chosen `?Issuer`.
 
-If the WebID Profile document does not contain any statements with the
-`solid:oidcIssuer` predicate, the application MAY inform the WebID owner that
-their WebID document is broken.
 
 ## 6. Storage - pim:storage
 
 The `pim:storage` predicate is used to indicate where a WebID owner stores their data. An app wanting to access the WebID owner's Pod should find its location using the `pim:storage` predicate.  Apps looking to access particular types of data should look for specific locations in the [typeIndex typeIndex documents](TBD) rather than looking for the `pim:storage` predicate, which indicates instead the Pod location, not the location of particular resources in the Pod.
 
-A well-formed `Solid Profile` SHOULD contain at least one triple with the WebID as subject, `pim:storage` as predicate, and the root container of the storage as the object.  For example:
+A `Solid Profile` SHOULD contain at least one triple with the WebID as subject, `pim:storage` as predicate, and the root container of the storage as the object.  For example:
 ```
 <?WebID> <http://www.w3.org/ns/pim/space#storage> <?StorageSpace>.
 ```
-If no storage space is found through profile triples, the app MAY use the
-process described in [Solid Protocol 0.9](https://solidproject.org/TR/protocol)
-to find the closest storage, but this method is not guaranteed to work.
+If no storage is found within the Solid Profile, an app MAY determine the location of a WebID in the context of a WebID Profile Document hosted on a Solid server as per [Solid Protocol 0.9](https://solidproject.org/TR/protocol), but this method is not guaranteed to be usable by the app in cases where the WebID Profile Document is hosted elsewhere.
 
 If no storage space is found through either the profile triples or finding the
 closest storage, an app MAY prompt the user to find a location to access data. 
@@ -356,18 +362,20 @@ Applications SHOULD NOT depend on guessing a storage location based on the WebID
 A Solid inbox is a Solid-specific messaging system that is similar to but not
 the same as an email inbox.
 
-An app wanting to read or write mail in a WebID owner's Solid inbox SHOULD look
+An app wanting to read or write notifications WebID owner's Solid inbox SHOULD look
 in the profile for a single triple with the WebID as subject, `ldp:inbox` as
 predicate, and a container intended to hold messages as object. For example:
 
 ```
-<?WebID> ldp:inbox <?InboxContainer>.
+<?WebID> ldp:inbox <?Container>.
 ```
 
 If no inbox is found a Pod Management App MAY create an inbox by creating a container. In that case, the app SHOULD also create access controls for the container that give read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an Extended Profile Document with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
 
-## Other predicates                                                           
+## Other predicates
                                                                               
-A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encouter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.     
+XXX: Revisit:
+
+A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encounter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.     
 
 Note : The background for the decision not to include trustedApp in this spec is [here](https://github.com/solid/webid-profile/blob/main/meetings/2022-05-24.md) and the section Jeff wrote on trustedApp but removed is [here](https://github.com/solid/webid-profile/blob/main/notes/trustedApp-jeff-notes.md).
