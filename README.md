@@ -1,5 +1,7 @@
 # Discovery based on Solid Social Agent WebID
 
+[![Join the chat at https://gitter.im/solid/webid-profile](https://badges.gitter.im/solid/webid-profile.svg)](https://gitter.im/solid/webid-profile?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Overview
 
 When an app allows a user to log in to a Solid Identity Provider, the app receives back data that establishes the identity of the user in terms of a WebID URI.  An app can also obtain a WebID URI through input from a user or by parsing documents that contain the URI.  The general purpose of this document is to describe what an app can discover based on the WebID.  More specific purposes are described below.
