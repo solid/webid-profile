@@ -48,9 +48,7 @@ This is an Unofficial Draft of editors that describes the work on WebID
 profiles in Solid. It does not represent consensus of the W3C Solid Community
 Group. An initial Editor's Draft of this document is intended to be proposed
 as a Work Item to the W3C Solid Community Group once we have finished our
-discussions. At the time of the public release, we will welcome and solicit
-feedback and PRs but ask commenters other than members of the editorial team
-wait until that release to comment.
+discussions and gathered public review.
 
 ## Audience and Scope
 
