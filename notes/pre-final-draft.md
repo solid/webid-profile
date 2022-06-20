@@ -251,7 +251,9 @@ Example of a Public Type Index that is a Linked Document. This contains a public
 
 ```publicTypeIndex.ttl
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
-# ...
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+@prefix bk: <http://www.w3.org/2002/01/bookmark#>.
+
 <>
     a solid:TypeIndex ;
     a solid:ListedDocument.
@@ -277,7 +279,9 @@ type `vcard:AddressBook` located at the resource address
 
 ```privateTypeIndex.ttl
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
-
+@prefix solid: <http://www.w3.org/ns/solid/terms#>.
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
+@prefix bk: <http://www.w3.org/2002/01/bookmark#>.
 <>
     a solid:TypeIndex ;
     a solid:UnlistedDocument.
@@ -371,9 +375,9 @@ predicate, and a container intended to hold messages as object. For example:
 If no inbox is found a Pod Management App MAY create an inbox by creating a container. In that case, the app SHOULD also create access controls for the container that give read and write permissions to the WebID owner and append but not read or write permissions to everyone else. The app should also place a triple in the `WebID Profile Document` or in an Extended Profile Document with the WebID as subject, `ldp:inbox` as predicate and the newly created container as object.
 
 ## Other predicates
-                                                                              
+
 XXX: Revisit:
 
-A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encounter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.     
+A user, a server or an app with appropriate permissions can add triples to profiles using any predicates.  This specification covers only those predicates related to resource infrastructure that are in common use at the time of this writing and which we recommend as a standard.  Some of the other predicates you might encounter include [`acl:trustedApp`](TBD) and [cert:key](TBD).  The Interoperability panel is also working on proposals which will add additional infrastructure related predicates to Solid profiles.
 
 Note : The background for the decision not to include trustedApp in this spec is [here](https://github.com/solid/webid-profile/blob/main/meetings/2022-05-24.md) and the section Jeff wrote on trustedApp but removed is [here](https://github.com/solid/webid-profile/blob/main/notes/trustedApp-jeff-notes.md).
