@@ -279,9 +279,9 @@ type `vcard:AddressBook` located at the resource address
 
 ```privateTypeIndex.ttl
 @prefix solid: <http://www.w3.org/ns/solid/terms#>.
-@prefix solid: <http://www.w3.org/ns/solid/terms#>.
 @prefix vcard: <http://www.w3.org/2006/vcard/ns#>.
 @prefix bk: <http://www.w3.org/2002/01/bookmark#>.
+
 <>
     a solid:TypeIndex ;
     a solid:UnlistedDocument.
