@@ -1,17 +1,13 @@
 # W3C Solid Community Group: WebID Profile
 
-* Date: 2022-xx-xx T16:00:00Z
+* Date: 2022-mm-ddT16:00:00Z
 * Call: https://meet.jit.si/solid-profile
-* Chat: https://gitter.im/solid/profile-spec
+* Chat: https://gitter.im/solid/webid-profile
 * Repository: https://github.com/solid/webid-profile
 
 ## Present
 
-* Virginia Balseiro (VB)
-* Jeff Zucker (JZ)
-* Timea Turdean (TT)
-* Sarven Capadisli (SC)
-* Tim (TBL)
+* [name](url)
 
 ---
 
