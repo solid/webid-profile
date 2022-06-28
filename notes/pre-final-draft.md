@@ -335,7 +335,7 @@ A user may use not only their own type indexes to find and remember things, but 
 ```
   {user} solid:community {org} .
 ```
-is placed in either the user's the private preferences or public profile.  The `org` node's URI is the WebID URI of the project, etc.
+is placed in either the user's private preferences or public profile.  The `org` node's URI is the WebID URI of the project, etc.
 
 ### Reference
 
