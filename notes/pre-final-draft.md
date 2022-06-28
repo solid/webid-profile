@@ -1,5 +1,7 @@
 # Discovering Resources in a Solid Profile
 
+## Version 1.0
+
 ## Pre-Draft 2022-04-01
 
 > "A city has public places where I can do all kinds of things, and also a
@@ -319,7 +321,21 @@ the instances of that type.
 
 If one or both of the type indexes are missing, an app needing to write to them that doesn't have Write and Control access to the pod MAY warn the user that their indexes are missing and that they should use a Pod Management App to fix their profile.
 
-If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable and writeable and a pointer to it SHOULD be placed in the WebID Profile Document.  The private type index SHOULD be readable and writeable only by the WebID owner and a pointer to it SHOULD be placed in the Preferences Document.
+If one or both of the type index documents are missing and the app does have Write and Control access to the pod, the app MAY create documents.  The public type index document SHOULD be publicly readable,
+writable by the user (or a group delegated by the user), and a pointer to it MUST be placed in the WebID Profile Document.  The private type index SHOULD be readable and writeable only by the WebID owner and a pointer to it MUST be placed in the Preferences Document.
+
+(Note if the type index file is created but the pointer to it not stored, then this risks, on
+a future occasion, another separate empty resource being created, leading to confusion and possible loss of data.)
+
+## Communities
+
+Note: This section is "at risk" in that is more recent and less tested than the rest of this spec.
+
+A user may use not only their own type indexes to find and remember things, but also may use the type indexes of users which are organizations, such as projects, to which they are affiliated. To enable this, a triple
+```
+  {user} solid:community {org} .
+```
+is placed in either the user's private preferences or public profile.  The `org` node's URI is the WebID URI of the project, etc.
 
 ### Reference
 
@@ -328,7 +344,7 @@ If one or both of the type index documents are missing and the app does have Wri
 ## 5. Identity Provider - solid:oidcIssuer
 
 The `solid:oidcIssuer` predicate is used to indicate the address of a Solid Identity Provider capable of authenticating the WebID owner.  Apps wanting to facilitate login will need to look for this predicate. Apps not needing to facilitate login can ignore the predicate.
- 
+
 As stated in the [Solid OIDC specification](https://solidproject.org/TR/oidc), "The WebID Profile Document MUST include one or more statements matching the OIDC issuer pattern." This means that a `WebID Profile Document` MUST contain at least one triple with the WebID as subject, `solid:oidcIssuer` as predicate, and the URL of the domain of an OIDC Issuer (Identity Provider) as the object. For example :
 
 ```
@@ -353,7 +369,7 @@ A `Solid Profile` SHOULD contain at least one triple with the WebID as subject, 
 If no storage is found within the Solid Profile, an app MAY determine the location of a WebID in the context of a WebID Profile Document hosted on a Solid server as per [Solid Protocol 0.9](https://solidproject.org/TR/protocol), but this method is not guaranteed to be usable by the app in cases where the WebID Profile Document is hosted elsewhere.
 
 If no storage space is found through either the profile triples or finding the
-closest storage, an app MAY prompt the user to find a location to access data. 
+closest storage, an app MAY prompt the user to find a location to access data.
 
 A Pod Management App MAY offer to create a triple by prompting the user for the Pod location and desired discoverability of the Pod.  For example, Jose might want their Pod only to store private data and not even let anyone discover that they own the Pod.  In that case the app should write the `pim:storage` triple in the `pim:preferencesFile` rather than in the `WebID Profile Document` or a publicly available extended profile document.
 
