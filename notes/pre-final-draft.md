@@ -10,7 +10,7 @@
 > like a well-designed building, provide a gradient of intimacy between the
 > private and the public, so I can easily recognize the difference, easily know
 > which I am in, and easily welcome people to come into the more intimate parts,
-> as I want to." -- timbl
+> as I want to." -- timbl [[The Intimacy Gradient](https://www.w3.org/DesignIssues/Gradient.html)]
 
 If the web is like a well-designed building, the Solid Profile is its lobby - the
 place the public can discover which parts of the interior the building's owner
