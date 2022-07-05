@@ -1,1 +1,0 @@
-This folder - `/solid/webid-profile/notes/` - contains in-progress notes intended to spark discussion and research among the team.  Some of it may end up in the final draft and some of it undoubtedly will not.
