@@ -213,7 +213,7 @@
             <dd>
               <!-- TODO: https://github.com/solid/webid-profile/issues/15#issue-1267287895 . Publish this document at Github Pages. Consider whether this document is unique to "discovering resources in a solid profile" and in that case whether something like webid-profile/discovery is meaningful and so you can use webid-profile/{id} can be useful for some other spec.  -->
               <a href="https://solid.github.io/webid-profile/" rel="owl:sameAs"
-                >https://solid.github.io/webid-profile/</a
+                >https://solid.github.io/indexes/solid-indexes/</a
               >
             </dd>
           </dl>
@@ -222,9 +222,9 @@
             <dt>Latest version</dt>
             <dd>
               <a
-                href="https://solid.github.io/webid-profile/"
+                href="https://solid.github.io/indexes/solid-indexes/"
                 rel="rel:latest-version"
-                >https://solid.github.io/webid-profile/</a
+                >https://solid.github.io/indexes/solid-indexes/</a
               >
             </dd>
           </dl>
@@ -233,9 +233,9 @@
             <dt>Latest published version</dt>
             <dd>
               <a
-                href="https://solid.github.io/webid-profile/"
+                href="https://solid.github.io/indexes/solid-indexes/"
                 rel="rdfs:seeAlso"
-                >https://solid.github.io/webid-profile/</a
+                >https://solid.github.io/indexes/solid-indexes/</a
               >
             </dd>
           </dl>
@@ -351,7 +351,7 @@
               <time
                 content="2022-08-21T00:00:00Z"
                 datatype="xsd:dateTime"
-                datetime="2022-06-21T00:00:00Z"
+                datetime="2022-08-21T00:00:00Z"
                 property="schema:dateModified"
                 >2022-08-21</time
               >
@@ -441,9 +441,9 @@
                 <dt>Target</dt>
                 <dd>
                   <a
-                    href="https://solidproject.org/TR/webid-profile"
+                    href="https://solidproject.org/TR/solid-indexs"
                     rel="odrl:target"
-                    >https://solidproject.org/TR/webid-profile</a
+                    >https://solidproject.org/TR/solid-indexes</a
                   >
                 </dd>
                 <dt>Permission</dt>
@@ -639,37 +639,7 @@
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <blockquote cite="https://www.w3.org/DesignIssues/Gradient">
-                <p>
-                  A city has public places where I can do all kinds of things,
-                  and also a private house with a private room which may be just
-                  mine. In that house there are spaces where I do things with
-                  family, friends, colleagues. The web must, like a
-                  well-designed building, provide a gradient of intimacy between
-                  the private and the public, so I can easily recognize the
-                  difference, easily know which I am in, and easily welcome
-                  people to come into the more intimate parts, as I want to.
-                </p>
-
-                <footer>
-                  <cite>
-                    <a href="https://www.w3.org/DesignIssues/Gradient" rel="cito:includesQuotationFrom">The Intimacy Gradient</a>
-                    ,
-                    <a href="https://www.w3.org/People/Berners-Lee/card#i"
-                      >timbl</a
-                    >
-                    , <time>2022</time>
-                  </cite>
-                </footer>
-              </blockquote>
-
-              <p>
-                If the web is like a well-designed building, the Solid Profile
-                is its lobby - the place the public can discover which parts of
-                the interior the building's owner has given consent for them to
-                see, where the owner can hide or put on display parts of their
-                identity as they see fit.
-              </p>
+              
             </div>
           </section>
 
@@ -757,68 +727,41 @@
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#discovering-complete-solid-profile"
+                  <a href="#type-indexes"
                     ><span class="secno">2</span>
-                    <span class="content"
-                      >Discovering a complete Solid profile</span
-                    ></a
-                  >
-                </li>
-                <li class="tocline">
-                  <a href="#private-preferences"
-                    ><span class="secno">3</span>
-                    <span class="content">Private Preferences</span></a
-                  >
-                </li>
-                <li class="tocline">
-                  <a href="#extended-profile-documents"
-                    ><span class="secno">4</span>
-                    <span class="content">Extended Profile Documents</span></a
+                    <span class="content">Type Indexes</span></a
                   >
                   <ol>
-                    <li class="tocline">
-                      <a
-                        class="tocxref"
-                        href="#reading-extended-profile-documents"
-                        ><span class="secno">4.1</span>
-                        <span class="content"
-                          >Reading Extended Profile Documents</span
-                        ></a
+                    <li>
+                      <a class="tocxref" href="#public-type-index"
+                        ><span class="secno">2.1</span>
+                        <span class="content">Public Type Index</span></a
                       >
                     </li>
                     <li>
-                      <a href="#writing-extended-profile-documents"
-                        ><span class="secno">4.2</span>
+                      <a href="#private-type-index"
+                        ><span class="secno">2.2</span>
+                        <span class="content">Private Type Index </span></a
+                      >
+                    </li>
+
+                    <li>
+                      <a href="#type-index-registration-entries"
+                        ><span class="secno">2.3</span>
                         <span class="content"
-                          >Writing Extended Profile Documents</span
-                        ></a
+                          >Type Index Registration Entries
+                        </span></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#supplying-missing-type-index-documents">
+                        <span class="secno">2.4</span>
+                        <span class="content"
+                          >Supplying missing type index documents
+                        </span></a
                       >
                     </li>
                   </ol>
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#identity-provider"
-                    ><span class="secno">5</span>
-                    <span class="content">Identity Provider</span></a
-                  >
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#storage"
-                    ><span class="secno">6</span>
-                    <span class="content">Storage</span></a
-                  >
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#inbox"
-                    ><span class="secno">7</span>
-                    <span class="content">Inbox</span></a
-                  >
-                </li>
-                <li class="tocline">
-                  <a class="tocxref" href="#other-predicates"
-                    ><span class="secno">8</span>
-                    <span class="content">Other predicates</span></a
-                  >
                 </li>
               </ol>
             </div>
@@ -838,126 +781,7 @@
               Introduction
             </h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p><em>This section is non-normative.</em></p>
-              <p>
-                A social agent - a person or organization - can establish an
-                identity in the Solid ecosystem by obtaining a unique identifier
-                called a WebID and by describing themselves in a set of
-                documents associated with the WebID. These documents, referred
-                to here collectively as a Solid Profile, both describe the
-                social agent and provide links to their resources.
-              </p>
-              <p>
-                A Solid profile, like most Solid resources, can include a
-                combination of publicly readable data, data restricted to named
-                audiences, and data meant only for the social agent themselves.
-                For example, Keisha's Solid profile might list her name
-                publicly, her phone number only for friends, and the
-                configuration settings for her "notes to self" only for apps
-                operating on her own behalf. Solid supports these options by
-                splitting the profile into documents with separate access
-                restrictions. So the first task of an application may be to load
-                all of the profile documents it has access to or load them on a
-                need to basis.
-              </p>
-              <p>
-                Profiles can contain, and apps are free to follow, any kind of
-                links to related documents. In order to promote interoperability
-                and limit the burden on apps, this specification recommends a
-                limited number of related documents which a profile ought to
-                contain so that apps can discover them.
-              </p>
-              <p>
-                The discovery process starts with the WebID, a URI that points
-                to exactly one document, referred to here as a WebID Profile
-                Document. This document can be expected to contain pointers to a
-                Preferences File Document containing settings &amp; resources
-                meant only for the WebID owner, Type Index Documents containing
-                links to specific types of resources, and might also contain
-                Extended Profile Documents containing additional information
-                about the WebID owner. The documents which make up a Solid
-                Profile are illustrated below and described in more detail in
-                <cite
-                  ><a
-                    href="#discovering-complete-solid-profile"
-                    rel="rdfs:seeAlso"
-                    >Discovering a complete Solid profile</a
-                  ></cite
-                >.
-              </p>
-              <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
-                <img src="profile-discovery.png" rel="schema:image" />
-
-                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
-              </figure>
-              <p>
-                Once an app has loaded all of the needed profile documents, it
-                can then look for a fixed set of predicates holding information
-                about the structure and location of the WebID owner's resources.
-                The predicates listed below are used throughout this document.
-              </p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Predicate</th>
-                    <th>Information conveyed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>solid:oidcIssuer</code></td>
-                    <td>location(s) where the WebID owner logs in</td>
-                  </tr>
-                  <tr>
-                    <td><code>pim:storage</code></td>
-                    <td>location(s) of the WebID owner's storage space(s)</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <code>solid:instance</code>,
-                      <code>solid:instanceContainer</code>
-                    </td>
-                    <td>locations of specific types of resources</td>
-                  </tr>
-                  <tr>
-                    <td><code>ldp:inbox</code></td>
-                    <td>location of the WebID owner's Solid inbox</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <p>This specification is for:</p>
-
-              <ul rel="schema:audience">
-                <li>
-                  <a
-                    href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d"
-                    >Application developers</a
-                  >
-                  that want to implement a client to use WebIDs and Solid
-                  profiles.
-                </li>
-              </ul>
-
-              <p>
-                This document does not cover the WebID authentication process
-                (see
-                <a
-                  href="https://solidproject.org/TR/protocol#authentication"
-                  rel="rdfs:seeAlso"
-                  >Solid Protocol's Authentication</a
-                >
-                [<cite
-                  ><a class="bibref" href="#bib-solid-protocol"
-                    >SOLID-PROTOCOL</a
-                  ></cite
-                >]) or data specific to a given type of social agent (see
-                forthcoming [Creating Personal Profiles]TBD and [Creating
-                Organizational Profiles]TBD)). Alternate discovery processes
-                (for example [proposed Interoperability-Spec]TBD) are also out
-                of scope for this document although they will be mentioned where
-                relevant.
-              </p>
+              ...
             </div>
 
             <section
@@ -1202,270 +1026,241 @@
           </section>
 
           <section
-            id="private-preferences"
+            id="type-indexes"
             inlist=""
             rel="schema:hasPart"
-            resource="#private-preferences"
+            resource="#type-indexes"
           >
-            <h2 property="schema:name">Private Preferences</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                The Preferences Document is a resource intended to hold
-                information only accessible to an app that is logged in and
-                authenticated as the WebID owner or as an agent delegated by the
-                WebID owner to act in their behalf. The preference Document can
-                include settings and preferences, and pointers to the owner's
-                personal, private data, be it contacts, pictures or health data.
-                An app operating on behalf of the owner can gather configuration
-                settings from the owner, store them in the Preferences Document,
-                and then read them there on subsequent visits. Such an app might
-                also record private information (for example, a driver's license
-                number) and later, at the direction of the owner, retrieve the
-                information to fill out a form. A Solid WebID Profile Document
-                MUST have exactly one triple with the WebID as subject,
-                <code>pim:preferencesFile</code> as predicate, and the location
-                of the Preferences Document as object. For example:
-              </p>
-              <pre><code>&lt;?WebID&gt; &lt;http://www.w3.org/ns/pim/space#preferencesFile&gt; &lt;?PreferencesDocument&gt; .</code></pre>
-              <p>
-                When an app operating on behalf of the WebID owner cannot
-                discover a <code>pim:preferencesFile</code> triple, and has
-                write and control access, and wishes to write preference data,
-                it could create a document accessible only to the WebID owner.
-                An app that creates a Preference Document can insert a triple in
-                the WebID Profile Document with the WebID as subject,
-                <code>pim:preferencesFile</code> as predicate, and the URL of
-                the created document as object.
-              </p>
-            </div>
-          </section>
-          <section
-            id="extended-profile-documents"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#extended-profile-documents"
-          >
-            <h2 property="schema:name">Extended Profile Documents</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                Solid Profile owners may use the
-                <code>rdfs:seeAlso</code> predicate to link to extended profile
-                documents which contain information that they do not want in the
-                WebID Profile Document or in the Preferences Document. This can
-                be done to help organize information - for example to keep all
-                friends (objects of <code>foaf:knows</code> predicates) in a
-                separate <code>rdfs:seeAlso</code> document. It can also be done
-                to limit access to the data - for example to store a phone
-                number where only trusted friends can view it.
-              </p>
+            <h2 property="schema:name">Type Indexes</h2>
+            <p>
+              A Type Index is a document containing statements that link
+              specific types of data to specific locations. An app might ask a
+              user where they want to store items of type Bookmark and then
+              write that location in the Type Index. Thereafter another app can
+              find the bookmarks by looking for the location in the Type Index.
+              Apps that want to remember user's choices will read from and write
+              to the Type Index. Since users will undoubtedly have data they
+              want to keep private, there are two Type Indexes - one readable by
+              any app (publicly discoverable) and one only readable by apps
+              operating on behalf of the WebID owner (not publicly
+              discoverable).
+            </p>
 
+            <p>
+              To find the Type Indexes, an app SHOULD load the WebID Profile
+              Document and if the app has access, also the Preferences Document.
+              In these loaded documents one can find triples where the WebID as
+              subject and the following predicates: for the Public Type Index
+              document the <code>solid:publicTypeIndex</code> predicate, and for
+              the Private Type Index document the
+              <code>solid:privateTypeIndex</code> predicate.
+            </p>
+            <p>Examples:</p>
+            <p>
+              An example for a Public Type Index Resource that is located in
+              settings and is called <code>publicTypeIndex.ttl</code> linked
+              from the profile is:
+            </p>
+            <pre><code>&lt;#WebID&gt; &lt;http://www.w3.org/ns/solid/terms#publicTypeIndex&gt; &lt;/settings/publicTypeIndex.ttl&gt; .</code></pre>
+            <p>
+              An example for a Private Type Index Resource located in settings
+              and is called <code>privateTypeIndex.ttl</code> linked from the
+              profile is:
+            </p>
+            <pre><code>&lt;#WebID&gt; &lt;http://www.w3.org/ns/solid/terms#privateTypeIndex&gt; &lt;/settings/privateTypeIndex.ttl&gt; .</code></pre>
+            <p>Here is a diagram showing an example set of Type Indexes:</p>
+            <figure id="type-indexes-example" rel="schema:hasPart" resource="#type-indexes-example">
+              <img src="type-indexes.svg" rel="schema:image" />
+
+              <figcaption property="schema:name">Type Indexes Example</figcaption>
+            </figure>
+            <div datatype="rdf:HTML" property="schema:description">
               <section
-                id="reading-extended-profile-documents"
+                id="public-type-index"
                 inlist=""
                 rel="schema:hasPart"
-                resource="#reading-extended-profile-documents"
+                resource="#public-type-index"
+                typeof="skos:ConceptScheme"
+              >
+                <h3 property="schema:name skos:prefLabel">Public Type Index</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>
+                    The Public Type Index document contains registration entries
+                    that are discoverable by outside users and applications but
+                    which are not necessarily accessible to all applications or
+                    users. For example, suppose I have one address book that is
+                    only for myself, one that is for a specific group of
+                    colleagues, and one that is for the general public. The one
+                    that is only for me should be listed in the private type
+                    index. The other two should be listed in the public type
+                    index. The fully public listing will point to a publicly
+                    accessible resource while the one just for my colleagues
+                    will point to a resource restricted by access control
+                    methods. Both the public and restricted resources are
+                    discoverable in the public type index because an app that is
+                    not operating as the WebID owner can not see the private
+                    type index.
+                  </p>
+
+                  <figure
+                    class="example listing"
+                    id="public-type-index-example"
+                    rel="schema:hasPart"
+                    resource="#public-type-index-example"
+                  >
+                    <!-- TODO: https://github.com/solid/webid-profile/issues/19 -->
+                    <p class="example-h">
+                      <span>Example</span>: Public Type Index that is a Linked
+                      Document.
+                    </p>
+                    <pre
+                      about="#public-type-index-example"
+                      property="schema:description"
+                      typeof="fabio:Script"
+                    ><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
+<code>@prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;.</code>
+<code>@prefix bk: &lt;http://www.w3.org/2002/01/bookmark#&gt;.</code>
+<code></code>
+<code>&lt;&gt;</code>
+<code>  a solid:TypeIndex ;</code>
+<code>  a solid:ListedDocument.</code>
+<code></code>
+<code>&lt;#ab09fd&gt; a solid:TypeRegistration;</code>
+<code>  solid:forClass vcard:AddressBook;</code>
+<code>  solid:instance &lt;/public/contacts/myPublicAddressBook.ttl&gt;.</code>
+<code></code>
+<code>&lt;#bq1r5e&gt; a solid:TypeRegistration;</code>
+<code>  solid:forClass bk:Bookmark;</code>
+<code>  solid:instanceContainer &lt;/public/myBookmarks/&gt;.</code></pre>
+                    <figcaption property="schema:name">
+                      Type registration containing public resource of type
+                      <code>vcard:AddressBook</code>
+                      located at the resource address
+                      <code
+                        >&lt;/public/contacts/myPublicAddressBook.ttl&gt;</code
+                      >
+                      and a resources of type bk:Bookmark located in the
+                      container address
+                      <code>&lt;/public/myBookmarks/&gt;</code>
+                    </figcaption>
+                  </figure>
+                </div>
+              </section>
+              <section
+                id="private-type-index"
+                inlist=""
+                rel="schema:hasPart"
+                resource="#private-type-index"
                 typeof="skos:ConceptScheme"
               >
                 <h3 property="schema:name skos:prefLabel">
-                  Reading Extended Profile Documents
+                  Private Type Index
                 </h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>
-                    An app wanting to load a complete Solid Profile MUST examine
-                    statements in the WebID Profile Document and the Preferences
-                    Document that have the WebID as subject,
-                    <code>rdfs:seeAlso</code> as predicate and the URL of an
-                    Extended Profile Document as object. When the app has loaded
-                    those two documents, it SHOULD load the documents specified
-                    in the URLs of all <code>rdfs:seeAlso</code> triples found
-                    and SHOULD treat all statements in the linked documents that
-                    have the WebID as subject as part of the Solid Profile. An
-                    app may but can not be expected to load the objects of
-                    <code>rdfs:seeAlso</code> triples found in documents that
-                    are themselves the object of an
-                    <code>rdfs:seeAlso</code> triple. In other words, look in
-                    the WebID Profile Document and in the Preferences Document
-                    for <code>rdfs:seeAlso</code> triples but don't necessarily
-                    follow any additional <code>rdfs:seeAlso</code> triples
-                    found in those documents. An app can examine any statement
-                    found in the linked documents for other purpose, which are
-                    not described by this specification.
+                    The Private Type Index document contains registration
+                    entries that are private to the user and their apps. It is
+                    intended for types of resources meant only to be accessed by
+                    the WebID owner.
+                  </p>
+                  <p>
+                    Example of a Private Type Index that is an Unlisted
+                    Document, This contains a private resource of type
+                    vcard:AddressBook located at the resource address
+                    &lt;/private/contacts/myPublicAddressBook.ttl&gt; and a
+                    resources of type <code>bk:Bookmark</code> located in the
+                    container address &lt;/private/myBookmarks/&gt;:
                   </p>
                 </div>
               </section>
               <section
-                id="writing-extended-profile-documents"
+                id="type-index-registration-entries"
                 inlist=""
                 rel="schema:hasPart"
-                resource="#writing-extended-profile-documents"
+                resource="#type-index-registration-entries"
                 typeof="skos:ConceptScheme"
               >
                 <h3 property="schema:name skos:prefLabel">
-                  Writing Extended Profile Documents
+                  Type Index Registration Entries
                 </h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>
-                    When an app wants to write data in an Extended Profile
-                    Document, it SHOULD give the document appropriate
-                    permissions depending on the needs of the WebID owner. If
-                    the document is meant only for the WebID owner, the app
-                    SHOULD create an <code>rdfs:seeAlso</code> triple pointing
-                    to it in the Preferences File. If the document is meant for
-                    the public or for a restricted audience, the triple SHOULD
-                    be created in the WebID Profile Document.
+                    The type index documents MAY contain any number of
+                    statements of type <code>solid:TypeRegistration</code> which
+                    map RDF classes/types to their locations in a WebID owner's
+                    dataspace/root storage.
+                  </p>
+                  <p>
+                    The registration entries map a type to a location and MUST
+                    use one of two predicates:
+                  </p>
+                  <p>
+                    <b>solid:instance</b>
+                    maps a type to an individual Solid resource, typically an
+                    index or a directory listing resource such as an Address
+                    Book.
+                  </p>
+                  <p>
+                    <b>solid:instanceContainer</b>
+                    maps a type to a Solid container which the client would have
+                    to list to get the instances of that type.
                   </p>
                 </div>
               </section>
-              <!-- TODO: https://github.com/solid/webid-profile/issues/22 -->
-              <p class="advisement">
-                Source:
-                <a
-                  href="https://github.com/solid/webid-profile/pull/2"
-                  rel="cito:citesAsSourceDocument"
-                  >pull/2</a
-                >
-              </p>
-            </div>
-          </section>
-          <section
-            id="identity-provider"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#identity-provider"
-          >
-            <h2 property="schema:name">Identity Provider</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                The <code>solid:oidcIssuer</code> predicate is used to indicate
-                the address of a Solid Identity Provider capable of
-                authenticating the WebID owner. Apps wanting to facilitate login
-                will need to look for this predicate. Apps not needing to
-                facilitate login can ignore the predicate.
-              </p>
-              <p>
-                As stated in the Solid OIDC specification, &quot;The WebID
-                Profile Document MUST include one or more statements matching
-                the OIDC issuer pattern.&quot; This means that a WebID Profile
-                Document MUST contain at least one triple with the WebID as
-                subject, <code>solid:oidcIssuer</code> as predicate, and the URL
-                of the domain of an OIDC Issuer (Identity Provider) as the
-                object. For example:
-              </p>
-              <pre><code>&lt;?WebID&gt; &lt;http://www.w3.org/ns/solid/terms#oidcIssuer&gt; &lt;?Issuer&gt; .</code></pre>
-              <p>
-                If a single statement with the
-                <code>solid:oidcIssuer</code> predicate is found, the app
-                wanting to login SHOULD redirect to the URL specified by the
-                value of <code>?Issuer</code>.
-              </p>
-              <p>
-                If multiple Issuers are found, the app SHOULD offer the user a
-                choice and redirect to the chosen <code>?Issuer</code>.
-              </p>
-            </div>
-          </section>
-          <section
-            id="storage"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#storage"
-          >
-            <h2 property="schema:name">Storage</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                The <code>pim:storage</code> predicate is used to indicate where
-                a WebID owner stores their data. An app wanting to access the
-                WebID owner's Pod should find its location using the
-                <code>pim:storage</code> predicate. Apps looking to access
-                particular types of data should look for specific locations defined by the index in place rather than looking for the
-                <code>pim:storage</code> predicate, which indicates instead the
-                Pod location, not the location of particular resources in the
-                Pod.
-              </p>
-              <p>
-                A Solid Profile SHOULD contain at least one triple with the
-                WebID as subject, <code>pim:storage</code> as predicate, and the
-                root container of the storage as the object. For example:
-              </p>
-              <pre><code>&lt;?WebID&gt; &lt;http://www.w3.org/ns/pim/space#storage&gt; &lt;?StorageSpace&gt;.</code></pre>
-              <p>
-                If no storage is found within the Solid Profile, an app MAY
-                determine the location of a WebID in the context of a WebID
-                Profile Document hosted on a Solid server as per Solid Protocol
-                0.9, but this method is not guaranteed to be usable by the app
-                in cases where the WebID Profile Document is hosted elsewhere.
-              </p>
-              <p>
-                If no storage space is found through either the profile triples
-                or finding the closest storage, an app MAY prompt the user to
-                find a location to access data.
-              </p>
-              <p>
-                A Pod Management App MAY offer to create a triple by prompting
-                the user for the Pod location and desired discoverability of the
-                Pod. For example, Jose might want their Pod only to store
-                private data and not even let anyone discover that they own the
-                Pod. In that case the app should write the
-                <code>pim:storage</code> triple in the
-                <code>pim:preferencesFile</code> rather than in the WebID
-                Profile Document or a publicly available extended profile
-                document.
-              </p>
-              <p>
-                Applications SHOULD NOT depend on guessing a storage location
-                based on the WebID URI because the WebID Profile Document may or
-                may not be on the same server as the Pod.
-              </p>
-            </div>
-          </section>
-          <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox">
-            <h2 property="schema:name">Inbox</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                A Solid inbox is a Solid-specific messaging system that is
-                similar to but not the same as an email inbox.
-              </p>
-              <p>
-                An app wanting to read or write notifications WebID owner's
-                Solid inbox SHOULD look in the profile for a single triple with
-                the WebID as subject, <code>ldp:inbox</code> as predicate [<cite
-                  ><a class="bibref" href="#bib-ldn">LDN</a></cite
-                >], and a container intended to hold messages as object. For
-                example:
-              </p>
-              <pre><code>&lt;?WebID&gt; ldp:inbox &lt;?Container&gt;.</code></pre>
-              <p>
-                If no inbox is found a Pod Management App MAY create an inbox by
-                creating a container. In that case, the app SHOULD also create
-                access controls for the container that give read and write
-                permissions to the WebID owner and append but not read or write
-                permissions to everyone else. The app should also place a triple
-                in the WebID Profile Document or in an Extended Profile Document
-                with the WebID as subject, <code>ldp:inbox</code> as predicate
-                and the newly created container as object.
-              </p>
-            </div>
-          </section>
-
-          <section
-            id="other-predicates"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#other-predicates"
-          >
-            <h2 property="schema:name">Other predicates</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                A user, a server or an app with appropriate permissions can add
-                triples to profiles using any predicates. This specification
-                covers only those predicates related to resource infrastructure
-                that are in common use at the time of this writing and which we
-                recommend as a standard. Some of the other predicates you might
-                encounter include <code>acl:trustedApp</code> and
-                <code>cert:key.</code> The Interoperability panel is also
-                working on proposals which will add additional infrastructure
-                related predicates to Solid profiles.
-              </p>
+              <section
+                id="supplying-missing-type-index-documents"
+                inlist=""
+                rel="schema:hasPart"
+                resource="#supplying-missing-type-index-documents"
+                typeof="skos:ConceptScheme"
+              >
+                <h3 property="schema:name skos:prefLabel">
+                  Supplying missing type index documents
+                </h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>
+                    If one or both of the type indexes are missing, an app
+                    needing to write to them that doesn't have Write and Control
+                    access to the pod MAY warn the user that their indexes are
+                    missing and that they should use a Pod Management App to fix
+                    their profile.
+                  </p>
+                  <p>
+                    If one or both of the type index documents are missing and
+                    the app does have Write and Control access to the pod, the
+                    app MAY create documents. The public type index document
+                    SHOULD be publicly readable, writable by the user (or a
+                    group delegated by the user), and a pointer to it MUST be
+                    placed in the WebID Profile Document. The private type index
+                    SHOULD be readable and writeable only by the WebID owner and
+                    a pointer to it MUST be placed in the Preferences Document.
+                  </p>
+                  <p>
+                    (Note if the type index file is created but the pointer to
+                    it not stored, then this risks, on a future occasion,
+                    another separate empty resource being created, leading to
+                    confusion and possible loss of data.)
+                  </p>
+                  <p></p>
+                  <h3>Communities</h3>
+                  <p>
+                    <i
+                      >Note: This section is "at risk" in that is more recent
+                      and less tested than the rest of this spec.
+                    </i>
+                  </p>
+                  <p>
+                    A user may use not only their own type indexes to find and
+                    remember things, but also may use the type indexes of users
+                    which are organizations, such as projects, to which they are
+                    affiliated. To enable this, a triple
+                    <code>{user} solid:community {org} . </code> is placed in
+                    either the user's private preferences or public profile. The
+                    <code>org</code> node's URI is the WebID URI of the project,
+                    etc.
+                  </p>
+                </div>
+              </section>
             </div>
           </section>
 
