@@ -203,7 +203,7 @@
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid WebID Profile</h1>
-        <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2022-06-22</h2>
+        <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2022-08-21</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -349,11 +349,11 @@
             <dt>Modified</dt>
             <dd>
               <time
-                content="2022-06-22T00:00:00Z"
+                content="2022-08-21T00:00:00Z"
                 datatype="xsd:dateTime"
-                datetime="2022-06-22T00:00:00Z"
+                datetime="2022-06-21T00:00:00Z"
                 property="schema:dateModified"
-                >2022-06-22</time
+                >2022-08-21</time
               >
             </dd>
           </dl>
@@ -797,63 +797,26 @@
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a href="#type-indexes"
-                    ><span class="secno">5</span>
-                    <span class="content">Type Indexes</span></a
-                  >
-                  <ol>
-                    <li>
-                      <a class="tocxref" href="#public-type-index"
-                        ><span class="secno">5.1</span>
-                        <span class="content">Public Type Index</span></a
-                      >
-                    </li>
-                    <li>
-                      <a href="#private-type-index"
-                        ><span class="secno">5.2</span>
-                        <span class="content">Private Type Index </span></a
-                      >
-                    </li>
-
-                    <li>
-                      <a href="#type-index-registration-entries"
-                        ><span class="secno">5.3</span>
-                        <span class="content"
-                          >Type Index Registration Entries
-                        </span></a
-                      >
-                    </li>
-                    <li>
-                      <a href="#supplying-missing-type-index-documents">
-                        <span class="secno">5.4</span>
-                        <span class="content"
-                          >Supplying missing type index documents
-                        </span></a
-                      >
-                    </li>
-                  </ol>
-                </li>
-                <li class="tocline">
                   <a class="tocxref" href="#identity-provider"
-                    ><span class="secno">6</span>
+                    ><span class="secno">5</span>
                     <span class="content">Identity Provider</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#storage"
-                    ><span class="secno">7</span>
+                    ><span class="secno">6</span>
                     <span class="content">Storage</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#inbox"
-                    ><span class="secno">8</span>
+                    ><span class="secno">7</span>
                     <span class="content">Inbox</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#other-predicates"
-                    ><span class="secno">9</span>
+                    ><span class="secno">8</span>
                     <span class="content">Other predicates</span></a
                   >
                 </li>
@@ -1365,244 +1328,6 @@
             </div>
           </section>
           <section
-            id="type-indexes"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#type-indexes"
-          >
-            <h2 property="schema:name">Type Indexes</h2>
-            <p>
-              A Type Index is a document containing statements that link
-              specific types of data to specific locations. An app might ask a
-              user where they want to store items of type Bookmark and then
-              write that location in the Type Index. Thereafter another app can
-              find the bookmarks by looking for the location in the Type Index.
-              Apps that want to remember user's choices will read from and write
-              to the Type Index. Since users will undoubtedly have data they
-              want to keep private, there are two Type Indexes - one readable by
-              any app (publicly discoverable) and one only readable by apps
-              operating on behalf of the WebID owner (not publicly
-              discoverable).
-            </p>
-
-            <p>
-              To find the Type Indexes, an app SHOULD load the WebID Profile
-              Document and if the app has access, also the Preferences Document.
-              In these loaded documents one can find triples where the WebID as
-              subject and the following predicates: for the Public Type Index
-              document the <code>solid:publicTypeIndex</code> predicate, and for
-              the Private Type Index document the
-              <code>solid:privateTypeIndex</code> predicate.
-            </p>
-            <p>Examples:</p>
-            <p>
-              An example for a Public Type Index Resource that is located in
-              settings and is called <code>publicTypeIndex.ttl</code> linked
-              from the profile is:
-            </p>
-            <pre><code>&lt;#WebID&gt; &lt;http://www.w3.org/ns/solid/terms#publicTypeIndex&gt; &lt;/settings/publicTypeIndex.ttl&gt; .</code></pre>
-            <p>
-              An example for a Private Type Index Resource located in settings
-              and is called <code>privateTypeIndex.ttl</code> linked from the
-              profile is:
-            </p>
-            <pre><code>&lt;#WebID&gt; &lt;http://www.w3.org/ns/solid/terms#privateTypeIndex&gt; &lt;/settings/privateTypeIndex.ttl&gt; .</code></pre>
-            <p>Here is a diagram showing an example set of Type Indexes:</p>
-            <figure id="type-indexes-example" rel="schema:hasPart" resource="#type-indexes-example">
-              <img src="type-indexes.svg" rel="schema:image" />
-
-              <figcaption property="schema:name">Type Indexes Example</figcaption>
-            </figure>
-            <div datatype="rdf:HTML" property="schema:description">
-              <section
-                id="public-type-index"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#public-type-index"
-                typeof="skos:ConceptScheme"
-              >
-                <h3 property="schema:name skos:prefLabel">Public Type Index</h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    The Public Type Index document contains registration entries
-                    that are discoverable by outside users and applications but
-                    which are not necessarily accessible to all applications or
-                    users. For example, suppose I have one address book that is
-                    only for myself, one that is for a specific group of
-                    colleagues, and one that is for the general public. The one
-                    that is only for me should be listed in the private type
-                    index. The other two should be listed in the public type
-                    index. The fully public listing will point to a publicly
-                    accessible resource while the one just for my colleagues
-                    will point to a resource restricted by access control
-                    methods. Both the public and restricted resources are
-                    discoverable in the public type index because an app that is
-                    not operating as the WebID owner can not see the private
-                    type index.
-                  </p>
-
-                  <figure
-                    class="example listing"
-                    id="public-type-index-example"
-                    rel="schema:hasPart"
-                    resource="#public-type-index-example"
-                  >
-                    <!-- TODO: https://github.com/solid/webid-profile/issues/19 -->
-                    <p class="example-h">
-                      <span>Example</span>: Public Type Index that is a Linked
-                      Document.
-                    </p>
-                    <pre
-                      about="#public-type-index-example"
-                      property="schema:description"
-                      typeof="fabio:Script"
-                    ><code>@prefix solid: &lt;http://www.w3.org/ns/solid/terms#&gt;.</code>
-<code>@prefix vcard: &lt;http://www.w3.org/2006/vcard/ns#&gt;.</code>
-<code>@prefix bk: &lt;http://www.w3.org/2002/01/bookmark#&gt;.</code>
-<code></code>
-<code>&lt;&gt;</code>
-<code>  a solid:TypeIndex ;</code>
-<code>  a solid:ListedDocument.</code>
-<code></code>
-<code>&lt;#ab09fd&gt; a solid:TypeRegistration;</code>
-<code>  solid:forClass vcard:AddressBook;</code>
-<code>  solid:instance &lt;/public/contacts/myPublicAddressBook.ttl&gt;.</code>
-<code></code>
-<code>&lt;#bq1r5e&gt; a solid:TypeRegistration;</code>
-<code>  solid:forClass bk:Bookmark;</code>
-<code>  solid:instanceContainer &lt;/public/myBookmarks/&gt;.</code></pre>
-                    <figcaption property="schema:name">
-                      Type registration containing public resource of type
-                      <code>vcard:AddressBook</code>
-                      located at the resource address
-                      <code
-                        >&lt;/public/contacts/myPublicAddressBook.ttl&gt;</code
-                      >
-                      and a resources of type bk:Bookmark located in the
-                      container address
-                      <code>&lt;/public/myBookmarks/&gt;</code>
-                    </figcaption>
-                  </figure>
-                </div>
-              </section>
-              <section
-                id="private-type-index"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#private-type-index"
-                typeof="skos:ConceptScheme"
-              >
-                <h3 property="schema:name skos:prefLabel">
-                  Private Type Index
-                </h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    The Private Type Index document contains registration
-                    entries that are private to the user and their apps. It is
-                    intended for types of resources meant only to be accessed by
-                    the WebID owner.
-                  </p>
-                  <p>
-                    Example of a Private Type Index that is an Unlisted
-                    Document, This contains a private resource of type
-                    vcard:AddressBook located at the resource address
-                    &lt;/private/contacts/myPublicAddressBook.ttl&gt; and a
-                    resources of type <code>bk:Bookmark</code> located in the
-                    container address &lt;/private/myBookmarks/&gt;:
-                  </p>
-                </div>
-              </section>
-              <section
-                id="type-index-registration-entries"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#type-index-registration-entries"
-                typeof="skos:ConceptScheme"
-              >
-                <h3 property="schema:name skos:prefLabel">
-                  Type Index Registration Entries
-                </h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    The type index documents MAY contain any number of
-                    statements of type <code>solid:TypeRegistration</code> which
-                    map RDF classes/types to their locations in a WebID owner's
-                    dataspace/root storage.
-                  </p>
-                  <p>
-                    The registration entries map a type to a location and MUST
-                    use one of two predicates:
-                  </p>
-                  <p>
-                    <b>solid:instance</b>
-                    maps a type to an individual Solid resource, typically an
-                    index or a directory listing resource such as an Address
-                    Book.
-                  </p>
-                  <p>
-                    <b>solid:instanceContainer</b>
-                    maps a type to a Solid container which the client would have
-                    to list to get the instances of that type.
-                  </p>
-                </div>
-              </section>
-              <section
-                id="supplying-missing-type-index-documents"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#supplying-missing-type-index-documents"
-                typeof="skos:ConceptScheme"
-              >
-                <h3 property="schema:name skos:prefLabel">
-                  Supplying missing type index documents
-                </h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    If one or both of the type indexes are missing, an app
-                    needing to write to them that doesn't have Write and Control
-                    access to the pod MAY warn the user that their indexes are
-                    missing and that they should use a Pod Management App to fix
-                    their profile.
-                  </p>
-                  <p>
-                    If one or both of the type index documents are missing and
-                    the app does have Write and Control access to the pod, the
-                    app MAY create documents. The public type index document
-                    SHOULD be publicly readable, writable by the user (or a
-                    group delegated by the user), and a pointer to it MUST be
-                    placed in the WebID Profile Document. The private type index
-                    SHOULD be readable and writeable only by the WebID owner and
-                    a pointer to it MUST be placed in the Preferences Document.
-                  </p>
-                  <p>
-                    (Note if the type index file is created but the pointer to
-                    it not stored, then this risks, on a future occasion,
-                    another separate empty resource being created, leading to
-                    confusion and possible loss of data.)
-                  </p>
-                  <p></p>
-                  <h3>Communities</h3>
-                  <p>
-                    <i
-                      >Note: This section is "at risk" in that is more recent
-                      and less tested than the rest of this spec.
-                    </i>
-                  </p>
-                  <p>
-                    A user may use not only their own type indexes to find and
-                    remember things, but also may use the type indexes of users
-                    which are organizations, such as projects, to which they are
-                    affiliated. To enable this, a triple
-                    <code>{user} solid:community {org} . </code> is placed in
-                    either the user's private preferences or public profile. The
-                    <code>org</code> node's URI is the WebID URI of the project,
-                    etc.
-                  </p>
-                </div>
-              </section>
-            </div>
-          </section>
-          <section
             id="identity-provider"
             inlist=""
             rel="schema:hasPart"
@@ -1652,8 +1377,7 @@
                 a WebID owner stores their data. An app wanting to access the
                 WebID owner's Pod should find its location using the
                 <code>pim:storage</code> predicate. Apps looking to access
-                particular types of data should look for specific locations in
-                the typeIndex documents rather than looking for the
+                particular types of data should look for specific locations defined by the index in place rather than looking for the
                 <code>pim:storage</code> predicate, which indicates instead the
                 Pod location, not the location of particular resources in the
                 Pod.
