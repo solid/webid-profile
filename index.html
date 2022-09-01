@@ -203,7 +203,7 @@
     <main>
       <article about="" typeof="schema:Article doap:Specification">
         <h1 property="schema:name">Solid WebID Profile</h1>
-        <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2022-08-21</h2>
+        <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2022-06-22</h2>
 
         <details open="">
           <summary>More details about this document</summary>
@@ -349,11 +349,11 @@
             <dt>Modified</dt>
             <dd>
               <time
-                content="2022-08-21T00:00:00Z"
+                content="2022-06-22T00:00:00Z"
                 datatype="xsd:dateTime"
-                datetime="2022-06-21T00:00:00Z"
+                datetime="2022-06-22T00:00:00Z"
                 property="schema:dateModified"
-                >2022-08-21</time
+                >2022-06-22</time
               >
             </dd>
           </dl>
@@ -1181,13 +1181,6 @@
                   pim:preferencesFile as predicate, then load the object of that
                   triple.
                 </li>
-                <li>
-                  Find all triples loaded so far that have the WebID as subject,
-                  and either <code>rdfs:seeAlso</code>,
-                  <code>solid:publicTypeIndex</code>, or
-                  <code>solid:privateTypeIndex</code> as predicate and load the
-                  objects of those triples.
-                </li>
               </ol>
               <p>
                 Once all of the accessible extended profile documents have been
@@ -1376,11 +1369,7 @@
                 The <code>pim:storage</code> predicate is used to indicate where
                 a WebID owner stores their data. An app wanting to access the
                 WebID owner's Pod should find its location using the
-                <code>pim:storage</code> predicate. Apps looking to access
-                particular types of data should look for specific locations defined by the index in place rather than looking for the
-                <code>pim:storage</code> predicate, which indicates instead the
-                Pod location, not the location of particular resources in the
-                Pod.
+                <code>pim:storage</code> predicate. 
               </p>
               <p>
                 A Solid Profile SHOULD contain at least one triple with the
