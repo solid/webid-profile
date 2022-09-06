@@ -15,10 +15,9 @@
 ### When reading an interoperably usable Solid Profile, apps should load
 
 1. the document the WebID URI dereferences to
-2. the object of a space:preferencesFile triple in that document if the triple exists and is accessible
-3. the objects of all rdfs:seeAlso triples in the documents loaded so far if the objects are accessible
+2. the objects of all rdfs:seeAlso triples in that document if there are any and the objects are accessible
 
-The Solid Profile will now consist of all triples loaded in this process with the WebID as subject.  Apps are recommended to check after each of these steps whether they've already found the information they need and if so, omit the following steps.
+The Solid Profile will now consist of all triples loaded in this process with the WebID as subject.
 
 ### When writing an ineteroperably usable Extended Profile Document, apps
 
