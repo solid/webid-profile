@@ -23,3 +23,5 @@ The Solid Profile will now consist of all triples loaded in this process with th
 
 * can not depend on other apps following rdfs:seeAlso links inside Extended Profile Documents
 * can not depend on apps reading triples in Extended Profile Documents that do not have WebID as subject
+
+![new-model](https://user-images.githubusercontent.com/44732708/188750863-14b30bfe-01f3-4804-88af-91d35b9df937.png)
