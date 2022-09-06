@@ -24,16 +24,3 @@ The Solid Profile will now consist of all triples loaded in this process with th
 
 * can not depend on other apps following rdfs:seeAlso links inside Extended Profile Documents
 * can not depend on apps reading triples in Extended Profile Documents that do not have WebID as subject
-* are recommended but not required to include one space:preferencesFile link in the WebID Profile Document
-* are recommended but not required to follow the decision tree listed below when writing Solid Profiles
-
-### Decision Tree
-
-    Should the information be accessible to anyone other than the profile owner?
-        yes ->  Should the information be available to all users and all apps that can see the profile?
-          yes : write it in the Profile Document
-          no  : write it in an Extended Document pointed to from the Profile Document
-        no -> Should the information be available to all apps operated by the WebID owner?
-          yes : write it in the Preferences Document
-          no  : write it in an Extended Document pointed to from the Preferences Document
-
