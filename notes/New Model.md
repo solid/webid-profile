@@ -24,4 +24,14 @@ The Solid Profile will now consist of all triples loaded in this process with th
 * can not depend on other apps following rdfs:seeAlso links inside Extended Profile Documents
 * can not depend on apps reading triples in Extended Profile Documents that do not have WebID as subject
 
+### Included at start of project, no longer included in this spec
+
+* solid:oidcIssuer - mention generally about isssuers, refer users to WebID and Solid-OIDC specs
+* acl:trustedApp - omit, only in one implementation, exposes data
+* typeIndexes - move to their own spec
+* preferencesFile - omit, keep this spec orthagonal to permissions
+* owl:sameAs - omit, too costly, apps free to use but without expectation all apps will follow
+* foafPrimaryTopicOf - omit,  use rdfs:seeAlso instead
+* solid:account - omit, provides nothing space:storage doesn't
+
 ![new-model](https://user-images.githubusercontent.com/44732708/188750863-14b30bfe-01f3-4804-88af-91d35b9df937.png)
