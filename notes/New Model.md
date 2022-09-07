@@ -34,4 +34,5 @@ The Solid Profile will now consist of all triples loaded in this process with th
 * foafPrimaryTopicOf - omit,  use rdfs:seeAlso instead
 * solid:account - omit, provides nothing space:storage doesn't
 
-![new-model](https://user-images.githubusercontent.com/44732708/188750863-14b30bfe-01f3-4804-88af-91d35b9df937.png)
+
+![new-model](https://user-images.githubusercontent.com/44732708/188780902-32cf3539-80d3-4dfd-8c44-0dd746e3ad57.png)
