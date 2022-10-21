@@ -1329,31 +1329,10 @@
             <h2 property="schema:name">Identity Provider</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
-                The <code>solid:oidcIssuer</code> predicate is used to indicate
-                the address of a Solid Identity Provider capable of
-                authenticating the WebID owner. Apps wanting to facilitate login
-                will need to look for this predicate. Apps not needing to
-                facilitate login can ignore the predicate.
-              </p>
-              <p>
-                As stated in the Solid OIDC specification, &quot;The WebID
-                Profile Document MUST include one or more statements matching
-                the OIDC issuer pattern.&quot; This means that a WebID Profile
-                Document MUST contain at least one triple with the WebID as
-                subject, <code>solid:oidcIssuer</code> as predicate, and the URL
-                of the domain of an OIDC Issuer (Identity Provider) as the
-                object. For example:
-              </p>
-              <pre><code>&lt;?WebID&gt; &lt;http://www.w3.org/ns/solid/terms#oidcIssuer&gt; &lt;?Issuer&gt; .</code></pre>
-              <p>
-                If a single statement with the
-                <code>solid:oidcIssuer</code> predicate is found, the app
-                wanting to login SHOULD redirect to the URL specified by the
-                value of <code>?Issuer</code>.
-              </p>
-              <p>
-                If multiple Issuers are found, the app SHOULD offer the user a
-                choice and redirect to the chosen <code>?Issuer</code>.
+                The <code>solid:oidcIssuer</code> predicate denotes a predicate
+                denotes a <cite><a href="https://solidproject.org/TR/oidc#oidc-issuer-discovery">Solid OIDC Identity Provider</a></cite>
+                capable of authenticating the WebID owner. Applications can use the value of <code>solid:oidcIssuer</code> to initiate the login
+                process.
               </p>
             </div>
           </section>
