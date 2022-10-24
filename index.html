@@ -1389,27 +1389,14 @@
             <h2 property="schema:name">Inbox</h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
-                A Solid inbox is a Solid-specific messaging system that is
-                similar to but not the same as an email inbox.
+                A Solid WebID Profile can advertise an inbox with the <code>ldp:inbox</code> property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>] to allow applications to send
+                and discover notifications about activities, interactions, and new information
+                for the attention of the owner of the WebID. It is discouraged for Solid WebID Profiles to advertise more than one inbox.
               </p>
               <p>
-                An app wanting to read or write notifications WebID owner's
-                Solid inbox SHOULD look in the profile for a single triple with
-                the WebID as subject, <code>ldp:inbox</code> as predicate [<cite
-                  ><a class="bibref" href="#bib-ldn">LDN</a></cite
-                >], and a container intended to hold messages as object. For
-                example:
-              </p>
-              <pre><code>&lt;?WebID&gt; ldp:inbox &lt;?Container&gt;.</code></pre>
-              <p>
-                If no inbox is found a Pod Management App MAY create an inbox by
-                creating a container. In that case, the app SHOULD also create
-                access controls for the container that give read and write
-                permissions to the WebID owner and append but not read or write
-                permissions to everyone else. The app should also place a triple
-                in the WebID Profile Document or in an Extended Profile Document
-                with the WebID as subject, <code>ldp:inbox</code> as predicate
-                and the newly created container as object.
+                Applications can create an inbox (see <a href="https://solidproject.org/TR/protocol#resource-containment">resource
+                  containment</a>) as needed with desired permissions and policies, and then associate the inbox to a WebID by
+                updating the WebID Profile Document.
               </p>
             </div>
           </section>
