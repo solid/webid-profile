@@ -2,7 +2,9 @@
 
 [![Join the chat at https://gitter.im/solid/webid-profile](https://badges.gitter.im/solid/webid-profile.svg)](https://gitter.im/solid/webid-profile?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This repository holds materials related to the proposed specification see the [HTML Version of the Spec](https://solid.github.io/webid-profile/)
+This repository holds materials related to the proposed specification see the [HTML Version of the Spec](https://solid.github.io/webid-profile/).
+
+The Type Indexes split of in its own repo [here](https://github.com/solid/type-indexes).
 
 ## Overview
 
@@ -17,14 +19,14 @@ The term `profile` will be used here to refer to the data that can be gathered i
 ## Structure of document
 
 Profiles contain two major types of information: 1) identifiying information such as a person or organization's name, purpose, contacts, etc. and 2) infrastructure information such as what types of data the user has, where it is stored, and who has access to it. 
-This document will focus on the latter - the information that an app can use to learn how to interact with the data associated with the Social Agent's WebID.  
+This document and the [Type Indexes](https://github.com/solid/type-indexes) document will focus on the latter - the information that an app can use to learn how to interact with the data associated with the Social Agent's WebID.  
 
 This repo will eventually contain three documents - 
 1) this one on infrastructure discovery, 
 2) one on personal profile information, 
 3) and one on organizational profiles.  
 
-These may be combined into a single document in the future.
+These may be combined into a single or more documents in the future.
 
 ## Content addressed
 
@@ -43,8 +45,8 @@ The following predicates will be the main foucs of the documention :
 - [ ] foaf:isPrimaryTopicOf
 - [ ] solid:oidcIssuer
 - [ ] solid:account (have not yet found anyone using this, maybe omit?)
-- [ ] solid:publicTypeIndex
-- [ ] solid:privateTypeIndex
+- [ ] solid:publicTypeIndex -> moved to its own Type Indexes repo [here](https://github.com/solid/type-indexes)
+- [ ] solid:privateTypeIndex -> moved to its own Type Indexes repo [here](https://github.com/solid/type-indexes)
 - [ ] pim:storage
 - [ ] pim:preferencesFile
 - [ ] acl:trustedApp (possibly omit this for this spec?)
@@ -53,6 +55,7 @@ The following predicates will be the main foucs of the documention :
 
 ## Related Resources
 * [Minutes of meetings](https://github.com/solid/webid-profile/tree/main/meetings)
+* NEW [Type Indexes repo](https://github.com/solid/type-indexes)
 * Prior work : [Solid WebID Profiles](https://github.com/solid/solid-spec/blob/master/solid-webid-profiles.md)
 * Prior work : [Applications Discovery](https://github.com/solid/solid/blob/main/proposals/data-discovery.md)
 * Prior work : [Original Interop Issue](https://github.com/solid/data-interoperability-panel/issues/209)
