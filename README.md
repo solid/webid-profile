@@ -67,6 +67,9 @@ The following predicates will be the main foucs of the documention :
 * Timea Turdean
 * Jeff Zucker
 
+## Participation
+Tuesdays, 16:00 UTC at https://meet.jit.si/solid-profile . Meetings are transcribed and [published](https://github.com/solid/webid-profile/tree/main/meetings/).
+
 ## Code of Conduct
 
 All work and communication within the Solid CG is covered by the [Solid Code of Conduct](https://github.com/solid/process/blob/main/code-of-conduct.md) as well as the [Positive Work Environment at W3C: Code of Ethics and Professional Conduct](https://www.w3.org/Consortium/cepc/).
