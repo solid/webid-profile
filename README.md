@@ -28,6 +28,13 @@ This repo will eventually contain three documents -
 
 These may be combined into a single or more documents in the future.
 
+## Goals
+
+The goals of this group are:
+
+* to define a data model to express identities within a social, conceptual, and contextual relations in order enable socially-aware decentralised applications.
+* to make recommendations and guidelines based on adequate implementation experience, as well as a framework for specialisation and extension of existing specifications.
+
 ## Content addressed
 
 There is great variability in what information is found in the profile and which documents the information is stored in.  The [interoperability panel](https://solid.github.io/data-interoperability-panel/specification/) is in the process of developing alternative discovery processes. So, there can be more than one discovery process. This specification aims to **describe the discovery process as it is currently in use**.
