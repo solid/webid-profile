@@ -58,4 +58,4 @@ In cases where the owner of two profiles wants to link the identities together, 
 
 ### Other kinds of profiles
 
-This specification and the phrase `Solid WebID Profile Document` refer to documents located on Solid storages. WebID Profile Documents not located on Solid storages may be considered functionally equivalent to a Solid WebID Profile Document for purposes of reading if they conform to this specification in all respects other than sections on writing to the Solid WebID Profile Document. See [use cases]().
+This specification and the phrase `Solid WebID Profile Document` refer to documents located on Solid storages. WebID Profile Documents not located on Solid storages may be considered functionally equivalent to a Solid WebID Profile Document for purposes of reading if they conform to this specification in all respects other than sections on writing to the Solid WebID Profile Document.  See [use cases]().
