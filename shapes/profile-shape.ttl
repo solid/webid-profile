@@ -1,0 +1,107 @@
+PREFIX sh: <http://www.w3.org/ns/shacl#>
+PREFIX dct: <http://purl.org/dc/terms/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX solid: <http://www.w3.org/ns/solid/terms#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX org: <http://www.w3.org/ns/org#>
+PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
+PREFIX schema: <http://schema.org/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX : <#>
+
+:ProfileShape     a sh:NodeShape;
+    dct:title "Profile shape";
+    :property 
+            [
+        :datatype xsd:string;
+        :name "his/hers/theirs...";
+        :path solid:preferredRelativePronoun ],
+            [
+        :datatype xsd:string;
+        :name "him/her/them...";
+        :path solid:preferredObjectPronoun ],
+            [
+        :datatype xsd:string;
+        :name "he/she/they...";
+        :path solid:preferredSubjectPronoun ],
+            [
+        :name "Involvement with Organization";
+        :node  [
+            a sh:NodeShape;
+            :property  [
+                :datatype xsd:string;
+                :name "Describe your role";
+                :path schema:description ],
+                    [
+                :name "Organization"@en,
+                       "Organization"@fr;
+                :path org:organization ],
+                    [
+                :name "occupation";
+                :path org:role ],
+                    [
+                :datatype xsd:string;
+                :path vcard:role ] ];
+        :path [:inversePath org:member ] ],
+            [
+        :name "Skills";
+        :node  [
+            a sh:NodeShape;
+            :property  [
+                :name "skill";
+                :path solid:publicId ] ];
+        :path schema:skills ],
+            [
+        :name "Languages";
+        :path schema:knowsLanguage;
+        :property  [
+            :node  [
+                a sh:NodeShape;
+                :property  [
+                    :node  [
+                        a sh:NodeShape;
+                        :property  [
+                            :name "Language";
+                            :path solid:publicId ] ];
+                    :path  (
+                    [
+                            :zeroOrMorePath rdf:rest ]
+                   rdf:first ) ] ];
+            :path schema:knowsLanguage;
+            :targetClass rdf:Collection ] ],
+            [
+        :datatype xsd:string;
+        :name "Short name for chats, etc."@en,
+               "surnom"@fr;
+        :path foaf:nick ],
+            [
+        :min 1;
+        sh:or (
+[
+        :name "Set type";
+        :path rdf:type;
+        :targetValue schema:Person 
+]
+[
+        :name "Set type";
+        :path rdf:type;
+        :targetValue foaf:Person ]
+[
+        :name "Set type";
+        :path rdf:type;
+        :targetValue vcard:Individual 
+])],
+            [
+        :name "Friends";
+        :path foaf:knows;
+        :targetClass foaf:Person ];
+
+        sh:property [
+          sh:name "Mugshots";
+          sh:path vcard:hasPhoto;
+          sh:targetClass dct:Image;
+        ]; 
+        sh:targetClass schema:Person,
+           vcard:Individual,
+           foaf:Person .
