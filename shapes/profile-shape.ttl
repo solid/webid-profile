@@ -12,95 +12,96 @@ PREFIX : <#>
 
 :ProfileShape     a sh:NodeShape;
     dct:title "Profile shape";
-    :property 
+    sh:property 
             [
-        :datatype xsd:string;
-        :name "his/hers/theirs...";
-        :path solid:preferredRelativePronoun ],
+        sh:datatype xsd:string;
+        sh:name "his/hers/theirs...";
+        sh:path solid:preferredRelativePronoun ],
             [
-        :datatype xsd:string;
-        :name "him/her/them...";
-        :path solid:preferredObjectPronoun ],
+        sh:datatype xsd:string;
+        sh:name "him/her/them...";
+        sh:path solid:preferredObjectPronoun ],
             [
-        :datatype xsd:string;
-        :name "he/she/they...";
-        :path solid:preferredSubjectPronoun ],
+        sh:datatype xsd:string;
+        sh:name "he/she/they...";
+        sh:path solid:preferredSubjectPronoun ],
             [
-        :name "Involvement with Organization";
-        :node  [
+        sh:name "Involvement with Organization";
+        sh:node  [
             a sh:NodeShape;
-            :property  [
-                :datatype xsd:string;
-                :name "Describe your role";
-                :path schema:description ],
+            sh:property  [
+                sh:datatype xsd:string;
+                sh:name "Describe your role";
+                sh:path schema:description ],
                     [
-                :name "Organization"@en,
+                sh:name "Organization"@en,
                        "Organization"@fr;
-                :path org:organization ],
+                sh:path org:organization ],
+[
+                sh:datatype xsd:string;
+                sh:name "Occupation"@en;
+                sh:or ( [ sh:path org:role ] [ sh:path vcard:role ] ) ],
                     [
-                :name "occupation";
-                :path org:role ],
-                    [
-                :datatype xsd:string;
-                :path vcard:role ] ];
-        :path [:inversePath org:member ] ],
+                sh:datatype xsd:string;
+                sh:path vcard:role ] ];
+        sh:path [sh:inversePath org:member ] ],
             [
-        :name "Skills";
-        :node  [
+        sh:name "Skills";
+        sh:node  [
             a sh:NodeShape;
-            :property  [
-                :name "skill";
-                :path solid:publicId ] ];
-        :path schema:skills ],
+            sh:property  [
+                sh:name "skill";
+                sh:path solid:publicId ] ];
+        sh:path schema:skills ],
             [
-        :name "Languages";
-        :path schema:knowsLanguage;
-        :property  [
-            :node  [
+        sh:name "Languages";
+        sh:path schema:knowsLanguage;
+        sh:property  [
+            sh:node  [
                 a sh:NodeShape;
-                :property  [
-                    :node  [
+                sh:property  [
+                    sh:node  [
                         a sh:NodeShape;
-                        :property  [
-                            :name "Language";
-                            :path solid:publicId ] ];
-                    :path  (
+                        sh:property  [
+                            sh:name "Language";
+                            sh:path solid:publicId ] ];
+                    sh:path  (
                     [
-                            :zeroOrMorePath rdf:rest ]
+                            sh:zeroOrMorePath rdf:rest ]
                    rdf:first ) ] ];
-            :path schema:knowsLanguage;
-            :targetClass rdf:Collection ] ],
+            sh:path schema:knowsLanguage;
+            sh:targetClass schema:Text, schema:Language ] ],
             [
-        :datatype xsd:string;
-        :name "Short name for chats, etc."@en,
+        sh:datatype xsd:string;
+        sh:name "Short name for chats, etc."@en,
                "surnom"@fr;
-        :path foaf:nick ],
+        sh:path foaf:nick ],
             [
-        :min 1;
+        sh:min 1;
         sh:or (
 [
-        :name "Set type";
-        :path rdf:type;
-        :targetValue schema:Person 
+        sh:name "Set type";
+        sh:path rdf:type;
+        sh:targetValue schema:Person 
 ]
 [
-        :name "Set type";
-        :path rdf:type;
-        :targetValue foaf:Person ]
+        sh:name "Set type";
+        sh:path rdf:type;
+        sh:targetValue foaf:Person ]
 [
-        :name "Set type";
-        :path rdf:type;
-        :targetValue vcard:Individual 
+        sh:name "Set type";
+        sh:path rdf:type;
+        sh:targetValue vcard:Individual 
 ])],
             [
-        :name "Friends";
-        :path foaf:knows;
-        :targetClass foaf:Person ];
+        sh:name "Friends";
+        sh:path foaf:knows;
+        sh:class foaf:Person ];
 
         sh:property [
           sh:name "Mugshots";
           sh:path vcard:hasPhoto;
-          sh:targetClass dct:Image;
+          sh:class dct:Image;
         ]; 
         sh:targetClass schema:Person,
            vcard:Individual,
