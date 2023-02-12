@@ -639,37 +639,17 @@
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <blockquote cite="https://www.w3.org/DesignIssues/Gradient">
-                <p>
-                  A city has public places where I can do all kinds of things,
-                  and also a private house with a private room which may be just
-                  mine. In that house there are spaces where I do things with
-                  family, friends, colleagues. The web must, like a
-                  well-designed building, provide a gradient of intimacy between
-                  the private and the public, so I can easily recognize the
-                  difference, easily know which I am in, and easily welcome
-                  people to come into the more intimate parts, as I want to.
-                </p>
-
-                <footer>
-                  <cite>
-                    <a href="https://www.w3.org/DesignIssues/Gradient" rel="cito:includesQuotationFrom">The Intimacy Gradient</a>
-                    ,
-                    <a href="https://www.w3.org/People/Berners-Lee/card#i"
-                      >timbl</a
-                    >
-                    , <time>2022</time>
-                  </cite>
-                </footer>
-              </blockquote>
-
-              <p>
-                If the web is like a well-designed building, the Solid Profile
-                is its lobby - the place the public can discover which parts of
-                the interior the building's owner has given consent for them to
-                see, where the owner can hide or put on display parts of their
-                identity as they see fit.
+              <p>This document outlines the structure and organization of a Solid Profile. </p>
+              <p>A Solid Profile is the representation of a social agent's identity in the Solid ecosystem and consists of a set
+                of statements linked by a unique identifier, the WebID. The profile includes information about the social agent,
+                including personal information and links to other resources about or related to the agent. The profile can include
+                publicly readable data, data restricted to named audiences, or data meant only for the social agent themselves.
               </p>
+              <p>This specification outlines a discovery process that starts with the WebID, which either dereferences to or
+                provides a pointer to a Solid Profile, which in turn provides pointers to other profile documents, including the
+                Preferences File Document, Type Index Documents, and Extended Profile Documents.</p>
+              <p>This document is intended for application developers who want to implement a client to use Solid profiles. The
+                document also includes a description of the data model and defines conformance standards.</p>
             </div>
           </section>
 
@@ -839,6 +819,38 @@
             </h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
+              <blockquote cite="https://www.w3.org/DesignIssues/Gradient">
+                <p>
+                  A city has public places where I can do all kinds of things,
+                  and also a private house with a private room which may be just
+                  mine. In that house there are spaces where I do things with
+                  family, friends, colleagues. The web must, like a
+                  well-designed building, provide a gradient of intimacy between
+                  the private and the public, so I can easily recognize the
+                  difference, easily know which I am in, and easily welcome
+                  people to come into the more intimate parts, as I want to.
+                </p>
+
+                <footer>
+                  <cite>
+                    <a href="https://www.w3.org/DesignIssues/Gradient" rel="cito:includesQuotationFrom">The Intimacy Gradient</a>
+                    ,
+                    <a href="https://www.w3.org/People/Berners-Lee/card#i"
+                      >timbl</a
+                    >
+                    , <time>2022</time>
+                  </cite>
+                </footer>
+              </blockquote>
+
+              <p>
+                If the web is like a well-designed building, the Solid Profile
+                is its lobby - the place the public can discover which parts of
+                the interior the building's owner has given consent for them to
+                see, where the owner can hide or put on display parts of their
+                identity as they see fit.
+              </p>
+            </div>
               <p>
                 A social agent - a person or organization - can establish an
                 identity in the Solid ecosystem by obtaining a unique identifier
