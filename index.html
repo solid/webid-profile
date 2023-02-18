@@ -639,18 +639,24 @@
           <section id="abstract">
             <h2>Abstract</h2>
             <div datatype="rdf:HTML" property="schema:abstract">
-              <p>This document outlines the structure and organization of a Solid Profile. </p>
-              <p>A Solid Profile is the representation of a social agent's identity in the Solid ecosystem and consists of a set
-                of statements linked by a unique identifier, the WebID. The profile includes information about the social agent,
-                including personal information and links to other resources about or related to the agent. The profile can include
-                publicly readable data, data restricted to named audiences, or data meant only for the social agent themselves.
+              <p>A WebID is a way to identify oneself within various social, conceptual, and contextual relations. Social agents
+                 need to be able to present themselves on the Web and set the circumstances in which their profiles can be used
+                 in a standard manner. A Solid Profile is the representation of a social agent's identity in the Solid ecosystem.
               </p>
-              <p>This specification outlines a discovery process that starts with the WebID, which either dereferences to or
-                provides a pointer to a Solid Profile, which in turn provides pointers to other profile documents, including the
-                Preferences File Document, Type Index Documents, and Extended Profile Documents.</p>
-              <p>This document is intended for application developers who want to implement a client to use Solid profiles. The
-                document also includes a description of the data model and defines conformance standards.</p>
-            </div>
+              <p>This document specifies the discovery and the data model of a Solid Profile. It describes profiles and extension
+                 documents describing an individual's social information and and application-level preferences
+              </p>
+              <p>A Solid profile can include information about the social agent,
+                 such as personal information and links to other resources about or related to the agent. This can consist of
+                 publicly readable data, data restricted to named audiences, or data meant to be accessed only by the social agent
+                 themselves.
+              </p>
+              <p>
+                 This specification aims to provide recommendations and considerations for various circumstances
+                 under which profiles are used or shared, such as the use of multiple profiles, connectivity of profiles, persistence and
+                 evolution of profiles, and anonymous and pseudonymous profiles, among others.
+              </p>
+           </div>
           </section>
 
           <section id="sotd" inlist="" rel="schema:hasPart" resource="#sotd">
