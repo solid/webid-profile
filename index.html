@@ -866,8 +866,7 @@
                 <li>Information for the purpose of verification, authentication, authorization purposes.</li>
                 <li>Compilation of preferences, choices, activities and interactions of an agent.</li>
                 <li>Social graph for different kinds of relationships between agents.</li>
-                <li>Factors specific to physical, physiological, genetic, mental, economic, cultural, social, or behavioural identity.
-                </li>
+                <li>Factors specific to physical, physiological, genetic, mental, economic, cultural, social, or behavioural identity.</li>
               </ul>
               <p>In order to support these different use cases, access to the Solid profile document itself, or any of the linked associated documents, might be limited to certain groups, agents, or applications.</p>
               
@@ -1123,15 +1122,13 @@
                 contain so that apps can discover them.
               </p>
               <p>
-                The discovery process starts with the WebID, a URI that points
-                to exactly one document, referred to here as a WebID Profile
-                Document. This document can be expected to contain pointers to a
-                Preferences File Document containing settings &amp; resources
-                meant only for the WebID owner, Type Index Documents containing
-                links to specific types of resources, and might also contain
-                Extended Profile Documents containing additional information
-                about the WebID owner. The documents which make up a Solid
-                Profile are illustrated below.
+                The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a WebID
+                Profile Document [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].
+                This document can be expected to contain pointers to a <a href="#private-preferences">Preferences File Document</a>
+                containing settings and resources meant only for the WebID owner, <a href="https://solid.github.io/type-indexes/">Type
+                Index Documents</a> containing links to specific types of resources, and might also contain <a href="#extended-profile-documents">Extended Profile</a>
+                Documents containing additional information about the WebID owner. The documents which make up a Solid Profile are
+                illustrated below.
               </p>
               <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
                 <img src="profile-discovery.png" rel="schema:image" />
