@@ -836,7 +836,6 @@
                   difference, easily know which I am in, and easily welcome
                   people to come into the more intimate parts, as I want to.
                 </p>
-
                 <footer>
                   <cite>
                     <a href="https://www.w3.org/DesignIssues/Gradient" rel="cito:includesQuotationFrom">The Intimacy Gradient</a>
@@ -848,104 +847,30 @@
                   </cite>
                 </footer>
               </blockquote>
-
               <p>
-                If the web is like a well-designed building, the Solid Profile
-                is its lobby - the place the public can discover which parts of
-                the interior the building's owner has given consent for them to
-                see, where the owner can hide or put on display parts of their
-                identity as they see fit.
-              </p>
-            </div>
-              <p>
-                A social agent - a person or organization - can establish an
-                identity in the Solid ecosystem by obtaining a unique identifier
-                called a WebID and by describing themselves in a set of
-                documents associated with the WebID. These documents, referred
-                to here collectively as a Solid Profile, both describe the
-                social agent and provide links to their resources.
+                If the web is like a well-designed building, the Solid Profile can be likened to the lobby, serving as a public space where visitors can discover which parts of the building's interior the owner has given consent for them to see.
               </p>
               <p>
-                A Solid profile, like most Solid resources, can include a
-                combination of publicly readable data, data restricted to named
-                audiences, and data meant only for the social agent themselves.
-                For example, Keisha's Solid profile might list her name
-                publicly, her phone number only for friends, and the
-                configuration settings for her "notes to self" only for apps
-                operating on her own behalf. Solid supports these options by
-                splitting the profile into documents with separate access
-                restrictions. So the first task of an application may be to load
-                all of the profile documents it has access to or load them on a
-                need to basis.
+                The Solid ecosystem enables a social agent, such as an individual or an organization, to establish an identity by obtaining a unique identifier, called a WebID. The associated Solid Profile serves as a starting point for applications to access information related to the social agent.
               </p>
               <p>
-                Profiles can contain, and apps are free to follow, any kind of
-                links to related documents. In order to promote interoperability
-                and limit the burden on apps, this specification recommends a
-                limited number of related documents which a profile ought to
-                contain so that apps can discover them.
+                There are different circumstances under which profiles are used or shared, including: 
               </p>
-              <p>
-                The discovery process starts with the WebID, a URI that points
-                to exactly one document, referred to here as a WebID Profile
-                Document. This document can be expected to contain pointers to a
-                Preferences File Document containing settings &amp; resources
-                meant only for the WebID owner, Type Index Documents containing
-                links to specific types of resources, and might also contain
-                Extended Profile Documents containing additional information
-                about the WebID owner. The documents which make up a Solid
-                Profile are illustrated below and described in more detail in
-                <cite
-                  ><a
-                    href="#discovering-complete-solid-profile"
-                    rel="rdfs:seeAlso"
-                    >Discovering a complete Solid profile</a
-                  ></cite
-                >.
-              </p>
-              <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
-                <img src="profile-discovery.png" rel="schema:image" />
-
-                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
-              </figure>
-              <p>
-                Once an application has loaded all of the needed profile documents, it
-                can then look for a fixed set of predicates holding information
-                about the structure and location of the WebID owner's resources.
-                The predicates listed below are used throughout this document.
-              </p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Predicate</th>
-                    <th>Information conveyed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>solid:oidcIssuer</code></td>
-                    <td>location(s) where the WebID owner logs in</td>
-                  </tr>
-                  <tr>
-                    <td><code>pim:storage</code></td>
-                    <td>location(s) of the WebID owner's storage space(s)</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <code>solid:instance</code>,
-                      <code>solid:instanceContainer</code>
-                    </td>
-                    <td>locations of specific types of resources</td>
-                  </tr>
-                  <tr>
-                    <td><code>ldp:inbox</code></td>
-                    <td>location of the WebID owner's Solid inbox</td>
-                  </tr>
-                </tbody>
-              </table>
-
+              <ul id="use-cases">
+                <li>Communication and use of multiple profiles for different purposes.</li>
+                <li>Connectivity of multiple profiles and cross-context recognition.</li>
+                <li>Cascade of profile information.</li>
+                <li>Persistence and evolution of profiles.</li>
+                <li>Anonymous and pseudonymous profiles.</li>
+                <li>Self-controlled and third-party-controlled identities.</li>
+                <li>Information for the purpose of verification, authentication, authorization purposes.</li>
+                <li>Compilation of preferences, choices, activities and interactions of an agent.</li>
+                <li>Social graph for different kinds of relationships between agents.</li>
+                <li>Factors specific to physical, physiological, genetic, mental, economic, cultural, social, or behavioural identity.</li>
+              </ul>
+              <p>In order to support these different use cases, access to the Solid profile document itself, or any of the linked associated documents, might be limited to certain groups, agents, or applications.</p>
+              
               <p>This specification is for:</p>
-
               <ul rel="schema:audience">
                 <li>
                   <a
@@ -956,26 +881,6 @@
                   profiles.
                 </li>
               </ul>
-
-              <p>
-                This document does not cover the WebID authentication process
-                (see
-                <a
-                  href="https://solidproject.org/TR/protocol#authentication"
-                  rel="rdfs:seeAlso"
-                  >Solid Protocol's Authentication</a
-                >
-                [<cite
-                  ><a class="bibref" href="#bib-solid-protocol"
-                    >SOLID-PROTOCOL</a
-                  ></cite
-                >]) or data specific to a given type of social agent (see
-                forthcoming [Creating Personal Profiles]TBD and [Creating
-                Organizational Profiles]TBD)). Alternate discovery processes
-                (for example [proposed Interoperability-Spec]TBD) are also out
-                of scope for this document although they will be mentioned where
-                relevant.
-              </p>
             </div>
 
             <section
@@ -1209,6 +1114,27 @@
                 while other apps will see statements from public and also
                 private extended profile documents they have access to.
               </p>
+              <p>
+                Profiles can contain, and apps are free to follow, any kind of
+                links to related documents. In order to promote interoperability
+                and limit the burden on apps, this specification recommends a
+                limited number of related documents which a profile ought to
+                contain so that apps can discover them.
+              </p>
+              <p>
+                The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a WebID
+                Profile Document [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].
+                This document can be expected to contain pointers to a <a href="#private-preferences">Preferences File Document</a>
+                containing settings and resources meant only for the WebID owner, <a href="https://solid.github.io/type-indexes/">Type
+                Index Documents</a> containing links to specific types of resources, and might also contain <a href="#extended-profile-documents">Extended Profile</a>
+                Documents containing additional information about the WebID owner. The documents which make up a Solid Profile are
+                illustrated below.
+              </p>
+              <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
+                <img src="profile-discovery.png" rel="schema:image" />
+
+                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
+              </figure>
             </div>
           </section>
 
