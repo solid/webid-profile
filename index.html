@@ -740,14 +740,20 @@
                   >
                 </li>
                 <li class="tocline">
-                  <a href="#private-preferences"
+                  <a href="#reading-writing-profiles"
                     ><span class="secno">3</span>
+                    <span class="content">Reading and Writing Profiles</span></a
+                  >
+                </li>
+                <li class="tocline">
+                  <a href="#private-preferences"
+                    ><span class="secno">4</span>
                     <span class="content">Private Preferences</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a href="#extended-profile-documents"
-                    ><span class="secno">4</span>
+                    ><span class="secno">5</span>
                     <span class="content">Extended Profile Documents</span></a
                   >
                   <ol>
@@ -755,7 +761,7 @@
                       <a
                         class="tocxref"
                         href="#reading-extended-profile-documents"
-                        ><span class="secno">4.1</span>
+                        ><span class="secno">5.1</span>
                         <span class="content"
                           >Reading Extended Profile Documents</span
                         ></a
@@ -763,7 +769,7 @@
                     </li>
                     <li>
                       <a href="#writing-extended-profile-documents"
-                        ><span class="secno">4.2</span>
+                        ><span class="secno">5.2</span>
                         <span class="content"
                           >Writing Extended Profile Documents</span
                         ></a
@@ -773,25 +779,25 @@
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#identity-provider"
-                    ><span class="secno">5</span>
+                    ><span class="secno">6</span>
                     <span class="content">Identity Provider</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#storage"
-                    ><span class="secno">6</span>
+                    ><span class="secno">7</span>
                     <span class="content">Storage</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#inbox"
-                    ><span class="secno">7</span>
+                    ><span class="secno">8</span>
                     <span class="content">Inbox</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#other-predicates"
-                    ><span class="secno">8</span>
+                    ><span class="secno">9</span>
                     <span class="content">Other predicates</span></a
                   >
                 </li>
@@ -863,11 +869,17 @@
               <ul rel="schema:audience">
                 <li>
                   <a
+                    href="http://data.europa.eu/esco/occupation/a7c1d23d-aeca-4bee-9a08-5993ed98b135"
+                    >Server developers</a
+                  >
+                  that want to enable clients to send and retrieve information pertaining to Solid WebID Profiles;
+                </li>
+                <li>
+                  <a
                     href="http://data.europa.eu/esco/occupation/c40a2919-48a9-40ea-b506-1f34f693496d"
                     >Application developers</a
                   >
-                  that want to implement a client to use WebIDs and Solid
-                  profiles.
+                  that want to implement a client to produce and consume information pertaining to Solid WebID Profiles.
                 </li>
               </ul>
             </div>
@@ -1032,31 +1044,55 @@
               </div>
             </section>
 
-            <section
-              id="conformance"
-              inlist=""
-              rel="schema:hasPart"
-              resource="#conformance"
-            >
+            <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
               <h3 property="schema:name">Conformance</h3>
               <div datatype="rdf:HTML" property="schema:description">
-                <p>
-                  All assertions, diagrams, examples, and notes are
-                  non-normative, as are all sections explicitly marked
-                  non-normative. Everything else is normative.
-                </p>
-
-                <p>
-                  The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
-                  NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and
-                  “OPTIONAL” are to be interpreted as described in
-                  <a href="https://tools.ietf.org/html/bcp14">BCP 14</a>
-                  [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite
-                  >] [<cite
-                    ><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite
-                  >] when, and only when, they appear in all capitals, as shown
-                  here.
-                </p>
+                <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Solid WebID Profile.</span>.</p>
+          
+                <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content">
+                  <h4 property="schema:name">Normative and Informative Content</h4>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+                    <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                    <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
+                  </div>
+                </section>
+          
+                <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme">
+                  <h4 property="schema:name skos:prefLabel">Specification Category</h4>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="sepc:ProcessorBehaviour">processor behavior</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
+                  </div>
+                </section>
+          
+                <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
+                  <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
+          
+                    <dl rel="skos:hasTopConcept">
+                      <dt about="#ReaderApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="ReaderApplication">ReaderApplication</dfn></dt>
+                      <dd about="#ReaderApplication" property="skos:definition">A <em>A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a></em> that issues HTTP requests to consume content pertaining to WebID Profiles.</dd>
+                      <dt about="#WriterApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="WriterApplication">ReaderApplication</dfn></dt>
+                      <dd about="#WriterApplication" property="skos:definition">A <em>A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a></em> that issues HTTP requests to produce and consume content pertaining to WebID Profiles.</dd>
+                      <dt about="#Server" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
+                      <dd about="#Server" property="skos:definition">A <em>A <a href="https://solidproject.org/TR/protocol#Server">Solid Server</a></em> that responds to HTTP requests processing payloads pertaining to Solid WebID Profiles.</dd>
+                    </dl>
+                  </div>
+                </section>
+          
+                <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability" typeof="skos:ConceptScheme">
+                  <h4 property="schema:name skos:prefLabel">Interoperability</h4>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <dl>
+          
+                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability">Reader Application-Server interoperability</dfn></dt>
+                      <dd about="#reader-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">Servers</a> and <a href="#ReaderApplication" rel="rdfs:seeAlso">Reader Application</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
+                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability">Writer Application-Server interoperability</dfn></dt>
+                      <dd about="#writer-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">Servers</a> and <a href="WriterApplication" rel="rdfs:seeAlso">Reader Application</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
+                    </dl>
+                  </div>
+                </section>
               </div>
             </section>
           </section>
@@ -1126,6 +1162,150 @@
               </figure>
             </div>
           </section>
+
+          <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles">
+            <h2 property="schema:name">Reading and Writing Profiles</h2>
+            <div datatype="rdf:HTML" property="schema:description">
+                <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile">
+                    <h3 property="schema:name">Reading Profile</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p about="" id="reader-application-webid-profile" rel="spec:requirement"
+                            resource="reader-application-webid-profile">
+                            <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a
+                                    rel="spec:requirementSubject" href="#ReaderApplication">Reader Application</a> <span
+                                    rel="spec:requirementLevel" resource="spec:MUST">MUST</span> MUST make
+                                an <code>HTTP GET</code> request targeting a Solid WebID Profile resource including a
+                                <code>Content-Type header</code> requesting a representation in <code>text/turtle</code> or
+                                <code>application/ld+json.</code></span>
+                        </p>
+                        <section id="webid-profile-data-model" inlist="" rel="schema:hasPart"
+                            resource="#webid-profile-data-model">
+                            <h3 property="schema:name" content="WebID Profile Data Model">Solid WebID Profile</h3>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>The <a href="#solid-profile">Solid WebID Profile</a> has the following properties:</p>
+                                <ul>
+                                    <li>One <code>rdf:type</code> property whose object is <code>foaf:Agent</code>.</li>
+                                    <li>One <code>space:preferencesFile</code>.</li>
+                                    <li>Zero or more <code>ldp:inbox</code>.</li>
+                                    <li>Zero, one, or more <code>space:storage</code>.</li>
+                                    <li>Zero, one, or more <code>rdfs:seeAlso</code> to refer to related <a
+                                            href="#extended-profile-documents">documents extending the profile.</a></li>
+                                </ul>
+                                <div class="note" id="other-information" inlist="" rel="schema:hasPart"
+                                    resource="#other-information">
+                                    <h5 property="schema:name"><span>Note</span>:</h5>
+                                    <div datatype="rdf:HTML" property="schema:description">
+                                        <p>The Solid WebID Profiles may include other information pertaining to scenarios in
+                                            which profiles are used or shared as mentioned in <a href="#use-cases">use
+                                                cases</a>.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+        
+                    <h3 property="schema:name" content="Preferences Document">Preferences Document</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>The <a href="#private-profile">Preferences Document</a> has the following properties:</p>
+                        <ul>
+                            <li>One <code>rdf:type</code> property whose object is <code>space:ConfigurationFile</code>.</li>
+                            <li>Zero, one, or more <code>rdfs:seeAlso</code>.</li>
+                        </ul>
+                    </div>
+                    <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p>The <a href="#extended-profile-documents">Extended Profile Documents</a> are also self-describing
+                            Solid WebID Profiles and share the same data model. <a href="reader-application">Reader
+                                Applications</a> retrieve representations of Extended Profile Documents the same way as they
+                            retrieve Solid WebID Profiles.</p>
+                    </div>
+                    <p about="" id="reader-application-extended-profile" rel="spec:requirement"
+                        resource="reader-application-extended-profile">
+                        <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
+                                Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
+                            representation of an <a href="#extended-profile-documents">Extended Profile Document</a>.</span>
+                    </p>
+                </section>
+                <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile">
+                    <h3 property="schema:name">Updating Profile</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p><a href="#writer-applications">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+                        <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart"
+                            resource="#prioritize-webid-profile">
+                            <h5 property="schema:name"><span>Note</span>:</h5>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>To promote self-describing resources and efficient discovery and reuse of profile
+                                    information, implementations and authors are encouraged to prioritize using the <a
+                                        href="#solid-profile">Solid WebID Profile</a> before needing to use the <a
+                                        href="extended-profile-documents">Extended WebID Profile.</a></p>
+                            </div>
+                        </div>
+                        </div>
+                        <p about="" id="writer-application-webid-profile" rel="spec:requirement"
+                            resource="writer-application-webid-profile">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                                an <code>HTTP PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
+                                updated.</span>
+                        </p>
+                        <p about="" id="protected-properties" property="schema:description">
+                            Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
+                        </p>
+                        <p about="" id="server-update-protected-triples" rel="spec:requirement"
+                            resource="server-update-protected-triples">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                                    rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
+                                <code>HTTP PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
+                                triples; if the server receives such a request, it <span rel="spec:requirementLevel"
+                                    resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
+                        </p>
+                        <p about="" id="server-unprocessable-content" rel="spec:requirement"
+                            resource="server-unprocessable-content">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                                    rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
+                                status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
+                                process the contained instructions, including unrecognised JSON-LD context in representation
+                                data, semantically erroneous Solid WebID Profile or Preferences Document data.</span>
+                        </p>
+                </section>
+                <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile">
+                    <h3 property="schema:name">Extending a Profile</h3>
+                    <div datatype="rdf:HTML" property="schema:description">
+                        <p><a href="#writer-applications">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+        
+                        <p>Ownership by WebID URI entails that the social agent has authority over the representation of the resource it identifies, including access to perform write operations targeting the Solid WebID Profile.</p>
+                      </div>
+        
+                        <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
+                            resource="writer-application-create-extended-profile">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                            <code>HTTP PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
+                        </p>
+                        <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
+                            resource="writer-application-update-extended-profile">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                             <code>HTTP PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be updated</span>
+                        </p>
+                        <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
+                            resource="writer-application-link-extended-profile-webid">
+                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
+                                        href="#solid-profile">Solid WebID Profile </a>by adding a triple of the form
+                                    <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
+                        </p>
+                        <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart"
+                            resource="#sameness-between-identities">
+                            <h5 property="schema:name"><span>Note</span>:</h5>
+                            <div datatype="rdf:HTML" property="schema:description">
+                                <p>The use of <code>owl:sameAs</code> is encouraged when <a href="#use-cases">sameness between identities</a> is
+                                    desired.</p>
+                            </div>
+                        </div>
+                </section>
+            </div>
+        </section>
 
           <section
             id="private-preferences"
