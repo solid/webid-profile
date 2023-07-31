@@ -20,7 +20,7 @@
 
 * Alice wants to display proof of her age to a bartender so that she can prove that she can legally drink her beer.
 
-* Alice wants apps to know what her preferred language is, so the the user interface can be displayed to her in the language she's most fluent at.
+* Alice wants apps to know what her preferred language is, so the user interface can be displayed to her in the language she's most fluent at.
 
 * Alice wants to list her emergency contact in her WebId Profile, so that in case of emergency people know who to contact.
 
