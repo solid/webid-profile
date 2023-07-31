@@ -30,4 +30,4 @@
 
 * Alice wants her Solid Inbox to be discoverable by others, so that they can share articles with her.
 
-* Alice wants her Solid storage to be discoverable by apps, so her blogposts can be read/written to the appropriate location.
+* Alice wants her Solid storage to be discoverable by apps, so her blogposts can be read from and/or written to the appropriate location(s).
