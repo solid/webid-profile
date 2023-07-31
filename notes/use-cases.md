@@ -18,7 +18,7 @@
 
 * Alice wants to host her WebID profile herself on her own server instead of relying on a provider. Her profile is readable by Solid apps, so her friends can follow her activities on social apps, but she updates it manually instead of using an app.
 
-* Alice wants to display proof of her age to a bartender so that she can prove that she can legally drink her beer.
+* Alice wants to display proof of her age to a bartender, so that she can prove that she can legally drink her beer.
 
 * Alice wants apps to know what her preferred language is, so the user interface can be displayed to her in the language she's most fluent at.
 
