@@ -22,7 +22,7 @@
 
 * Alice wants apps to know what her preferred language is, so the user interface can be displayed to her in the language she's most fluent at.
 
-* Alice wants to list her emergency contact in her WebId Profile, so that in case of emergency people know who to contact.
+* Alice wants to list her emergency contact in her Solid WebID Profile, so that people can learn who to contact in case of an emergency.
 
 * Alice wants to share with her employer that she's an ethical vegan and allergic to tree nuts, so her employer can take it into account when planning a company event.
 
