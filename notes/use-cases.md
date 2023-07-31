@@ -12,7 +12,7 @@
 
 * Alice wants to connect her alternative profiles to her WebID so that she can select which one to use for different apps. She has a profile for work, with a professional-looking profile picture and her full name, and she also has a profile she keeps private and only uses for dating apps, with only her first name and a different profile picture.
 
-* Alice wants to connect her other social accounts to her WebID profile, so that people interfacing with her Solid Profile know which accounts are legitimate/belong to her.
+* Alice wants to connect her other social accounts to her WebID profile, so that people interfacing with her Solid Profile know which accounts are legitimate (i.e., belong to her).
 
 * Alice is a whistleblower and wants to post information online that, if tied to her real identity, could put her in danger. Her profile then consists of only a pseudonym, so that people interfacing with the information she posts know it all comes from a particular whistleblower, but without exposing her identity.
 
