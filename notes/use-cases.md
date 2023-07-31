@@ -16,7 +16,7 @@
 
 * Alice is a whistleblower and wants to post information online that, if tied to her real identity, could put her in danger. Her profile then consists of only a pseudonym, so that people interfacing with the information she posts know it all comes from a particular whistleblower, but without exposing her identity.
 
-* Alice wants to host her WebId profile herself on her own server instead of relying on a provider. Her profile is readable by Solid apps, so her friends can follow her activities on social apps, but she updates it manually instead of using an app.
+* Alice wants to host her WebID profile herself on her own server instead of relying on a provider. Her profile is readable by Solid apps, so her friends can follow her activities on social apps, but she updates it manually instead of using an app.
 
 * Alice wants to display proof of her age to a bartender so that she can prove that she can legally drink her beer.
 
