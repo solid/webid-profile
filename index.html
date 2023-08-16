@@ -744,6 +744,34 @@
                     ><span class="secno">3</span>
                     <span class="content">Reading and Writing Profiles</span></a
                   >
+                  <ol>
+                    <li class="tocline">
+                      <a
+                        class="tocxref"
+                        href="#reading-profile"
+                        ><span class="secno">3.1</span>
+                        <span class="content"
+                          >Reading Profile</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#updating-profile"
+                        ><span class="secno">3.2</span>
+                        <span class="content"
+                          >Updating Profile</span
+                        ></a
+                      >
+                    </li>
+                    <li>
+                      <a href="#extending-profile"
+                        ><span class="secno">3.3</span>
+                        <span class="content"
+                          >Extending a Profile</span
+                        ></a
+                      >
+                    </li>
+                  </ol>
                 </li>
                 <li class="tocline">
                   <a href="#private-preferences"
@@ -1165,146 +1193,148 @@
 
           <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles">
             <h2 property="schema:name">Reading and Writing Profiles</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-                <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile">
-                    <h3 property="schema:name">Reading Profile</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                        <p about="" id="reader-application-webid-profile" rel="spec:requirement"
-                            resource="reader-application-webid-profile">
-                            <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a
-                                    rel="spec:requirementSubject" href="#ReaderApplication">Reader Application</a> <span
-                                    rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
-                                an HTTP <code>GET</code> request targeting a Solid WebID Profile resource including a
-                                <code>Content-Type</code> header requesting a representation in <code>text/turtle</code> or
-                                <code>application/ld+json</code>.</span>
-                        </p>
-                        <section id="webid-profile-data-model" inlist="" rel="schema:hasPart"
-                            resource="#webid-profile-data-model">
-                            <h3 property="schema:name" content="Solid WebID Profile Data Model">Solid WebID Profile</h3>
-                            <div datatype="rdf:HTML" property="schema:description">
-                                <p>The <a href="#solid-profile">Solid WebID Profile</a> has the following properties:</p>
-                                <ul>
-                                    <li>One <code>rdf:type</code> property whose object is <code>foaf:Agent</code>.</li>
-                                    <li>One <code>space:preferencesFile</code>.</li>
-                                    <li>Zero or one <code>ldp:inbox</code>.</li>
-                                    <li>Zero or more <code>space:storage</code>.</li>
-                                    <li>Zero or more <code>rdfs:seeAlso</code> to refer to related <a
-                                            href="#extended-profile-documents">documents extending the profile.</a></li>
-                                </ul>
-                                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart"
-                                    resource="#webid-profile-data-model-extended">
-                                    <h5 property="schema:name"><span>Note</span>:</h5>
-                                    <div datatype="rdf:HTML" property="schema:description">
-                                        <p>The Solid WebID Profiles may include other information pertaining to scenarios in
-                                            which profiles are used or shared as mentioned in <a href="#use-cases">use
-                                                cases</a>.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-        
-                    <h3 property="schema:name">Preferences Document</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                        <p>The <a href="#private-profile">Preferences Document</a> has the following properties:</p>
-                        <ul>
-                            <li>One <code>rdf:type</code> property whose object is <code>space:ConfigurationFile</code>.</li>
-                            <li>Zero or more <code>rdfs:seeAlso</code> to refer to extended profiles or include tangentially related documents without specific relation to the entity denoted by the Solid WebID.</li>
-                        </ul>
-                    </div>
-                    <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                        <p>The <a href="#extended-profile-documents">Extended Profile Documents</a> are also <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
-                            Solid WebID Profiles and share the same data model. <a href="#ReaderApplication">Reader
-                                Applications</a> retrieve representations of Extended Profile Documents the same way as they
-                            retrieve Solid WebID Profiles.</p>
-                    </div>
-                    <p about="" id="reader-application-extended-profile" rel="spec:requirement"
-                        resource="reader-application-extended-profile">
-                        <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
-                                Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
-                            representation of an <a href="#extended-profile-documents">Extended Profile Document</a>.</span>
-                    </p>
-                </section>
+            <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile">
+              <h3 property="schema:name">Reading Profile</h3>
+              <div datatype="rdf:HTML" property="schema:description">
+                <p about="" id="reader-application-webid-profile" rel="spec:requirement"
+                  resource="reader-application-webid-profile">
+                  <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a
+                      rel="spec:requirementSubject" href="#ReaderApplication">Reader Application</a> <span
+                      rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
+                    an HTTP <code>GET</code> request targeting a Solid WebID Profile resource including a
+                    <code>Content-Type</code> header requesting a representation in <code>text/turtle</code> or
+                    <code>application/ld+json</code>.</span>
+                </p>
+              </div>
+              <div id="webid-profile-data-model">
+                <h3 property="schema:name" content="Solid WebID Profile Data Model">Solid WebID Profile</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="#solid-profile">Solid WebID Profile</a> has the following properties:</p>
+                  <ul>
+                    <li>One <code>rdf:type</code> property whose object is <code>foaf:Agent</code>.</li>
+                    <li>One <code>space:preferencesFile</code>.</li>
+                    <li>Zero or one <code>ldp:inbox</code>.</li>
+                    <li>Zero or more <code>space:storage</code>.</li>
+                    <li>Zero or more <code>rdfs:seeAlso</code> to refer to related <a href="#extended-profile-documents">documents
+                        extending the profile.</a></li>
+                  </ul>
+                </div>
+                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart"
+                  resource="#webid-profile-data-model-extended">
+                  <h5 property="schema:name"><span>Note</span>:</h5>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p>The Solid WebID Profiles may include other information pertaining to scenarios in
+                      which profiles are used or shared as mentioned in <a href="#use-cases">use
+                        cases</a>.</p>
+                  </div>
+                </div>
+              </div>
+              <div id="preferences-document">
+                <h3 property="schema:name">Preferences Document</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="#private-preferences">Preferences Document</a> has the following properties:</p>
+                  <ul>
+                    <li>One <code>rdf:type</code> property whose object is <code>space:ConfigurationFile</code>.</li>
+                    <li>Zero, one, or more <code>rdfs:seeAlso</code>.</li>
+                  </ul>
+                </div>
+              </div>
+              <div id="reading-extended-profile">
+                <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="#extended-profile-documents">Extended Profile Documents</a> are also <a
+                      href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
+                    Solid WebID Profiles and share the same data model. <a href="#ReaderApplication">Reader
+                      Applications</a> retrieve representations of Extended Profile Documents the same way as they
+                    retrieve Solid WebID Profiles.</p>
+                  <p about="" id="reader-application-extended-profile" rel="spec:requirement"
+                    resource="reader-application-extended-profile">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
+                        Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
+                      representation of an <a href="#extended-profile-documents">Extended Profile Document</a>.</span>
+                  </p>
+                </div>
+              </div>
+            </section>
                 <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile">
-                    <h3 property="schema:name">Updating Profile</h3>
-                    <div datatype="rdf:HTML" property="schema:description">
-                        <p><a href="#WriterApplication">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
-                        <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart"
-                            resource="#prioritize-webid-profile">
-                            <h5 property="schema:name"><span>Note</span>:</h5>
-                            <div datatype="rdf:HTML" property="schema:description">
-                                <p>To promote self-describing resources and efficient discovery and reuse of profile
-                                    information, implementations and authors are encouraged to prioritize using the <a
-                                        href="#solid-profile">Solid WebID Profile</a> before resorting to an <a
-                                        href="#extended-profile-documents">Extended WebID Profile.</a></p>
-                            </div>
-                        </div>
-                        </div>
-                        <p about="" id="writer-application-webid-profile" rel="spec:requirement"
-                            resource="writer-application-webid-profile">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
-                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
-                                HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
-                                updated.</span>
+                  <h3 property="schema:name">Updating Profile</h3>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p><a href="#WriterApplication">Writer Applications</a> perform <a
+                        href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
+                        href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+                    <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile">
+                      <h5 property="schema:name"><span>Note</span>:</h5>
+                      <div datatype="rdf:HTML" property="schema:description">
+                        <p>To promote self-describing resources and efficient discovery and reuse of profile
+                          information, implementations and authors are encouraged to prioritize using the <a href="#solid-profile">Solid
+                            WebID Profile</a> before resorting to an <a href="#extended-profile-documents">Extended WebID Profile.</a>
                         </p>
-                        <p about="" id="protected-properties" property="schema:description">
-                            Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
-                        </p>
-                        <p about="" id="server-update-protected-triples" rel="spec:requirement"
-                            resource="server-update-protected-triples">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
-                                    rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
-                                HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
-                                triples; if the server receives such a request, it <span rel="spec:requirementLevel"
-                                    resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
-                        </p>
-                        <p about="" id="server-unprocessable-content" rel="spec:requirement"
-                            resource="server-unprocessable-content">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
-                                    rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
-                                status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
-                                process the contained instructions, including unrecognised JSON-LD context in representation
-                                data, semantically erroneous Solid WebID Profile or Preferences Document data.</span>
-                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="writer-application-webid-profile">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                        Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                      HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
+                      updated.</span>
+                  </p>
+                  <p about="" id="protected-properties" property="schema:description">
+                    Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
+                  </p>
+                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="server-update-protected-triples">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                        rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
+                      HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
+                      triples; if the server receives such a request, it <span rel="spec:requirementLevel"
+                        resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
+                  </p>
+                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="server-unprocessable-content">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                        rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
+                      status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
+                      process the contained instructions, including unrecognised JSON-LD context in representation
+                      data, semantically erroneous Solid WebID Profile or Preferences Document data.</span>
+                  </p>
                 </section>
                 <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile">
-                    <h3 property="schema:name">Extending a Profile</h3>
+                  <h3 property="schema:name">Extending a Profile</h3>
+                  <div datatype="rdf:HTML" property="schema:description">
+                    <p><a href="#WriterApplications">Writer Applications</a> perform <a
+                        href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
+                        href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+                
+                    <p>Ownership by WebID URI entails that the social agent has authority over the representation of the resource it
+                      identifies, including access to perform write operations targeting the Solid WebID Profile.</p>
+                  </div>
+                
+                  <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
+                    resource="writer-application-create-extended-profile">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                        Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                      HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
+                  </p>
+                  <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
+                    resource="writer-application-update-extended-profile">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                        Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
+                      HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be updated</span>
+                  </p>
+                  <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
+                    resource="writer-application-link-extended-profile-webid">
+                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                        Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
+                        href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
+                      <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
+                  </p>
+                  <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart"
+                    resource="#sameness-between-identities">
+                    <h5 property="schema:name"><span>Note</span>:</h5>
                     <div datatype="rdf:HTML" property="schema:description">
-                        <p><a href="#WriterApplications">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
-        
-                        <p>Ownership by WebID URI entails that the social agent has authority over the representation of the resource it identifies, including access to perform write operations targeting the Solid WebID Profile.</p>
-                      </div>
-        
-                        <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
-                            resource="writer-application-create-extended-profile">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
-                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
-                            HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
-                        </p>
-                        <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
-                            resource="writer-application-update-extended-profile">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
-                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
-                             HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be updated</span>
-                        </p>
-                        <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
-                            resource="writer-application-link-extended-profile-webid">
-                            <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
-                                    Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
-                                        href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
-                                    <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
-                        </p>
-                        <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart"
-                            resource="#sameness-between-identities">
-                            <h5 property="schema:name"><span>Note</span>:</h5>
-                            <div datatype="rdf:HTML" property="schema:description">
-                                <p>The use of <code>owl:sameAs</code> is encouraged when <a href="#use-cases">sameness between identities</a> is
-                                    desired.</p>
-                            </div>
-                        </div>
+                        <p>The use of <code>owl:sameAs</code> is encouraged when <a href="#use-cases">sameness between identities</a> is
+                            desired.</p>
+                    </div>
+                  </div>
                 </section>
-            </div>
         </section>
 
           <section
