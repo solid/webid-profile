@@ -1086,9 +1086,9 @@
                   <div datatype="rdf:HTML" property="schema:description">
                     <dl>
           
-                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability">Reader Application-Server interoperability</dfn></dt>
+                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability">Reader Application–Server interoperability</dfn></dt>
                       <dd about="#reader-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">Servers</a> and <a href="#ReaderApplication" rel="rdfs:seeAlso">Reader Application</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
-                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability">Writer Application-Server interoperability</dfn></dt>
+                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability">Writer Application–Server interoperability</dfn></dt>
                       <dd about="#writer-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#Server" rel="rdfs:seeAlso">Servers</a> and <a href="#WriterApplication" rel="rdfs:seeAlso">Writer Application</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
                     </dl>
                   </div>
@@ -1209,7 +1209,7 @@
                         <p>The <a href="#private-profile">Preferences Document</a> has the following properties:</p>
                         <ul>
                             <li>One <code>rdf:type</code> property whose object is <code>space:ConfigurationFile</code>.</li>
-                            <li>Zero, one, or more <code>rdfs:seeAlso</code>.</li>
+                            <li>Zero or more <code>rdfs:seeAlso</code> to refer to extended profiles or include tangentially related documents without specific relation to the entity denoted by the Solid WebID.</li>
                         </ul>
                     </div>
                     <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
