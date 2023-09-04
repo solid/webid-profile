@@ -1248,7 +1248,7 @@
                       Applications</a> retrieve representations of Extended Profile Documents the same way as they
                     retrieve Solid WebID Profiles.</p>
                   <p about="" id="reader-application-extended-profile" rel="spec:requirement"
-                    resource="reader-application-extended-profile">
+                    resource="#reader-application-extended-profile">
                     <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
                       representation of an <a href="#extended-profile-documents">Extended Profile Document</a>.</span>
@@ -1281,14 +1281,14 @@
                   <p about="" id="protected-properties" property="schema:description">
                     Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
                   </p>
-                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="server-update-protected-triples">
+                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples">
                     <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
                         rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
                       HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
                       triples; if the server receives such a request, it <span rel="spec:requirementLevel"
                         resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
                   </p>
-                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="server-unprocessable-content">
+                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content">
                     <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
                         rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
                       status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
