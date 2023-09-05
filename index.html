@@ -211,7 +211,6 @@
           <dl id="document-identifier">
             <dt>This version</dt>
             <dd>
-              <!-- TODO: https://github.com/solid/webid-profile/issues/15#issue-1267287895 . Publish this document at Github Pages. Consider whether this document is unique to "discovering resources in a solid profile" and in that case whether something like webid-profile/discovery is meaningful and so you can use webid-profile/{id} can be useful for some other spec.  -->
               <a href="https://solid.github.io/webid-profile/" rel="owl:sameAs"
                 >https://solid.github.io/webid-profile/</a
               >
@@ -951,13 +950,6 @@
                   referenced throughout this specification.
                 </p>
 
-                <!-- TODO: https://github.com/solid/webid-profile/issues/21
-                Add concepts for significant units of information that are referenced throughout this specification as well as that should be referenced from other documents/specifications.
-
-                The references to these concepts in this document can link back, e.g., 'treat the
-                <a href="#solid-profile">Solid Profile</a> as a graph'.
-                -->
-
                 <span rel="skos:hasTopConcept"
                   ><span resource="#solid-profile"></span
                   ><span resource="#extended-profile"></span
@@ -972,7 +964,7 @@
                     <dfn id="solid-profile">Solid Profile</dfn>
                   </dt>
                   <dd about="#solid-profile" property="skos:definition">
-                    A <dfn>Solid Profile</dfn> is...
+                    A <dfn>Solid Profile </dfn> is the representation of a social agent's identity within the Solid ecosystem, which is used to describe their persona, preferences, abilities, affiliations, social activities and relationships, characteristics, and digital presence, as well as aiding in the discovery of storage and location of specific data.
                   </dd>
                 </dl>
 
@@ -982,10 +974,23 @@
                     property="skos:prefLabel"
                     typeof="skos:Concept"
                   >
-                    <dfn id="extended-profile">Solid Profile</dfn>
+                    <dfn id="extended-profile">Extended Profile</dfn>
                   </dt>
                   <dd about="#extended-profile" property="skos:definition">
-                    An <dfn>extended profile</dfn> is...
+                    An <dfn>extended profile</dfn> is an additional profile document that provides supplemental description to a Solid Profile to help distribute and manage information about a WebID for use in different circumstances. Extended Profile Documents can be used for various purposes, such as organizing information or limiting access to certain data.
+                  </dd>
+                </dl>
+
+                <dl>
+                  <dt
+                    about="#preferences-document"
+                    property="skos:prefLabel"
+                    typeof="skos:Concept"
+                  >
+                    <dfn id="preferences-document">Preferences Document</dfn>
+                  </dt>
+                  <dd about="#preferences-document" property="skos:definition">
+                    A <dfn>preferences document</dfn>  is a specific resource intended to store data which helps authorized applications accommodate the user's preferences, such as settings, personalization preferences, and pointers to the user's private data.
                   </dd>
                 </dl>
               </div>
@@ -1534,7 +1539,6 @@
             </div>
           </section>
 
-          <!-- TODO: https://github.com/solid/webid-profile/issues/23 -->
           <section
             class="appendix"
             id="references"
