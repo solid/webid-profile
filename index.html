@@ -731,10 +731,10 @@
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#discovering-complete-solid-profile"
+                  <a class="tocxref" href="#discovery"
                     ><span class="secno">2</span>
                     <span class="content"
-                      >Discovering a complete Solid profile</span
+                      >Discovery</span
                     ></a
                   >
                 </li>
@@ -777,48 +777,21 @@
                     ><span class="secno">4</span>
                     <span class="content">Private Preferences</span></a
                   >
-                </li>
-                <li class="tocline">
-                  <a href="#extended-profile-documents"
-                    ><span class="secno">5</span>
-                    <span class="content">Extended Profile Documents</span></a
-                  >
-                  <ol>
-                    <li class="tocline">
-                      <a
-                        class="tocxref"
-                        href="#reading-extended-profile-documents"
-                        ><span class="secno">5.1</span>
-                        <span class="content"
-                          >Reading Extended Profile Documents</span
-                        ></a
-                      >
-                    </li>
-                    <li>
-                      <a href="#writing-extended-profile-documents"
-                        ><span class="secno">5.2</span>
-                        <span class="content"
-                          >Writing Extended Profile Documents</span
-                        ></a
-                      >
-                    </li>
-                  </ol>
-                </li>
                 <li class="tocline">
                   <a class="tocxref" href="#identity-provider"
-                    ><span class="secno">6</span>
+                    ><span class="secno">5</span>
                     <span class="content">Identity Provider</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#inbox"
-                    ><span class="secno">7</span>
+                    ><span class="secno">6</span>
                     <span class="content">Inbox</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#other-predicates"
-                    ><span class="secno">8</span>
+                    ><span class="secno">7</span>
                     <span class="content">Other predicates</span></a
                   >
                 </li>
@@ -1116,68 +1089,35 @@
           </section>
 
           <section
-            id="discovering-complete-solid-profile"
+            id="discovery"
             inlist=""
             rel="schema:hasPart"
-            resource="#discovering-complete-solid-profile"
+            resource="#discovery"
           >
-            <h2 property="schema:name">Discovering a complete Solid profile</h2>
+            <h2 property="schema:name">Discovery</h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                It is possible to have all profile information in a single WebID
-                Profile Document, but a more likely situation is that some
-                information is in that document and some is in
-                <a href="#extended-profile">extended profile</a>
-                documents. With a couple of exceptions noted below, there is no
-                guarantee that any specific piece of data is located in a given
-                document. Therefore it is almost always best to load all profile
-                documents, to do so in a recommended order, and to treat the
-                <a href="#solid-profile">Solid Profile</a> as a graph assembled
-                by loading documents rather than as a set of documents.
-              </p>
-
-              <p>When an application wants to retrieve a complete profile, it SHOULD</p>
-              <ol>
-                <li>
-                  Load the WebID Profile Document reachable at the WebID URI.
-                </li>
-                <li>
-                  If the application is operating on behalf of the WebID owner, find a
-                  triple in that document with the WebID as subject and
-                  pim:preferencesFile as predicate, then load the object of that
-                  triple.
-                </li>
-              </ol>
-              <p>
-                Once all of the accessible extended profile documents have been
-                loaded, the profile will consist of all statements with the
-                WebID as subject, regardless of which document the statements
-                occurred in. An application with only public permissions will see only
-                statements from publicly accessible extended profile documents
-                while other apps will see statements from public and also
-                private extended profile documents they have access to.
-              </p>
-              <p>
-                Profiles can contain, and apps are free to follow, any kind of
-                links to related documents. In order to promote interoperability
-                and limit the burden on apps, this specification recommends a
-                limited number of related documents which a profile ought to
-                contain so that apps can discover them.
-              </p>
-              <p>
-                The discovery process starts with the WebID, a URI that points to exactly one document, referred to here as a WebID
-                Profile Document [<cite><a class="bibref" href="#bib-webid">WEBID</a></cite>].
-                This document can be expected to contain pointers to a <a href="#private-preferences">Preferences File Document</a>
-                containing settings and resources meant only for the WebID owner, <a href="https://solid.github.io/type-indexes/">Type
-                Index Documents</a> containing links to specific types of resources, and might also contain <a href="#extended-profile-documents">Extended Profile</a>
-                Documents containing additional information about the WebID owner. The documents which make up a Solid Profile are
-                illustrated below.
-              </p>
+              <p>A <a href="#solid-profile">Solid profile</a>  is comprised of statements expressing a social agent's identity, which can be found in one or multiple resources. The discovery of these statements initiates with the <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#dfn-webid">WebID</a>, a URI pointing to a single
+                document referred to as a <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/#dfn-profile_document">WebID
+                  Profile Document</a>. This document can contain references to:</p>
+              <ul>
+                <li><a href="#private-preferences">Preferences File Document</a>, containing preferences, settings and resources exclusively for the WebID owner.</li>
+                <li><a href="https://solid.github.io/type-indexes/">Type Index Documents</a>, containing links to specific resource types.</li>
+                <li><a href="#extended-profile">Extended Profile Documents</a>, containing supplementary information about the WebID owner.</li>
+              </ul>
+              <p>A profile can be compiled by reading all statements with the WebID as the subject, regardless of their originating
+                documents, as illustrated below.</p>
               <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
                 <img src="profile-discovery.png" rel="schema:image" />
 
                 <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
               </figure>
+              <div class="note" id="restricted-access-resources" inlist="" rel="schema:hasPart"
+              resource="#restricted-access-resources">
+              <h5 property="schema:name"><span>Note</span>:</h5>
+              <div datatype="rdf:HTML" property="schema:description">
+                <p>Depending on the established access control rules, certain resources may be inaccessible to specific applications or agents.</p>
+              </div>
+            </div>
             </div>
           </section>
 
@@ -1232,7 +1172,7 @@
               <div id="reading-extended-profile">
                 <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="#extended-profile-documents">Extended Profile Documents</a> are also <a
+                  <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a
                       href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
                     Solid WebID Profiles and share the same data model. <a href="#ReaderApplication">Reader
                       Applications</a> retrieve representations of Extended Profile Documents the same way as they
@@ -1241,7 +1181,7 @@
                     resource="#reader-application-extended-profile">
                     <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
-                      representation of an <a href="#extended-profile-documents">Extended Profile Document</a>.</span>
+                      representation of an <a href="#extended-profile">Extended Profile Document</a>.</span>
                   </p>
                 </div>
               </div>
@@ -1257,7 +1197,7 @@
                       <div datatype="rdf:HTML" property="schema:description">
                         <p>To promote self-describing resources and efficient discovery and reuse of profile
                           information, implementations and authors are encouraged to prioritize using the <a href="#solid-profile">Solid
-                            WebID Profile</a> before resorting to an <a href="#extended-profile-documents">Extended WebID Profile.</a>
+                            WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a>
                         </p>
                       </div>
                     </div>
@@ -1361,92 +1301,6 @@
                 the WebID Profile Document with the WebID as subject,
                 <code>pim:preferencesFile</code> as predicate, and the URL of
                 the created document as object.
-              </p>
-            </div>
-          </section>
-          <section
-            id="extended-profile-documents"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#extended-profile-documents"
-          >
-            <h2 property="schema:name">Extended Profile Documents</h2>
-            <div datatype="rdf:HTML" property="schema:description">
-              <p>
-                Solid Profile owners may use the
-                <code>rdfs:seeAlso</code> predicate to link to extended profile
-                documents which contain information that they do not want in the
-                WebID Profile Document or in the Preferences Document. This can
-                be done to help organize information - for example to keep all
-                friends (objects of <code>foaf:knows</code> predicates) in a
-                separate <code>rdfs:seeAlso</code> document. It can also be done
-                to limit access to the data - for example to store a phone
-                number where only trusted friends can view it.
-              </p>
-
-              <section
-                id="reading-extended-profile-documents"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#reading-extended-profile-documents"
-              >
-                <h3 property="schema:name">
-                  Reading Extended Profile Documents
-                </h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    An application wanting to load a complete Solid Profile MUST examine
-                    statements in the WebID Profile Document and the Preferences
-                    Document that have the WebID as subject,
-                    <code>rdfs:seeAlso</code> as predicate and the URL of an
-                    Extended Profile Document as object. When the application has loaded
-                    those two documents, it SHOULD load the documents specified
-                    in the URLs of all <code>rdfs:seeAlso</code> triples found
-                    and SHOULD treat all statements in the linked documents that
-                    have the WebID as subject as part of the Solid Profile. An
-                    application may but can not be expected to load the objects of
-                    <code>rdfs:seeAlso</code> triples found in documents that
-                    are themselves the object of an
-                    <code>rdfs:seeAlso</code> triple. In other words, look in
-                    the WebID Profile Document and in the Preferences Document
-                    for <code>rdfs:seeAlso</code> triples but don't necessarily
-                    follow any additional <code>rdfs:seeAlso</code> triples
-                    found in those documents. An application can examine any statement
-                    found in the linked documents for other purpose, which are
-                    not described by this specification.
-                  </p>
-                </div>
-              </section>
-              <section
-                id="writing-extended-profile-documents"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#writing-extended-profile-documents"
-              >
-                <h3 property="schema:name">
-                  Writing Extended Profile Documents
-                </h3>
-                <div datatype="rdf:HTML" property="schema:description">
-                  <p>
-                    When an application wants to write data in an Extended Profile
-                    Document, it SHOULD give the document appropriate
-                    permissions depending on the needs of the WebID owner. If
-                    the document is meant only for the WebID owner, the app
-                    SHOULD create an <code>rdfs:seeAlso</code> triple pointing
-                    to it in the Preferences File. If the document is meant for
-                    the public or for a restricted audience, the triple SHOULD
-                    be created in the WebID Profile Document.
-                  </p>
-                </div>
-              </section>
-              <!-- TODO: https://github.com/solid/webid-profile/issues/22 -->
-              <p class="advisement">
-                Source:
-                <a
-                  href="https://github.com/solid/webid-profile/pull/2"
-                  rel="cito:citesAsSourceDocument"
-                  >pull/2</a
-                >
               </p>
             </div>
           </section>
