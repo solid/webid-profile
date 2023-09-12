@@ -79,7 +79,7 @@ All contributors to any Work Items must be members of the Solid CG. It’s easy 
 
 Anyone can join the [Solid WebID Profile chat](https://gitter.im/solid/webid-profile).
 
-Mondays, 15:00 UTC at https://meet.jit.si/solid-profile . Meetings are transcribed and [published](https://github.com/solid/webid-profile/tree/main/meetings/).
+A **tentative** meeting slot is held open on Mondays, 15:00 UTC at https://meet.jit.si/solid-profile. Please refer to the [chat](https://gitter.im/solid/webid-profile) for concrete meeting plans and agendas. Meetings are transcribed and [published](https://github.com/solid/webid-profile/tree/main/meetings/).
 
 ## Code of Conduct
 
