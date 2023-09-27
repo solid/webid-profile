@@ -77,9 +77,9 @@ The following predicates will be the main foucs of the documention :
 ## Participation
 All contributors to any Work Items must be members of the Solid CG. It’s easy to [join the CG](https://www.w3.org/community/solid/join).
 
-Anyone can join the [Solid WebID Profile chat](https://gitter.im/solid/webid-profile).
+Anyone can join the [Solid WebID Profile chat](https://matrix.to/#/#solid_webid-profile:gitter.im), or propose a topic for discussion during the weekly [Solid Community Group meetings](https://github.com/solid/specification/#participation).
 
-Mondays, 15:00 UTC at https://meet.jit.si/solid-profile . Meetings are transcribed and [published](https://github.com/solid/webid-profile/tree/main/meetings/).
+A **tentative** meeting slot is held open on Mondays, 15:00 UTC at https://meet.jit.si/solid-profile. Please refer to the [chat](https://gitter.im/solid/webid-profile) for concrete meeting plans and agendas. Meetings are transcribed and [published](https://github.com/solid/webid-profile/tree/main/meetings/).
 
 ## Code of Conduct
 
