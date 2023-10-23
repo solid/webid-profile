@@ -21,7 +21,7 @@ The goals of this group are:
 * [WebID Draft Specification](https://www.w3.org/2005/Incubator/webid/spec/identity/)
 * [Universal Identity for the Web](https://csarven.ca/linked-research-decentralised-web#universal-identity-for-the-web)
 
-## Related Work Ttems
+## Related Work Items
 
 * [Type Indexes repo](https://github.com/solid/type-indexes)
 
