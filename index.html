@@ -1149,9 +1149,9 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile">
                       <h5 property="schema:name"><span>Note</span>:</h5>
                       <div datatype="rdf:HTML" property="schema:description">
-                        <p>To promote self-describing resources and efficient discovery and reuse of profile
-                          information, implementations and authors are encouraged to prioritize using the <a href="#solid-profile">Solid
-                            WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a>
+                        <p about="" id="self-describing-webid-profile" rel="spec:advisement" resource="#self-describing-webid-profile"><span property="spec:statement">To promote self-describing resources and efficient discovery and reuse of profile
+                          information, implementations and authors are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to prioritize using the <a href="#solid-profile">Solid
+                            WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a></span>
                         </p>
                       </div>
                     </div>
@@ -1214,7 +1214,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     resource="#sameness-between-identities">
                     <h5 property="schema:name"><span>Note</span>:</h5>
                     <div datatype="rdf:HTML" property="schema:description">
-                        <p>While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is encouraged when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</p>
+                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><span property="spec:statement">While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
                     </div>
                   </div>
                 </section>
@@ -1280,7 +1280,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>
                 A Solid WebID Profile can advertise an inbox with the <code>ldp:inbox</code> property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>] to allow applications to send
                 and discover notifications about activities, interactions, and new information
-                for the attention of the owner of the WebID. It is discouraged for Solid WebID Profiles to advertise more than one inbox.
+                for the attention of the owner of the WebID. <span about="" id="webid-profile-single-inbox" rel="spec:advisement" resource="#webid-profile-single-inbox"><span property="spec:statement">It is <span rel="spec:advisementLevel" resource="spec:Discouraged">discouraged</span> for Solid WebID Profiles to advertise more than one inbox.</span></span>
               </p>
               <p>
                 Applications can create an inbox (see <a href="https://solidproject.org/TR/protocol#resource-containment">resource
