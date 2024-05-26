@@ -224,7 +224,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
     prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/"
   >
     <main>
-      <article about="" typeof="schema:Article doap:Specification">
+      <article about="" typeof="schema:Article">
         <h1 property="schema:name">Solid WebID Profile</h1>
         <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2024-03-04</h2>
 
@@ -255,7 +255,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             <dt>Editors</dt>
             <dd data-editor-id="129283" id="Virginia-Balseiro">
               <span about="" rel="schema:creator schema:editor"><span about="https://virginiabalseiro.com/#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://virginiabalseiro.com/#me"><span
+                  typeof="schema:Person"><a href="https://virginiabalseiro.com/#me" rel="schema:url"><span
                       about="https://virginiabalseiro.com/#me" property="schema:name"><span
                         property="schema:givenName">Virginia</span>
                       <span property="schema:familyName">Balseiro</span></span></a></span></span>
@@ -263,7 +263,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
             <dd id="Timea-Turdean">
               <span about="" rel="schema:editor"><span about="https://timea.solidcommunity.net/profile/card#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://timea.solidcommunity.net/profile/card#me"><span
+                  typeof="schema:Person"><a href="https://timea.solidcommunity.net/profile/card#me" rel="schema:url"><span
                       about="https://timea.solidcommunity.net/profile/card#me" property="schema:name"><span
                         property="schema:givenName">Timea</span>
                       <span property="schema:familyName">Turdean</span></span></a></span></span>
@@ -271,7 +271,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
             <dd id="Jeff-Zucker">
               <span about="" rel="schema:editor"><span about="https://jeff-zucker.solidcommunity.net/profile/card#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://jeff-zucker.solidcommunity.net/profile/card#me"><span
+                  typeof="schema:Person"><a href="https://jeff-zucker.solidcommunity.net/profile/card#me" rel="schema:url"><span
                       about="https://jeff-zucker.solidcommunity.net/profile/card#me" property="schema:name"><span
                         property="schema:givenName">Jeff</span>
                       <span property="schema:familyName">Zucker</span></span></a></span></span>
@@ -283,27 +283,27 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 
             <dd data-editor-id="2017" id="Tim-Berners-Lee">
               <span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i"
-                  typeof="schema:Person"><a rel="schema:url" href="https://www.w3.org/People/Berners-Lee/"><span
+                  typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span
                       about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span
                         property="schema:givenName">Tim</span>
                       <span property="schema:familyName">Berners-Lee</span></span></a></span></span>
             </dd>
 
             <dd data-editor-id="46140" id="Sarven-Capadisli">
-              <span about="" rel="schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url"
-                    href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span
+              <span about="" rel="schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a 
+                    href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span
                         property="schema:givenName">Sarven</span>
                       <span property="schema:familyName">Capadisli</span></span></a></span></span>
             </dd>
 
-            <dd><a about="" rel="schema:author" resource="https://virginiabalseiro.com/#me"
-                href="https://virginiabalseiro.com/">Virginia Balseiro</a></dd>
+            <dd><a about="" href="https://virginiabalseiro.com/" rel="schema:author" resource="https://virginiabalseiro.com/#me"
+                >Virginia Balseiro</a></dd>
 
-            <dd><a about="" rel="schema:author" resource="https://timea.solidcommunity.net/profile/card#me"
-                href="https://timea.solidcommunity.net/profile/card#me">Timea Turdean</a></dd>
+            <dd><a about="" href="https://timea.solidcommunity.net/profile/card#me" rel="schema:author" resource="https://timea.solidcommunity.net/profile/card#me"
+                >Timea Turdean</a></dd>
 
-            <dd><a about="" rel="schema:author" resource="https://jeff-zucker.solidcommunity.net/profile/card#me"
-                href="https://jeff-zucker.solidcommunity.net/profile/card#me">Jeff Zucker</a></dd>
+            <dd><a about="" href="https://jeff-zucker.solidcommunity.net/profile/card#me" rel="schema:author" resource="https://jeff-zucker.solidcommunity.net/profile/card#me"
+                >Jeff Zucker</a></dd>
           </dl>
 
           <dl id="document-created">
@@ -1120,7 +1120,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 </div>
               </div>
               <div id="reading-extended-profile">
-                <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
+                <h3 content="Extended Profile Documents" property="schema:name">Extended Profile Documents</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a
                       href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
@@ -1129,7 +1129,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     retrieve Solid WebID Profiles.</p>
                   <p about="" id="reader-application-extended-profile" rel="spec:requirement"
                     resource="#reader-application-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
+                    <span property="spec:statement"><a href="#ReaderApplication" rel="spec:requirementSubject">Reader
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
                       representation of an <a href="#extended-profile">Extended Profile Document</a>.</span>
                   </p>
@@ -1153,7 +1153,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     </div>
                   </div>
                   <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="#writer-application-webid-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
                       updated.</span>
@@ -1162,14 +1162,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                     Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
                   </p>
                   <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span
                         rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
                       HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
                       triples; if the server receives such a request, it <span rel="spec:requirementLevel"
                         resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
                   </p>
                   <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span
                         rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
                       status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
                       process the contained instructions, including unrecognised JSON-LD context in representation
@@ -1189,19 +1189,19 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 
                   <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
                     resource="#writer-application-create-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
                   </p>
                   <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
                     resource="#writer-application-update-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be updated</span>
                   </p>
                   <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
                     resource="#writer-application-link-extended-profile-webid">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
                         href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
                       <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
