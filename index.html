@@ -1,324 +1,410 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
     <title>Solid WebID Profile</title>
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <link
-      href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED"
-      media="all"
-      rel="stylesheet"
-      title="W3C-ED"
-    />
-    <style>
-      body {
-        counter-reset: section;
-        counter-reset: sub-section;
-      }
-      em.rfc2119 {
-        color: #900;
-      }
-      code,
-      samp {
-        color: #c83500;
-      }
-      pre code,
-      pre samp {
-        color: #000;
-      }
-      dfn {
-        font-weight: inherit;
-      }
-      .do.fragment a {
-        border-bottom: 0;
-      }
-      .do.fragment a:hover {
-        background: none;
-        border-bottom: 0;
-      }
-      section figure pre {
-        margin: 1em 0;
-        display: block;
-      }
-      cite .bibref {
-        font-style: normal;
-      }
-      .tabs nav ul li {
-        margin: 0;
-      }
-      div.issue,
-      div.note,
-      div.warning {
-        clear: both;
-        margin: 1em 0;
-        padding: 1em 1.2em 0.5em;
-        position: relative;
-      }
-      div.issue h3,
-      div.note h3,
-      div.issue h4,
-      div.note h4,
-      div.issue h5,
-      div.note h5 {
-        margin: 0;
-        font-weight: normal;
-        font-style: normal;
-      }
-      div.issue h3 > span,
-      div.note h3 > span,
-      div.issue h4 > span,
-      div.note h4 > span,
-      div.issue h5 > span,
-      div.note h5 > span {
-        text-transform: uppercase;
-      }
-      div.issue h3,
-      div.issue h4,
-      div.issue h5 {
-        color: #ae1e1e;
-      }
-      div.note h3,
-      div.note h4,
-      div.note h5 {
-        color: #178217;
-      }
-      figure .example-h {
-        margin-top: 0;
-        text-align: left;
-        color: #827017;
-      }
-      figure .example-h > span {
-        text-transform: uppercase;
-      }
-      header address a[href] {
-        float: right;
-        margin: 1rem 0 0.2rem 0.4rem;
-        background: transparent none repeat scroll 0 0;
-        border: medium none;
-        text-decoration: none;
-      }
-      header address img[src*="logos/W3C"] {
-        background: #1a5e9a none repeat scroll 0 0;
-        border-color: #1a5e9a;
-        border-image: none;
-        border-radius: 0.4rem;
-        border-style: solid;
-        border-width: 0.65rem 0.7rem 0.6rem;
-        color: white;
-        display: block;
-        font-weight: bold;
-      }
-      main article > h1 {
-        font-size: 220%;
-        font-weight: bold;
-      }
-
-      article
-        section:not([id="abstract"]):not([id="sotd"]):not([id="references"]):not([id="appendix"]):not([id="acknowledgements"]):not([id="change-log"]):not([id="exit-criteria"]) {
-        counter-increment: section;
-        counter-reset: sub-section;
-      }
-      article
-        section:not([id="abstract"]):not([id="sotd"]):not([id="references"]):not([id="appendix"]):not([id="acknowledgements"]):not([id="change-log"])
-        section:not([id$="references"]):not([id="exit-criteria"]) {
-        counter-increment: sub-section;
-        counter-reset: sub-sub-section;
-      }
-      article
-        section:not([id="abstract"]):not([id="sotd"]):not([id="references"]):not([id="appendix"]):not([id="acknowledgements"]):not([id="change-log"])
-        section:not([id$="references"]):not([id="exit-criteria"])
-        section {
-        counter-increment: sub-sub-section;
-        counter-reset: sub-sub-sub-section;
-      }
-      article
-        section:not([id="abstract"]):not([id="sotd"]):not([id="references"]):not([id="appendix"]):not([id="acknowledgements"]):not([id="change-log"])
-        section:not([id$="references"]):not([id="exit-criteria"])
-        section
-        section {
-        counter-increment: sub-sub-sub-section;
-        counter-reset: sub-sub-sub-sub-section;
-      }
-      article
-        section:not([id="abstract"]):not([id="sotd"]):not([id="references"]):not([id="appendix"]):not([id="acknowledgements"]):not([id="change-log"]):not([id="exit-criteria"]):not([id^="table-of-"])
-        > h2:before {
-        content: counter(section) ".\00a0";
-      }
-      section:not([id$="references"]):not([id^="change-log"]):not([id="exit-criteria"])
-        > h3:before {
-        content: counter(section) "." counter(sub-section) "\00a0";
-      }
-      section > h4:before {
-        content: counter(section) "." counter(sub-section) "."
-          counter(sub-sub-section) "\00a0";
-      }
-      #acknowledgements ul {
-        padding: 0;
-        margin: 0;
-      }
-      #acknowledgements li {
-        display: inline;
-      }
-      #acknowledgements li:after {
-        content: ", ";
-      }
-      #acknowledgements li:last-child:after {
-        content: "";
-      }
-
-      dl[id^="document-"] ul {
-        padding-left: 0;
-        list-style-type: none;
-      }
-      dl [rel~="odrl:action"],
-      dl [rel~="odrl:action"] li {
-        display: inline;
-      }
-      dl [rel~="odrl:action"] li:after {
-        content: ",";
-      }
-      dl [rel~="odrl:action"] li:last-child:after {
-        content: "";
-      }
-    </style>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+<style>
+main,
+main>article,
+main>article>div {
+background:inherit;
+}
+body {
+counter-reset:section sub-section appendix sub-appendix;
+}
+code, samp { color: #e00; }
+pre code, pre samp { color: var(--text); }
+dfn { font-weight:inherit; }
+.do.fragment a { border-bottom:0; }
+.do.fragment a:hover { background:none; border-bottom:0; }
+section figure pre { margin:1em 0; display:block; }
+cite .bibref { font-style: normal; }
+.tabs nav ul li { margin:0; }
+div.issue, div.note, div.warning {
+clear: both;
+margin: 1em 0;
+position: relative;
+}
+div.issue h3, div.note h3,
+div.issue h4, div.note h4,
+div.issue h5, div.note h5 {
+margin:0;
+font-weight:normal;
+font-style:normal;
+font-size:1em;
+}
+div.issue h3 > span, div.note h3 > span,
+div.issue h4 > span, div.note h4 > span,
+div.issue h5 > span, div.note h5 > span,
+figure.example > figcaption > span {
+text-transform: uppercase;
+}
+div.issue h3, div.issue h4, div.issue h5 {
+color:var(--issueheading-text);
+}
+div.note h3, div.note h4, div.note h5 {
+color:var(--noteheading-text);
+}
+figure.example figcaption {
+color:var(--exampleheading-text);
+}
+main figure {
+text-align:left;
+}
+figure[id] {
+position:relative;
+padding:0.5em;
+}
+figure[id] figcaption {
+font-style:normal;
+font-size:1em;
+}
+figure.example figcaption span + span {
+text-transform:initial;
+}
+.copyright + hr {
+border-style: solid;
+}
+header address a[href] {
+float: right;
+margin: 1rem 0 0.2rem 0.4rem;
+background: transparent none repeat scroll 0 0;
+border: medium none;
+text-decoration: none;
+}
+header address img[src*="logos/W3C"] {
+background: #1a5e9a none repeat scroll 0 0;
+border-color: #1a5e9a;
+border-image: none;
+border-radius: 0.4rem;
+border-style: solid;
+border-width: 0.65rem 0.7rem 0.6rem;
+color: white;
+display: block;
+font-weight: bold;
+}
+main article > h1 {
+font-size: 220%;
+font-weight:bold;
+}
+#acknowledgements ul { padding: 0; margin:0; }
+#acknowledgements li { display:inline; }
+#acknowledgements li:after { content: ", "; }
+#acknowledgements li:last-child:after { content: ""; }
+dd .contributed {
+user-select: none;
+}
+aside.do { overflow:inherit; }
+aside.do blockquote {
+padding: 0; border: 0; margin: 0;
+}
+dl[id^="document-"] ul {
+padding-left:0;
+list-style-type:none;
+}
+dl [rel~="odrl:action"],
+dl [rel~="odrl:action"] li {
+display: inline;
+}
+dl [rel~="odrl:action"] li:after {
+content: ", ";
+}
+dl [rel~="odrl:action"] li:last-child:after {
+content: "";
+}
+aside section > .toc,
+aside section > .toc ol {
+margin-left: revert;
+}
+aside section > .toc li li {
+margin-left: 1em;
+font-size: revert;
+}
+table {
+border-collapse:collapse;
+}
+table + table {
+margin-top:2em;
+}
+caption {
+text-align:left;
+padding:0 0.25em 0.25em;
+margin-bottom: 1em;
+font-size: 1em;
+font-style: revert;
+font-weight: bold;
+border-bottom: 1px solid;
+}
+caption, tbody, tfoot {
+border-bottom:2pt solid #ccc;
+}
+thead,
+thead th[colspan] {
+border-bottom:1pt solid #ccc;
+}
+[rowspan] { vertical-align: bottom; }
+tbody [rowspan] { vertical-align: middle; }
+tbody th[scope="rowgroup"] {
+border-bottom:3pt double #ccc;
+}
+tr {
+border-bottom:1pt solid #ccc;
+}
+th, td {
+padding:0.25em;
+font-size:0.923em;
+word-wrap:normal;
+}
+table ul,
+table ol,
+table li,
+table p,
+table dd {
+margin:0;
+text-align:left;
+}
+table ul,
+table ol {
+padding-left:1em;
+}
+tfoot td > * + * {
+margin-top:1em;
+}
+tfoot dd:after { content: "\A"; white-space:pre; }
+tfoot dt, tfoot dd { display:inline; }
+tfoot dd { margin-left: 0.5em; }
+tfoot dd + dt { margin-top:0; }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) {
+counter-increment:section;
+counter-reset:sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) {
+counter-increment:sub-section;
+counter-reset:sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section {
+counter-increment:sub-sub-section;
+counter-reset:sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]) section:not([id$=references]):not([id=exit-criteria]) section section {
+counter-increment:sub-sub-sub-section;
+counter-reset:sub-sub-sub-sub-section;
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before {
+content:counter(section) ".\00a0";
+}
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before {
+content:counter(section) "." counter(sub-section) "\00a0";
+}
+section > h4:before {
+content:counter(section)"." counter(sub-section) "." counter(sub-sub-section) "\00a0";
+}
+article section.appendix {
+counter-increment:appendix;
+counter-reset:sub-appendix;
+}
+article section[class~=appendix]:not([id=abstract]):not([id=sotd]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]) section {
+counter-increment:sub-appendix;
+counter-reset:sub-sub-appendix;
+}
+section.appendix > h2:before {
+content:counter(appendix, upper-alpha) ".\00a0";
+}
+section.appendix section > h3:before {
+content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
+}
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before,
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before,
+section > h4:before,
+section.appendix > h2:before,
+section.appendix section > h3:before {
+content:"";
+}
+.self-link {
+display: inline-block;
+margin-right:0.25em;
+user-select: none;
+font-family: monospace;
+font-style:normal;
+font-weight:bold;
+outline:none;
+text-align:left;
+text-decoration:underline;
+border:0;
+background-color:transparent;
+line-height: 1;
+vertical-align: initial;
+}
+figure[id] figcaption {
+margin-left:1em;
+}
+figure[id] .self-link {
+position:absolute;
+top:1em;
+left:0.5em;
+}
+.self-link:after {
+content:"#";
+font-size: initial;
+}
+aside > .self-link:after {
+content:"|";
+}
+dl > .self-link:after {
+content:"☝";
+}
+nav > .self-link:after {
+content:"☛";
+}
+p > .self-link:after {
+content:"¶";
+}
+section > .self-link:after {
+content:"§";
+}
+figure > .self-link:after {
+content:"❦";
+}
+table > .self-link:after {
+content:"𝄜";
+}
+[rel~="spec:requirement"] .self-link:after {
+content:"◎";
+}
+[rel~="spec:advisement"] .self-link:after {
+content:"!";
+}
+h2,h3,h4,h5,h6 {
+display:inline-block;
+margin-block:0;
+margin-bottom:0.5rem;
+}
+</style>
+    <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
+    <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
   </head>
 
   <body
     about=""
-    prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# deo: http://purl.org/spar/deo/ fabio: http://purl.org/spar/fabio/ cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/"
-    typeof="schema:CreativeWork prov:Entity as:Article"
+    prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# rdfs: http://www.w3.org/2000/01/rdf-schema# owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# dcterms: http://purl.org/dc/terms/ skos: http://www.w3.org/2004/02/skos/core# prov: http://www.w3.org/ns/prov# mem: http://mementoweb.org/ns# qb: http://purl.org/linked-data/cube# schema: http://schema.org/ doap: http://usefulinc.com/ns/doap# cito: http://purl.org/spar/cito/ as: https://www.w3.org/ns/activitystreams# ldp: http://www.w3.org/ns/ldp# earl: http://www.w3.org/ns/earl# spec: http://www.w3.org/ns/spec# rel: https://www.w3.org/ns/iana/link-relations/relation# odrl: http://www.w3.org/ns/odrl/2/"
   >
-    <header>
-      <address>
-        <a class="logo" href="https://solidproject.org/"
-          ><img
-            height="66"
-            width="72"
-            alt="Solid Project"
-            src="https://solidproject.org/TR/solid.svg"
-        /></a>
-      </address>
-    </header>
-
     <main>
-      <article about="" typeof="schema:Article doap:Specification">
-        <h1 property="schema:name">Solid WebID Profile</h1>
-        <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2024-03-04</h2>
+      <article about="" typeof="schema:Article">
+        <div class="head">
+          <h1 property="schema:name">Solid WebID Profile</h1>
 
-        <details open="">
-          <summary>More details about this document</summary>
+          <h2>Version <span property="doap:revision">1.0.0</span>, Editor’s Draft, 2024-03-04</h2>
 
-          <dl id="document-identifier">
-            <dt>This version</dt>
-            <dd>
-              <a href="https://solid.github.io/webid-profile/" rel="owl:sameAs"
-                >https://solid.github.io/webid-profile/</a
-              >
-            </dd>
-          </dl>
+          <details open="">
+            <summary>More details about this document</summary>
 
-          <dl id="document-latest-version">
-            <dt>Latest version</dt>
-            <dd>
-              <a
-                href="https://solid.github.io/webid-profile/"
-                rel="rel:latest-version"
-                >https://solid.github.io/webid-profile/</a
-              >
-            </dd>
-          </dl>
+            <dl id="document-identifier">
+              <dt>This version</dt>
+              <dd>
+                <a href="https://solid.github.io/webid-profile/" rel="owl:sameAs"
+                  >https://solid.github.io/webid-profile/</a
+                >
+              </dd>
+            </dl>
 
-          <dl id="document-latest-published-version">
-            <dt>Latest published version</dt>
-            <dd>
-              <a
-                href="https://solid.github.io/webid-profile/"
-                rel="rdfs:seeAlso"
-                >https://solid.github.io/webid-profile/</a
-              >
-            </dd>
-          </dl>
+            <dl id="document-latest-published-version">
+              <dt>Latest published version</dt>
+              <dd>
+                <a
+                  href="https://solid.github.io/webid-profile/"
+                  rel="rdfs:seeAlso"
+                  >https://solid.github.io/webid-profile/</a
+                >
+              </dd>
+            </dl>
 
-          <dl id="document-editors">
-            <dt>Editors</dt>
-            <dd id="Virginia-Balseiro">
-              <span about="" rel="schema:creator schema:editor"><span about="https://virginiabalseiro.com/#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://virginiabalseiro.com/#me"><span
-                      about="https://virginiabalseiro.com/#me" property="schema:name"><span
-                        property="schema:givenName">Virginia</span>
-                      <span property="schema:familyName">Balseiro</span></span></a></span></span>
-            </dd>
+            <dl id="document-editors">
+              <dt>Editors</dt>
+              <dd data-editor-id="129283" id="Virginia-Balseiro">
+                <span about="" rel="schema:creator schema:editor"><span about="https://virginiabalseiro.com/#me"
+                    typeof="schema:Person"><a href="https://virginiabalseiro.com/#me" rel="schema:url"><span
+                        about="https://virginiabalseiro.com/#me" property="schema:name"><span
+                          property="schema:givenName">Virginia</span>
+                        <span property="schema:familyName">Balseiro</span></span></a></span></span>
+              </dd>
 
-            <dd id="Timea-Turdean">
-              <span about="" rel="schema:editor"><span about="https://timea.solidcommunity.net/profile/card#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://timea.solidcommunity.net/profile/card#me"><span
-                      about="https://timea.solidcommunity.net/profile/card#me" property="schema:name"><span
-                        property="schema:givenName">Timea</span>
-                      <span property="schema:familyName">Turdean</span></span></a></span></span>
-            </dd>
+              <dd id="Jeff-Zucker">
+                <span about="" rel="schema:editor"><span about="https://jeff-zucker.solidcommunity.net/profile/card#me"
+                    typeof="schema:Person"><a href="https://jeff-zucker.solidcommunity.net/profile/card#me" rel="schema:url"><span
+                        about="https://jeff-zucker.solidcommunity.net/profile/card#me" property="schema:name"><span
+                          property="schema:givenName">Jeff</span>
+                        <span property="schema:familyName">Zucker</span></span></a></span></span>
+              </dd>
 
-            <dd id="Jeff-Zucker">
-              <span about="" rel="schema:editor"><span about="https://jeff-zucker.solidcommunity.net/profile/card#me"
-                  typeof="schema:Person"><a rel="schema:url" href="https://jeff-zucker.solidcommunity.net/profile/card#me"><span
-                      about="https://jeff-zucker.solidcommunity.net/profile/card#me" property="schema:name"><span
-                        property="schema:givenName">Jeff</span>
-                      <span property="schema:familyName">Zucker</span></span></a></span></span>
-            </dd>
-          </dl>
-          
-          <dl id="document-authors">
-            <dt>Authors</dt>
+              <dd data-editor-id="46140" id="Sarven-Capadisli">
+                <span about="" rel="schema:editor"><span about="https://csarven.ca/#i" typeof="schema:Person"><a 
+                      href="https://csarven.ca/" rel="schema:url"><span about="https://csarven.ca/#i" property="schema:name"><span
+                          property="schema:givenName">Sarven</span>
+                        <span property="schema:familyName">Capadisli</span></span></a></span></span>
+              </dd>
+            </dl>
 
-            <dd id="Tim-Berners-Lee">
-              <span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i"
-                  typeof="schema:Person"><a rel="schema:url" href="https://www.w3.org/People/Berners-Lee/"><span
-                      about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span
-                        property="schema:givenName">Tim</span>
-                      <span property="schema:familyName">Berners-Lee</span></span></a></span></span>
-            </dd>
+            <dl id="document-former-editors">
+              <dt>Former editors</dt>
+              <dd id="Timea-Turdean">
+                <span about="" rel="schema:contributor"><span about="https://timea.solidcommunity.net/profile/card#me"
+                    typeof="schema:Person"><a href="https://timea.solidcommunity.net/profile/card#me" rel="schema:url"><span
+                        about="https://timea.solidcommunity.net/profile/card#me" property="schema:name"><span
+                          property="schema:givenName">Timea</span>
+                        <span property="schema:familyName">Turdean</span></span></a></span></span>
+              </dd>
+            </dl>
 
-            <dd id="Sarven-Capadisli">
-              <span about="" rel="schema:author"><span about="https://csarven.ca/#i" typeof="schema:Person"><a rel="schema:url"
-                    href="https://csarven.ca/"><span about="https://csarven.ca/#i" property="schema:name"><span
-                        property="schema:givenName">Sarven</span>
-                      <span property="schema:familyName">Capadisli</span></span></a></span></span>
-            </dd>
+            <dl id="document-authors">
+              <dt>Authors</dt>
 
-            <dd><a about="" rel="schema:author" resource="https://virginiabalseiro.com/#me"
-                href="https://virginiabalseiro.com/">Virginia Balseiro</a></dd>
+              <dd data-editor-id="2017" id="Tim-Berners-Lee">
+                <span about="" rel="schema:author"><span about="https://www.w3.org/People/Berners-Lee/card#i"
+                    typeof="schema:Person"><a href="https://www.w3.org/People/Berners-Lee/" rel="schema:url"><span
+                        about="https://www.w3.org/People/Berners-Lee/card#i" property="schema:name"><span
+                          property="schema:givenName">Tim</span>
+                        <span property="schema:familyName">Berners-Lee</span></span></a></span></span>
+              </dd>
 
-            <dd><a about="" rel="schema:author" resource="https://timea.solidcommunity.net/profile/card#me"
-                href="https://timea.solidcommunity.net/profile/card#me">Timea Turdean</a></dd>
+              <dd><a about="" href="https://csarven.ca/" rel="schema:author" resource="https://csarven.ca/#i"
+                  >Sarven Capadisli</a></dd>
 
-            <dd><a about="" rel="schema:author" resource="https://jeff-zucker.solidcommunity.net/profile/card#me"
-                href="https://jeff-zucker.solidcommunity.net/profile/card#me">Jeff Zucker</a></dd>
-          </dl>
+              <dd><a about="" href="https://virginiabalseiro.com/" rel="schema:author" resource="https://virginiabalseiro.com/#me"
+                  >Virginia Balseiro</a></dd>
 
-          <dl id="document-created">
-            <dt>Created</dt>
-            <dd>
-              <time
-                content="2020-06-22T00:00:00Z"
-                datatype="xsd:dateTime"
-                datetime="2022-06-22T00:00:00Z"
-                property="schema:dateCreated"
-                >2022-06-22</time
-              >
-            </dd>
-          </dl>
+              <dd><a about="" href="https://timea.solidcommunity.net/profile/card#me" rel="schema:author" resource="https://timea.solidcommunity.net/profile/card#me"
+                  >Timea Turdean</a></dd>
 
-          <dl id="document-published">
-            <dt>Published</dt>
-            <dd>
-              <time
-                content="2020-06-22T00:00:00Z"
-                datatype="xsd:dateTime"
-                datetime="2022-06-22T00:00:00Z"
-                property="schema:datePublished"
-                >2022-06-22</time
-              >
-            </dd>
-          </dl>
+              <dd><a about="" href="https://jeff-zucker.solidcommunity.net/profile/card#me" rel="schema:author" resource="https://jeff-zucker.solidcommunity.net/profile/card#me"
+                  >Jeff Zucker</a></dd>
+            </dl>
+
+            <dl id="document-created">
+              <dt>Created</dt>
+              <dd>
+                <time
+                  content="2020-06-22T00:00:00Z"
+                  datatype="xsd:dateTime"
+                  datetime="2022-06-22T00:00:00Z"
+                  property="schema:dateCreated"
+                  >2022-06-22</time
+                >
+              </dd>
+            </dl>
+
+            <dl id="document-published">
+              <dt>Published</dt>
+              <dd>
+                <time
+                  content="2020-06-22T00:00:00Z"
+                  datatype="xsd:dateTime"
+                  datetime="2022-06-22T00:00:00Z"
+                  property="schema:datePublished"
+                  >2022-06-22</time
+                >
+              </dd>
+            </dl>
 
           <dl id="document-modified">
             <dt>Modified</dt>
@@ -333,267 +419,245 @@
             </dd>
           </dl>
 
-          <dl id="document-repository">
-            <dt>Repository</dt>
-            <dd>
-              <a
-                href="https://github.com/solid/webid-profile"
-                rel="doap:repository"
-                >GitHub</a
-              >
-            </dd>
-            <dd>
-              <a
-                href="https://github.com/solid/webid-profile/issues"
-                rel="doap:bug-database"
-                >Issues</a
-              >
-            </dd>
-          </dl>
+            <dl id="document-feedback">
+              <dt>Feedback</dt>
+              <dd><a href="https://github.com/solid/webid-profile" rel="doap:repository">GitHub solid/webid-profile</a> (<a href="https://github.com/solid/webid-profile/pulls">pull requests</a>, <a href="https://github.com/solid/webid-profile/issues/new">new issue</a>, <a href="https://github.com/solid/webid-profile/issues" rel="doap:bug-database">open issues</a>)</dd>
+            </dl>
 
-          <dl id="document-language">
-            <dt>Language</dt>
-            <dd>
-              <span content="en" lang="" property="dcterms:language" xml:lang=""
-                >English</span
-              >
-            </dd>
-          </dl>
+            <dl id="document-language">
+              <dt>Language</dt>
+              <dd>
+                <span content="en" lang="" property="dcterms:language" xml:lang=""
+                  >English</span
+                >
+              </dd>
+            </dl>
 
-          <dl id="document-status">
-            <dt>Document Status</dt>
-            <dd
-              prefix="pso: http://purl.org/spar/pso/"
-              rel="pso:holdsStatusInTime"
-              resource="#dc0d85a0-2f9d-43ca-b678-1ad0d84e6bf5"
-            >
-              <span
-                rel="pso:withStatus"
-                resource="http://purl.org/spar/pso/draft"
-                typeof="pso:PublicationStatus"
-                >Editor’s Draft</span
-              >
-            </dd>
-          </dl>
+            <dl id="document-version">
+              <dt>Version</dt>
+              <dd><span lang="" property="schema:version" xml:lang="">1.0.0</span></dd>
+            </dl>
 
-          <dl id="document-policy">
-            <dt>Policy</dt>
-            <dd>
-              <dl
-                id="document-policy-offer"
-                rel="odrl:hasPolicy"
-                resource="#document-policy-offer"
-                typeof="odrl:Policy"
-              >
-                <dt>Rule</dt>
-                <dd>
-                  <a
-                    about="#document-policy-offer"
-                    href="https://www.w3.org/TR/odrl-vocab/#term-Offer"
-                    typeof="odrl:Offer"
-                    >Offer</a
-                  >
-                </dd>
-                <dt>Unique Identifier</dt>
-                <dd>
-                  <a
-                    href="https://solidproject.org/TR/webid-profile#document-policy-offer"
-                    rel="odrl:uid"
-                    >https://solidproject.org/TR/webid-profile#document-policy-offer</a
-                  >
-                </dd>
-                <dt>Target</dt>
-                <dd>
-                  <a
-                    href="https://solidproject.org/TR/webid-profile"
-                    rel="odrl:target"
-                    >https://solidproject.org/TR/webid-profile</a
-                  >
-                </dd>
-                <dt>Permission</dt>
-                <dd>
-                  <dl
-                    id="document-permission"
-                    rel="odrl:permission"
-                    resource="#document-permission"
-                    typeof="odrl:Permission"
-                  >
-                    <dt>Assigner</dt>
-                    <dd>
-                      <a
-                        rel="odrl:assigner"
-                        href="https://www.w3.org/groups/cg/solid/"
-                        >W3C Solid Community Group</a
-                      >
-                    </dd>
-                    <dt>Action</dt>
-                    <dd>
-                      <ul rel="odrl:action">
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-aggregate"
-                            resource="odrl:aggregate"
-                            >Aggregate</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-archive"
-                            resource="odrl:archive"
-                            >Archive</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse"
-                            resource="odrl:concurrentUse"
-                            >Concurrent Use</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks"
-                            resource="http://creativecommons.org/ns#DerivativeWorks"
-                            >Derivative Works</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-derive"
-                            resource="odrl:derive"
-                            >Derive</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-digitize"
-                            resource="odrl:digitize"
-                            >Digitize</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-display"
-                            resource="odrl:display"
-                            >Display</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-Distribution"
-                            resource="http://creativecommons.org/ns#Distribution"
-                            >Distribution</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-index"
-                            resource="odrl:index"
-                            >Index</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-inform"
-                            resource="odrl:inform"
-                            >Inform</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-install"
-                            resource="odrl:install"
-                            >Install</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-Notice"
-                            resource="http://creativecommons.org/ns#Notice"
-                            >Notice</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-present"
-                            resource="odrl:present"
-                            >Present</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-print"
-                            resource="odrl:print"
-                            >Print</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-read"
-                            resource="odrl:read"
-                            >Read</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-reproduce"
-                            resource="odrl:reproduce"
-                            >Reproduce</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction"
-                            resource="http://creativecommons.org/ns#Reproduction"
-                            >Reproduction</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-stream"
-                            resource="odrl:stream"
-                            >Stream</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-synchronize"
-                            resource="odrl:synchronize"
-                            >Synchronize</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech"
-                            resource="odrl:textToSpeech"
-                            >Text-to-speech</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-transform"
-                            resource="odrl:transform"
-                            >Transform</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="https://www.w3.org/TR/odrl-vocab/#term-translate"
-                            resource="odrl:translate"
-                            >Translate</a
-                          >
-                        </li>
-                      </ul>
-                    </dd>
-                  </dl>
-                </dd>
-              </dl>
-            </dd>
-          </dl>
-        </details>
+            <dl id="document-policy">
+              <dt>Policy</dt>
+              <dd>
+                <dl
+                  id="document-policy-offer"
+                  rel="odrl:hasPolicy"
+                  resource="#document-policy-offer"
+                  typeof="odrl:Policy"
+                >
+                  <dt>Rule</dt>
+                  <dd>
+                    <a
+                      about="#document-policy-offer"
+                      href="https://www.w3.org/TR/odrl-vocab/#term-Offer"
+                      typeof="odrl:Offer"
+                      >Offer</a
+                    >
+                  </dd>
+                  <dt>Unique Identifier</dt>
+                  <dd>
+                    <a
+                      href="https://solid.github.io/webid-profile/#document-policy-offer"
+                      rel="odrl:uid"
+                      >https://solid.github.io/webid-profile/#document-policy-offer</a
+                    >
+                  </dd>
+                  <dt>Target</dt>
+                  <dd>
+                    <a
+                      href="https://solid.github.io/webid-profile/"
+                      rel="odrl:target"
+                      >https://solid.github.io/webid-profile/</a
+                    >
+                  </dd>
+                  <dt>Permission</dt>
+                  <dd>
+                    <dl
+                      id="document-permission"
+                      rel="odrl:permission"
+                      resource="#document-permission"
+                      typeof="odrl:Permission"
+                    >
+                      <dt>Assigner</dt>
+                      <dd>
+                        <a
+                          rel="odrl:assigner"
+                          href="https://www.w3.org/groups/cg/solid/"
+                          >W3C Solid Community Group</a
+                        >
+                      </dd>
+                      <dt>Action</dt>
+                      <dd>
+                        <ul rel="odrl:action">
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-aggregate"
+                              resource="odrl:aggregate"
+                              >Aggregate</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-archive"
+                              resource="odrl:archive"
+                              >Archive</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-concurrentUse"
+                              resource="odrl:concurrentUse"
+                              >Concurrent Use</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-DerivativeWorks"
+                              resource="http://creativecommons.org/ns#DerivativeWorks"
+                              >Derivative Works</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-derive"
+                              resource="odrl:derive"
+                              >Derive</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-digitize"
+                              resource="odrl:digitize"
+                              >Digitize</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-display"
+                              resource="odrl:display"
+                              >Display</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-Distribution"
+                              resource="http://creativecommons.org/ns#Distribution"
+                              >Distribution</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-index"
+                              resource="odrl:index"
+                              >Index</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-inform"
+                              resource="odrl:inform"
+                              >Inform</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-install"
+                              resource="odrl:install"
+                              >Install</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-Notice"
+                              resource="http://creativecommons.org/ns#Notice"
+                              >Notice</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-present"
+                              resource="odrl:present"
+                              >Present</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-print"
+                              resource="odrl:print"
+                              >Print</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-read"
+                              resource="odrl:read"
+                              >Read</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-reproduce"
+                              resource="odrl:reproduce"
+                              >Reproduce</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-Reproduction"
+                              resource="http://creativecommons.org/ns#Reproduction"
+                              >Reproduction</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-stream"
+                              resource="odrl:stream"
+                              >Stream</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-synchronize"
+                              resource="odrl:synchronize"
+                              >Synchronize</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-textToSpeech"
+                              resource="odrl:textToSpeech"
+                              >Text-to-speech</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-transform"
+                              resource="odrl:transform"
+                              >Transform</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="https://www.w3.org/TR/odrl-vocab/#term-translate"
+                              resource="odrl:translate"
+                              >Translate</a
+                            >
+                          </li>
+                        </ul>
+                      </dd>
+                    </dl>
+                  </dd>
+                </dl>
+              </dd>
+            </dl>
+          </details>
 
         <p class="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022-2024 the Contributors to Solid WebID Profile specification, published by the <a href="https://www.w3.org/groups/cg/solid/">Solid Community Group</a> under the <a href="https://www.w3.org/community/about/agreements/cla/" rel="schema:license">W3C Community Contributor License Agreement (CLA)</a>. A human-readable <a href="https://www.w3.org/community/about/agreements/cla-deed/">summary</a> is available. All code snippets are in the public domain, <a href="https://creativecommons.org/public-domain/cc0/" rel="schema:license">CC0</a>.</p>
 
+          <hr title="Separator for header" />
+        </div>
 
         <div datatype="rdf:HTML" id="content" property="schema:description">
           <section id="abstract">
@@ -653,7 +717,7 @@
           </section>
 
           <nav id="toc">
-            <h2 id="table-of-contents">Table of Contents</h2>
+            <h2>Table of Contents</h2>
             <div>
               <ol class="toc">
                 <li class="tocline">
@@ -664,66 +728,66 @@
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#introduction"
-                    ><span class="secno">1</span>
-                    <span class="content">Introduction</span></a
+                    ><bdi class="secno">1.</bdi>
+                    <span>Introduction</span></a
                   >
                   <ol>
-                    <li>
-                      <a href="#terminology"
-                        ><span class="secno">1.1</span>
-                        <span class="content">Terminology</span></a
+                    <li class="tocline">
+                      <a class="tocxref" href="#terminology"
+                        ><bdi class="secno">1.1</bdi>
+                        <span>Terminology</span></a
                       >
                     </li>
-                    <li>
-                      <a href="#namespaces"
-                        ><span class="secno">1.2</span>
-                        <span class="content">Namespaces</span></a
+                    <li class="tocline">
+                      <a class="tocxref" href="#namespaces"
+                        ><bdi class="secno">1.2</bdi>
+                        <span>Namespaces</span></a
                       >
                     </li>
-                    <li>
-                      <a href="#conformance"
-                        ><span class="secno">1.3</span>
-                        <span class="content">Conformance</span></a
+                    <li class="tocline">
+                      <a class="tocxref" href="#conformance"
+                        ><bdi class="secno">1.3</bdi>
+                        <span>Conformance</span></a
                       >
                     </li>
                   </ol>
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#discovery"
-                    ><span class="secno">2</span>
-                    <span class="content"
+                    ><bdi class="secno">2.</bdi>
+                    <span
                       >Discovery</span
                     ></a
                   >
                 </li>
                 <li class="tocline">
                   <a href="#reading-writing-profiles"
-                    ><span class="secno">3</span>
-                    <span class="content">Reading and Writing Profiles</span></a
+                    ><bdi class="secno">3.</bdi>
+                    <span>Reading and Writing Profiles</span></a
                   >
                   <ol>
                     <li class="tocline">
                       <a
                         class="tocxref"
                         href="#reading-profile"
-                        ><span class="secno">3.1</span>
-                        <span class="content"
+                        ><bdi class="secno">3.1</bdi>
+                        <span
                           >Reading Profile</span
                         ></a
                       >
                     </li>
-                    <li>
-                      <a href="#updating-profile"
-                        ><span class="secno">3.2</span>
-                        <span class="content"
+                    <li class="tocline">
+                      <a class="tocxref" href="#updating-profile"
+                        ><bdi class="secno">3.2</bdi>
+                        <span
                           >Updating Profile</span
                         ></a
                       >
                     </li>
-                    <li>
-                      <a href="#extending-profile"
-                        ><span class="secno">3.3</span>
-                        <span class="content"
+                    <li class="tocline">
+                      <a class="tocxref" href="#extending-profile"
+                        ><bdi class="secno">3.3</bdi>
+                        <span
                           >Extending a Profile</span
                         ></a
                       >
@@ -731,46 +795,50 @@
                   </ol>
                 </li>
                 <li class="tocline">
-                  <a href="#private-preferences"
-                    ><span class="secno">4</span>
-                    <span class="content">Private Preferences</span></a
+                  <a class="tocxref" href="#private-preferences"
+                    ><bdi class="secno">4.</bdi>
+                    <span>Private Preferences</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#identity-provider"
-                    ><span class="secno">5</span>
-                    <span class="content">Identity Provider</span></a
+                    ><bdi class="secno">5.</bdi>
+                    <span>Identity Provider</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#inbox"
-                    ><span class="secno">6</span>
-                    <span class="content">Inbox</span></a
+                    ><bdi class="secno">6.</bdi>
+                    <span>Inbox</span></a
                   >
                 </li>
                 <li class="tocline">
                   <a class="tocxref" href="#other-predicates"
-                    ><span class="secno">7</span>
-                    <span class="content">Other predicates</span></a
+                    ><bdi class="secno">7.</bdi>
+                    <span>Other predicates</span></a
                   >
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#acknowledgements"><bdi class="secno">B.</bdi> <span>Acknowledgements</span></a>
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#references"><bdi class="secno">C.</bdi> <span>References</span></a>
+                  <ol>
+                    <li class="tocline"><a class="tocxref" href="#normative-references"><bdi class="secno">C.1</bdi> <span>Normative References</span></a></li>
+                    <li class="tocline"><a class="tocxref" href="#informative-references"><bdi class="secno">C.2</bdi> <span>Informative References</span></a></li>
+                  </ol>
                 </li>
               </ol>
             </div>
           </nav>
 
-          <section
-            id="introduction"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#introduction"
-          >
-            <h2
-              about="#introduction"
-              property="schema:name"
-              typeof="deo:Introduction"
-            >
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction"><a class="self-link" href="#introduction"></a>
+            <h2><bdi class="secno">1.</bdi> <span about="#introduction" property="schema:name">
               Introduction
-            </h2>
+            </span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
               <blockquote cite="https://www.w3.org/DesignIssues/Gradient">
@@ -804,7 +872,7 @@
               <p>
                 There are different circumstances under which profiles are used or shared, including: 
               </p>
-              <ul id="use-cases">
+              <ul id="use-cases"><a class="self-link" href="#use-cases"></a>
                 <li>Communication and use of multiple profiles for different purposes.</li>
                 <li>Connectivity of multiple profiles and cross-context recognition.</li>
                 <li>Cascade of profile information.</li>
@@ -837,14 +905,8 @@
               </ul>
             </div>
 
-            <section
-              id="terminology"
-              inlist=""
-              rel="schema:hasPart"
-              resource="#terminology"
-              typeof="skos:ConceptScheme"
-            >
-              <h3 property="schema:name skos:prefLabel">Terminology</h3>
+            <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme"><a class="self-link" href="#terminology"></a>
+              <h3><bdi class="secno">1.1</bdi> <span property="schema:name skos:prefLabel">Terminology</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <p><em>This section is non-normative.</em></p>
 
@@ -877,34 +939,22 @@
                 </p>
 
                 <dl rel="skos:hasTopConcept">
-                  <dt
-                    about="#solid-profile"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="solid-profile">Solid Profile</dfn>
+                  <dt about="#solid-profile" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="solid-profile"><a class="self-link" href="#solid-profile"></a>Solid Profile</dfn>
                   </dt>
                   <dd about="#solid-profile" property="skos:definition">
                     A <em>Solid profile</em> is a description of a social agent's identity within the Solid ecosystem, which can be used to describe their persona, preferences, abilities, affiliations, social activities and relationships, characteristics, and digital presence, as well as to aid in the discovery of storage and location of specific data.
                   </dd>
 
-                  <dt
-                    about="#extended-profile"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="extended-profile">Extended Solid Profile</dfn>
+                  <dt about="#extended-profile" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="extended-profile"><a class="self-link" href="#extended-profile"></a>Extended Solid Profile</dfn>
                   </dt>
                   <dd about="#extended-profile" property="skos:definition">
                     An <em>extended Solid profile</em> is an additional profile document that provides supplemental description to a Solid profile to help distribute and manage information about a WebID for use in different circumstances. Extended profile documents can be used for various purposes, such as organizing information or limiting access to certain data.
                   </dd>
 
-                  <dt
-                    about="#preferences-document"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="preferences-document">Preferences Document</dfn>
+                  <dt about="#preferences-document" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="preferences-document"><a class="self-link" href="#preferences-document"></a>Preferences Document</dfn>
                   </dt>
                   <dd about="#preferences-document" property="skos:definition">
                     A <em>preferences document</em> is a specific resource intended to store data which helps authorized applications accommodate the user's preferences, such as settings, personalization details, and pointers to the user's private data.
@@ -913,13 +963,8 @@
               </div>
             </section>
 
-            <section
-              id="namespaces"
-              inlist=""
-              rel="schema:hasPart"
-              resource="#namespaces"
-            >
-              <h3 property="schema:name">Namespaces</h3>
+            <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces"><a class="self-link" href="#namespaces"></a>
+              <h3><bdi class="secno">1.2</bdi> <span property="schema:name">Namespaces</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <table>
                   <caption>
@@ -994,51 +1039,51 @@
               </div>
             </section>
 
-            <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
-              <h3 property="schema:name">Conformance</h3>
+            <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance"><a class="self-link" href="#conformance"></a>
+              <h3><bdi class="secno">1.3</bdi> <span property="schema:name">Conformance</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Solid WebID Profile.</span>.</p>
           
-                <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content">
+                <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content"><a class="self-link" href="#normative-informative-content"></a>
                   <h4 property="schema:name">Normative and Informative Content</h4>
                   <div datatype="rdf:HTML" property="schema:description">
-                    <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
-                    <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
-                    <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
+                    <p id="normative-informative-sections"><a class="self-link" href="#normative-informative-sections"></a>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+                    <p id="requirement-levels"><a class="self-link" href="#requirement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                    <p id="advisement-levels"><a class="self-link" href="#advisement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                   </div>
                 </section>
           
-                <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme">
+                <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme"><a class="self-link" href="#specification-category"></a>
                   <h4 property="schema:name skos:prefLabel">Specification Category</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behavior</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
                   </div>
                 </section>
           
-                <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
+                <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme"><a class="self-link" href="#classes-of-products"></a>
                   <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
           
                     <dl rel="skos:hasTopConcept">
-                      <dt about="#ReaderApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="ReaderApplication">Reader Application</dfn></dt>
+                      <dt about="#ReaderApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="ReaderApplication"><a class="self-link" href="#ReaderApplication"></a>Reader Application</dfn></dt>
                       <dd about="#ReaderApplication" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a> that issues HTTP requests to consume content pertaining to WebID Profiles.</dd>
-                      <dt about="#WriterApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="WriterApplication">Writer Application</dfn></dt>
+                      <dt about="#WriterApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="WriterApplication"><a class="self-link" href="#WriterApplication"></a>Writer Application</dfn></dt>
                       <dd about="#WriterApplication" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a> that issues HTTP requests to produce and consume content pertaining to WebID Profiles.</dd>
-                      <dt about="#Server" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
+                      <dt about="#Server" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Server"><a class="self-link" href="#Server"></a>Server</dfn></dt>
                       <dd about="#Server" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#Server">Solid Server</a> that responds to HTTP requests processing payloads pertaining to Solid WebID Profiles.</dd>
                     </dl>
                   </div>
                 </section>
           
-                <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability" typeof="skos:ConceptScheme">
+                <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability" typeof="skos:ConceptScheme"><a class="self-link" href="#interoperability"></a>
                   <h4 property="schema:name skos:prefLabel">Interoperability</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <dl>
           
-                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability">Reader Application–Server interoperability</dfn></dt>
+                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability"><a class="self-link" href="#reader-application-server-interoperability"></a>Reader Application–Server interoperability</dfn></dt>
                       <dd about="#reader-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#ReaderApplication" rel="rdfs:seeAlso">Reader Applications</a> and <a href="#Server" rel="rdfs:seeAlso">Servers</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
-                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability">Writer Application–Server interoperability</dfn></dt>
+                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability"><a class="self-link" href="#writer-application-server-interoperability"></a>Writer Application–Server interoperability</dfn></dt>
                       <dd about="#writer-application-server-interoperability" property="skos:definition">Interoperability of implementations for  <a href="#WriterApplication" rel="rdfs:seeAlso">Writer Applications</a> and <a href="#Server" rel="rdfs:seeAlso">Servers</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
                     </dl>
                   </div>
@@ -1047,13 +1092,8 @@
             </section>
           </section>
 
-          <section
-            id="discovery"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#discovery"
-          >
-            <h2 property="schema:name">Discovery</h2>
+          <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery"><a class="self-link" href="#discovery"></a>
+            <h2><bdi class="secno">2.</bdi> <span property="schema:name">Discovery</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>A <a href="#solid-profile">Solid profile</a> is comprised of statements expressing
               a social agent's identity, which can be found in one or more resources. The discovery
@@ -1070,12 +1110,11 @@
               <p>A profile can be assembled by collecting all statements that have the WebID as the subject or the object, regardless of their originating
                 documents, as illustrated below.</p>
               <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
-                <img src="profile-discovery.png" rel="schema:image" />
+                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption><a class="self-link" href="#solid-profile-discovery-overview"></a>
+                <img rel="schema:image" src="profile-discovery.png" />
 
-                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
               </figure>
-              <div class="note" id="restricted-access-resources" inlist="" rel="schema:hasPart"
-              resource="#restricted-access-resources">
+              <div class="note" id="restricted-access-resources" inlist="" rel="schema:hasPart" resource="#restricted-access-resources"><a class="self-link" href="#restricted-access-resources"></a>
               <h5 property="schema:name"><span>Note</span>:</h5>
               <div datatype="rdf:HTML" property="schema:description">
                 <p>Depending on the established access control rules, certain resources may be inaccessible to specific applications or agents.</p>
@@ -1084,23 +1123,20 @@
             </div>
           </section>
 
-          <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles">
+          <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles"><a class="self-link" href="#reading-writing-profiles"></a>
             <h2 property="schema:name">Reading and Writing Profiles</h2>
-            <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile">
-              <h3 property="schema:name">Reading Profile</h3>
+            <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile"><a class="self-link" href="#reading-profile"></a>
+              <h3><bdi class="secno">3.1</bdi> <span property="schema:name">Reading Profile</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
-                <p about="" id="reader-application-webid-profile" rel="spec:requirement"
-                  resource="#reader-application-webid-profile">
-                  <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a
-                      rel="spec:requirementSubject" href="#ReaderApplication">Reader Application</a> <span
-                      rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
+                <p about="" id="reader-application-webid-profile" rel="spec:requirement" resource="#reader-application-webid-profile"><a class="self-link" href="#reader-application-webid-profile"></a>
+                  <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a href="#ReaderApplication" rel="spec:requirementSubject">Reader Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
                     an HTTP <code>GET</code> request targeting a Solid WebID Profile resource and include an
                     <code>Accept</code> header requesting a representation in <code>text/turtle</code> or
                     <code>application/ld+json</code>.</span>
                 </p>
               </div>
-              <div id="webid-profile-data-model">
-                <h3 property="schema:name" content="Solid WebID Profile Data Model">Solid WebID Profile</h3>
+              <div id="webid-profile-data-model"><a class="self-link" href="#webid-profile-data-model"></a>
+                <h3 content="Solid WebID Profile Data Model" property="schema:name">Solid WebID Profile</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#solid-profile">Solid WebID Profile</a> has the following properties:</p>
                   <ul>
@@ -1112,8 +1148,7 @@
                         extending the profile.</a></li>
                   </ul>
                 </div>
-                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart"
-                  resource="#webid-profile-data-model-extended">
+                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart" resource="#webid-profile-data-model-extended"><a class="self-link" href="#webid-profile-data-model-extended"></a>
                   <h5 property="schema:name"><span>Note</span>:</h5>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p>The Solid WebID Profiles may include other information pertaining to scenarios in
@@ -1122,7 +1157,7 @@
                   </div>
                 </div>
               </div>
-              <div id="preferences-document">
+              <div id="preferences-document"><a class="self-link" href="#preferences-document"></a>
                 <h3 property="schema:name">Preferences Document</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#private-preferences">Preferences Document</a> has the following properties:</p>
@@ -1132,65 +1167,59 @@
                   </ul>
                 </div>
               </div>
-              <div id="reading-extended-profile">
-                <h3 property="schema:name" content="Extended Profile Documents">Extended Profile Documents</h3>
+              <div id="reading-extended-profile"><a class="self-link" href="#reading-extended-profile"></a>
+                <h3 content="Extended Profile Documents" property="schema:name">Extended Profile Documents</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a
-                      href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
+                  <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
                     Solid WebID Profiles and share the same data model. <a href="#ReaderApplication">Reader
                       Applications</a> retrieve representations of Extended Profile Documents the same way as they
                     retrieve Solid WebID Profiles.</p>
-                  <p about="" id="reader-application-extended-profile" rel="spec:requirement"
-                    resource="#reader-application-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#ReaderApplication">Reader
+                  <p about="" id="reader-application-extended-profile" rel="spec:requirement" resource="#reader-application-extended-profile"><a class="self-link" href="#reader-application-extended-profile"></a>
+                    <span property="spec:statement"><a href="#ReaderApplication" rel="spec:requirementSubject">Reader
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
                       representation of an <a href="#extended-profile">Extended Profile Document</a>.</span>
                   </p>
                 </div>
               </div>
             </section>
-                <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile">
-                  <h3 property="schema:name">Updating Profile</h3>
+                <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile"><a class="self-link" href="#updating-profile"></a>
+                  <h3><bdi class="secno">3.2</bdi> <span property="schema:name">Updating Profile</span></h3>
                   <div datatype="rdf:HTML" property="schema:description">
-                    <p><a href="#WriterApplication">Writer Applications</a> perform <a
-                        href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
-                        href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
-                    <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile">
+                    <p><a href="#WriterApplication">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+                    <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile"><a class="self-link" href="#prioritize-webid-profile"></a>
                       <h5 property="schema:name"><span>Note</span>:</h5>
                       <div datatype="rdf:HTML" property="schema:description">
-                        <p>To promote self-describing resources and efficient discovery and reuse of profile
-                          information, implementations and authors are encouraged to prioritize using the <a href="#solid-profile">Solid
-                            WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a>
+                        <p about="" id="self-describing-webid-profile" rel="spec:advisement" resource="#self-describing-webid-profile"><a class="self-link" href="#self-describing-webid-profile"></a><span property="spec:statement">To promote self-describing resources and efficient discovery and reuse of profile
+                          information, implementations and authors are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to prioritize using the <a href="#solid-profile">Solid
+                            WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a></span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="#writer-application-webid-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                  <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="#writer-application-webid-profile"><a class="self-link" href="#writer-application-webid-profile"></a>
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
                       updated.</span>
                   </p>
-                  <p about="" id="protected-properties" property="schema:description">
+                  <p about="" id="protected-properties" property="schema:description"><a class="self-link" href="#protected-properties"></a>
                     Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
                   </p>
-                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
-                        rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
+                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples"><a class="self-link" href="#server-update-protected-triples"></a>
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
                       HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
                       triples; if the server receives such a request, it <span rel="spec:requirementLevel"
                         resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
                   </p>
-                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#Server">Servers</a> <span
-                        rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
+                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content"><a class="self-link" href="#server-unprocessable-content"></a>
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
                       status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
                       process the contained instructions, including unrecognised JSON-LD context in representation
                       data, semantically erroneous Solid WebID Profile or Preferences Document data.</span>
                   </p>
                 </section>
-                <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile">
-                  <h3 property="schema:name">Extending a Profile</h3>
+                <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile"><a class="self-link" href="#extending-profile"></a>
+                  <h3><bdi class="secno">3.3</bdi> <span property="schema:name">Extending a Profile</span></h3>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p><a href="#WriterApplications">Writer Applications</a> perform <a
                         href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
@@ -1200,42 +1229,33 @@
                       identifies, including access to perform write operations targeting the Solid WebID Profile.</p>
                   </div>
                 
-                  <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
-                    resource="#writer-application-create-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                  <p about="" id="writer-application-create-extended-profile" rel="spec:requirement" resource="#writer-application-create-extended-profile"><a class="self-link" href="#writer-application-create-extended-profile"></a>
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
                   </p>
-                  <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
-                    resource="#writer-application-update-extended-profile">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                  <p about="" id="writer-application-update-extended-profile" rel="spec:requirement" resource="#writer-application-update-extended-profile"><a class="self-link" href="#writer-application-update-extended-profile"></a>
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be updated</span>
                   </p>
-                  <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
-                    resource="#writer-application-link-extended-profile-webid">
-                    <span property="spec:statement"><a rel="spec:requirementSubject" href="#WriterApplication">Writer
+                  <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement" resource="#writer-application-link-extended-profile-webid"><a class="self-link" href="#writer-application-link-extended-profile-webid"></a>
+                    <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
                         href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
                       <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
                   </p>
-                  <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart"
-                    resource="#sameness-between-identities">
+                  <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart" resource="#sameness-between-identities"><a class="self-link" href="#sameness-between-identities"></a>
                     <h5 property="schema:name"><span>Note</span>:</h5>
                     <div datatype="rdf:HTML" property="schema:description">
-                        <p>While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is encouraged when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</p>
+                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><a class="self-link" href="#connecting-same-entities"></a><span property="spec:statement">While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
                     </div>
                   </div>
                 </section>
         </section>
 
-          <section
-            id="private-preferences"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#private-preferences"
-          >
-            <h2 property="schema:name">Private Preferences</h2>
+          <section id="private-preferences" inlist="" rel="schema:hasPart" resource="#private-preferences"><a class="self-link" href="#private-preferences"></a>
+            <h2><bdi class="secno">4.</bdi> <span property="schema:name">Private Preferences</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 The Preferences Document is a resource intended to hold
@@ -1267,13 +1287,8 @@
               </p>
             </div>
           </section>
-          <section
-            id="identity-provider"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#identity-provider"
-          >
-            <h2 property="schema:name">Identity Provider</h2>
+          <section id="identity-provider" inlist="" rel="schema:hasPart" resource="#identity-provider"><a class="self-link" href="#identity-provider"></a>
+            <h2><bdi class="secno">5.</bdi> <span property="schema:name">Identity Provider</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 The <code>solid:oidcIssuer</code> predicate denotes a <cite><a href="https://solidproject.org/TR/oidc#oidc-issuer-discovery">Solid OIDC Identity Provider</a></cite>
@@ -1283,13 +1298,13 @@
             </div>
           </section>
 
-          <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox">
-            <h2 property="schema:name">Inbox</h2>
+          <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox"><a class="self-link" href="#inbox"></a>
+            <h2><bdi class="secno">6.</bdi> <span property="schema:name">Inbox</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A Solid WebID Profile can advertise an inbox with the <code>ldp:inbox</code> property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>] to allow applications to send
                 and discover notifications about activities, interactions, and new information
-                for the attention of the owner of the WebID. It is discouraged for Solid WebID Profiles to advertise more than one inbox.
+                for the attention of the owner of the WebID. <span about="" id="webid-profile-single-inbox" rel="spec:advisement" resource="#webid-profile-single-inbox"><a class="self-link" href="#webid-profile-single-inbox"></a><span property="spec:statement">It is <span rel="spec:advisementLevel" resource="spec:Discouraged">discouraged</span> for Solid WebID Profiles to advertise more than one inbox.</span></span>
               </p>
               <p>
                 Applications can create an inbox (see <a href="https://solidproject.org/TR/protocol#resource-containment">resource
@@ -1299,13 +1314,8 @@
             </div>
           </section>
 
-          <section
-            id="other-predicates"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#other-predicates"
-          >
-            <h2 property="schema:name">Other predicates</h2>
+          <section id="other-predicates" inlist="" rel="schema:hasPart" resource="#other-predicates"><a class="self-link" href="#other-predicates"></a>
+            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Other predicates</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A user, a server or an application with appropriate permissions can add
@@ -1321,320 +1331,204 @@
             </div>
           </section>
 
-          <section
-            class="appendix"
-            id="references"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#references"
-          >
-            <h2 property="schema:name">References</h2>
+          <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog"><a class="self-link" href="#changelog"></a>
+            <h2><bdi class="secno">A.</bdi> <span property="schema:name">Changelog</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <section
-                id="normative-references"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#normative-references"
-              >
-                <h3 property="schema:name">Normative References</h3>
+              <p><em>This section is non-normative.</em></p>
+
+              <p>The following summary of <em>editorial</em>, <em>substantive</em>, and <em>registry</em> <span about="" rel="spec:changelog" resource="#changelog">changes</span> are classified using the <cite>W3C Process Document</cite> <cite><a href="https://www.w3.org/Consortium/Process/#correction-classes">Classes of Changes</a></cite> [<cite><a class="bibref" href="#bib-w3c-process">W3C-PROCESS</a></cite>]:</p>
+            </div>
+          </section>
+
+          <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements"><a class="self-link" href="#acknowledgements"></a>
+            <h2><bdi class="secno">B.</bdi> <span property="schema:name">Acknowledgements</span></h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
+
+              <p>The Community Group would like to thank the following individuals for their useful comments, both large and small, that have led to changes to this specification over the years:</p>
+
+              <ul>
+                <li>Aaron Coburn</li>
+                <li>Abdurrahman Ibrahim Ghanem</li>
+                <li>Alain Bourgeois</li>
+                <li>Amy Guy</li>
+                <li>Andrei Sambra</li>
+                <li>Angelo Veltens</li>
+                <li>Arne Hassel</li>
+                <li>Daniel Bakas</li>
+                <li>Dmitri Zagidulin</li>
+                <li>elf Pavlik</li>
+                <li>Emelia Smith</li>
+                <li>Frederick Gibson</li>
+                <li>Henry Story</li>
+                <li>Herbert Van de Sompel</li>
+                <li>Jackson Morgan</li>
+                <li>Jeff Zucker</li>
+                <li>Jordan Shurmer</li>
+                <li>Kingsley Kidehen</li>
+                <li>Kjetil Kjernsmo</li>
+                <li>Matt Farmer</li>
+                <li>Matthieu Bosquet</li>
+                <li>Melvin Carvalho</li>
+                <li>Michiel de Jong</li>
+                <li>Mitzi László</li>
+                <li>Nicola Greco</li>
+                <li>mrkvon</li>
+                <li>Nick Mondada</li>
+                <li>Noel de Martin</li>
+                <li>Patrick Hochstenbach</li>
+                <li>Pete Edwards</li>
+                <li>Ruben Verborgh</li>
+                <li>Rui Zhao</li>
+                <li>Samu Lang</li>
+                <li>Sandro Hawke</li>
+                <li>Sarven Capadisli</li>
+                <li>Seila Gonzalez Estrecha</li>
+                <li>Ted Thibodeau Jr</li>
+                <li>Tim Berners-Lee</li>
+                <li>Timea Turdean</li>
+                <li>Virginia Balseiro</li>
+                <li>Wouter Termont</li>
+              </ul>
+            </div>
+          </section>
+
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references"><a class="self-link" href="#references"></a>
+            <h2><bdi class="secno">C.</bdi> <span property="schema:name">References</span></h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references"><a class="self-link" href="#normative-references"></a>
+                <h3><bdi class="secno">C.1</bdi> <span property="schema:name">Normative References</span></h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd>
-                      <a
-                        href="http://dublincore.org/documents/2010/10/11/dcmi-terms/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Dublin Core Metadata Terms, version 1.1</cite></a
-                      >. DCMI Usage Board. DCMI. 11 October 2010. DCMI
+                      <cite><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority">Dublin Core Metadata Terms, version 1.1</a></cite>. DCMI Usage Board. DCMI. 11 October 2010. DCMI
                       Recommendation. URL:
-                      <a
-                        href="http://dublincore.org/documents/2010/10/11/dcmi-terms/"
-                        >http://dublincore.org/documents/2010/10/11/dcmi-terms/</a
-                      >
+                      <a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">http://dublincore.org/documents/2010/10/11/dcmi-terms/</a>
                     </dd>
                     <dt id="bib-fetch">[FETCH]</dt>
                     <dd>
-                      <a
-                        href="https://fetch.spec.whatwg.org/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Fetch Standard</cite></a
-                      >. Anne van Kesteren. WHATWG. Living Standard. URL:
-                      <a href="https://fetch.spec.whatwg.org/"
-                        >https://fetch.spec.whatwg.org/</a
-                      >
+                      <cite><a href="https://fetch.spec.whatwg.org/" rel="cito:citesAsAuthority">Fetch Standard</a></cite>. Anne van Kesteren. WHATWG. Living Standard. URL:
+                      <a href="https://fetch.spec.whatwg.org/">https://fetch.spec.whatwg.org/</a>
                     </dd>
                     <dt id="bib-iana-media-types">[IANA-MEDIA-TYPES]</dt>
                     <dd>
-                      <a
-                        href="https://www.iana.org/assignments/media-types/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Media Types</cite></a
-                      >. IANA. URL:
-                      <a href="https://www.iana.org/assignments/media-types/"
-                        >https://www.iana.org/assignments/media-types/</a
-                      >
+                      <cite><a href="https://www.iana.org/assignments/media-types/" rel="cito:citesAsAuthority">Media Types</a></cite>. IANA. URL:
+                      <a href="https://www.iana.org/assignments/media-types/">https://www.iana.org/assignments/media-types/</a>
                     </dd>
                     <dt id="bib-ldn">[LDN]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/TR/ldn/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Linked Data Notifications</cite></a
-                      >. Sarven Capadisli; Amy Guy. W3C. 2 May 2017. W3C
+                      <cite><a href="https://www.w3.org/TR/ldn/" rel="cito:citesAsAuthority">Linked Data Notifications</a></cite>. Sarven Capadisli; Amy Guy. W3C. 2 May 2017. W3C
                       Recommendation. URL:
-                      <a href="https://www.w3.org/TR/ldn/"
-                        >https://www.w3.org/TR/ldn/</a
-                      >
+                      <a href="https://www.w3.org/TR/ldn/">https://www.w3.org/TR/ldn/</a>
                     </dd>
                     <dt id="bib-ldp">[LDP]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/TR/ldp/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Linked Data Platform 1.0</cite></a
-                      >. Steve Speicher; John Arwe; Ashok Malhotra. W3C. 26
+                      <cite><a href="https://www.w3.org/TR/ldp/" rel="cito:citesAsAuthority">Linked Data Platform 1.0</a></cite>. Steve Speicher; John Arwe; Ashok Malhotra. W3C. 26
                       February 2015. W3C Recommendation. URL:
-                      <a href="https://www.w3.org/TR/ldp/"
-                        >https://www.w3.org/TR/ldp/</a
-                      >
+                      <a href="https://www.w3.org/TR/ldp/">https://www.w3.org/TR/ldp/</a>
                     </dd>
                     <dt id="bib-rdf-schema">[RDF-SCHEMA]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/TR/rdf-schema/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>RDF Schema 1.1</cite></a
-                      >. Dan Brickley; Ramanathan Guha. W3C. 25 February 2014.
+                      <cite><a href="https://www.w3.org/TR/rdf-schema/" rel="cito:citesAsAuthority">RDF Schema 1.1</a></cite>. Dan Brickley; Ramanathan Guha. W3C. 25 February 2014.
                       W3C Recommendation. URL:
-                      <a href="https://www.w3.org/TR/rdf-schema/"
-                        >https://www.w3.org/TR/rdf-schema/</a
-                      >
+                      <a href="https://www.w3.org/TR/rdf-schema/">https://www.w3.org/TR/rdf-schema/</a>
                     </dd>
                     <dt id="bib-rdf11-concepts">[RDF11-CONCEPTS]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/TR/rdf11-concepts/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>RDF 1.1 Concepts and Abstract Syntax</cite></a
-                      >. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25
+                      <cite><a href="https://www.w3.org/TR/rdf11-concepts/" rel="cito:citesAsAuthority">RDF 1.1 Concepts and Abstract Syntax</a></cite>. Richard Cyganiak; David Wood; Markus Lanthaler. W3C. 25
                       February 2014. W3C Recommendation. URL:
-                      <a href="https://www.w3.org/TR/rdf11-concepts/"
-                        >https://www.w3.org/TR/rdf11-concepts/</a
-                      >
+                      <a href="https://www.w3.org/TR/rdf11-concepts/">https://www.w3.org/TR/rdf11-concepts/</a>
                     </dd>
                     <dt id="bib-rfc2119">[RFC2119]</dt>
                     <dd>
-                      <a
-                        href="https://datatracker.ietf.org/doc/html/rfc2119"
-                        rel="cito:citesAsAuthority"
-                        ><cite
-                          >Key words for use in RFCs to Indicate Requirement
-                          Levels</cite
-                        ></a
-                      >. S. Bradner. IETF. March 1997. Best Current Practice.
+                      <cite><a href="https://datatracker.ietf.org/doc/html/rfc2119" rel="cito:citesAsAuthority">Key words for use in RFCs to Indicate Requirement
+                          Levels</a></cite>. S. Bradner. IETF. March 1997. Best Current Practice.
                       URL:
-                      <a href="https://datatracker.ietf.org/doc/html/rfc2119"
-                        >https://datatracker.ietf.org/doc/html/rfc2119</a
-                      >
+                      <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
                     </dd>
                     <dt id="bib-rfc3986">[RFC3986]</dt>
                     <dd>
-                      <a
-                        href="https://datatracker.ietf.org/doc/html/rfc3986"
-                        rel="cito:citesAsAuthority"
-                        ><cite
-                          >Uniform Resource Identifier (URI): Generic
-                          Syntax</cite
-                        ></a
-                      >. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January
+                      <cite><a href="https://datatracker.ietf.org/doc/html/rfc3986" rel="cito:citesAsAuthority">Uniform Resource Identifier (URI): Generic
+                          Syntax</a></cite>. T. Berners-Lee; R. Fielding; L. Masinter. IETF. January
                       2005. Internet Standard. URL:
-                      <a href="https://datatracker.ietf.org/doc/html/rfc3986"
-                        >https://datatracker.ietf.org/doc/html/rfc3986</a
-                      >
+                      <a href="https://datatracker.ietf.org/doc/html/rfc3986">https://datatracker.ietf.org/doc/html/rfc3986</a>
                     </dd>
                     <dt id="bib-rfc6454">[RFC6454]</dt>
                     <dd>
-                      <a
-                        href="https://datatracker.ietf.org/doc/html/rfc6454"
-                        rel="cito:citesAsAuthority"
-                        ><cite>The Web Origin Concept</cite></a
-                      >. A. Barth. IETF. December 2011. Proposed Standard. URL:
-                      <a href="https://datatracker.ietf.org/doc/html/rfc6454"
-                        >https://datatracker.ietf.org/doc/html/rfc6454</a
-                      >
+                      <cite><a href="https://datatracker.ietf.org/doc/html/rfc6454" rel="cito:citesAsAuthority">The Web Origin Concept</a></cite>. A. Barth. IETF. December 2011. Proposed Standard. URL:
+                      <a href="https://datatracker.ietf.org/doc/html/rfc6454">https://datatracker.ietf.org/doc/html/rfc6454</a>
                     </dd>
                     <dt id="bib-rfc8174">[RFC8174]</dt>
                     <dd>
-                      <a
-                        href="https://datatracker.ietf.org/doc/html/rfc8174"
-                        rel="cito:citesAsAuthority"
-                        ><cite
-                          >Ambiguity of Uppercase vs Lowercase in RFC 2119 Key
-                          Words</cite
-                        ></a
-                      >. B. Leiba. IETF. May 2017. Best Current Practice. URL:
-                      <a href="https://datatracker.ietf.org/doc/html/rfc8174"
-                        >https://datatracker.ietf.org/doc/html/rfc8174</a
-                      >
+                      <cite><a href="https://datatracker.ietf.org/doc/html/rfc8174" rel="cito:citesAsAuthority">Ambiguity of Uppercase vs Lowercase in RFC 2119 Key
+                          Words</a></cite>. B. Leiba. IETF. May 2017. Best Current Practice. URL:
+                      <a href="https://datatracker.ietf.org/doc/html/rfc8174">https://datatracker.ietf.org/doc/html/rfc8174</a>
                     </dd>
                     <dt id="bib-rfc9110">[RFC9110]</dt>
                     <dd>
-                      <a
-                        href="https://www.rfc-editor.org/rfc/rfc9110"
-                        rel="cito:citesAsAuthority"
-                        ><cite>HTTP Semantics</cite></a
-                      >. R. Fielding, M. Nottingham, J. Reschke, Editors. IETF. June 2022.
+                      <cite><a href="https://www.rfc-editor.org/rfc/rfc9110" rel="cito:citesAsAuthority">HTTP Semantics</a></cite>. R. Fielding, M. Nottingham, J. Reschke, Editors. IETF. June 2022.
                       Internet Standard. URL:
-                      <a href="https://www.rfc-editor.org/rfc/rfc9110"
-                        >https://www.rfc-editor.org/rfc/rfc9110</a
-                      >
+                      <a href="https://www.rfc-editor.org/rfc/rfc9110">https://www.rfc-editor.org/rfc/rfc9110</a>
                     </dd>
                     <dt id="bib-rfc9112">[RFC9112]</dt>
                     <dd>
-                      <a
-                        href="https://www.rfc-editor.org/rfc/rfc9112"
-                        rel="cito:citesAsAuthority"
-                        ><cite>HTTP/1.1</cite></a
-                      >. R. Fielding, M. Nottingham, J. Reschke, Editors. IETF. June 2022.
+                      <cite><a href="https://www.rfc-editor.org/rfc/rfc9112" rel="cito:citesAsAuthority">HTTP/1.1</a></cite>. R. Fielding, M. Nottingham, J. Reschke, Editors. IETF. June 2022.
                       Internet Standard. URL:
-                      <a href="https://www.rfc-editor.org/rfc/rfc9112"
-                        >https://www.rfc-editor.org/rfc/rfc9112</a
-                      >
+                      <a href="https://www.rfc-editor.org/rfc/rfc9112">https://www.rfc-editor.org/rfc/rfc9112</a>
                     </dd>
                     <dt id="bib-solid-oidc">[SOLID-OIDC]</dt>
                     <dd>
-                      <a
-                        href="https://solidproject.org/TR/oidc"
-                        rel="cito:citesAsAuthority"
-                        ><cite>SOLID-OIDC</cite></a
-                      >. Aaron Coburn; elf Pavlik; Dmitri Zagidulin. W3C Solid
+                      <cite><a href="https://solidproject.org/TR/oidc" rel="cito:citesAsAuthority">SOLID-OIDC</a></cite>. Aaron Coburn; elf Pavlik; Dmitri Zagidulin. W3C Solid
                       Community Group. 28 March 2022. Version 0.1.0. URL:
-                      <a href="https://solidproject.org/TR/oidc"
-                        >https://solidproject.org/TR/oidc</a
-                      >
+                      <a href="https://solidproject.org/TR/oidc">https://solidproject.org/TR/oidc</a>
                     </dd>
                     <dt id="bib-solid-protocol">[SOLID-PROTOCOL]</dt>
                     <dd>
-                      <a
-                        href="https://solidproject.org/TR/protocol"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Solid Protocol</cite></a
-                      >. Sarven Capadisli; Tim Berners-Lee; Ruben Verborgh;
-                      Kjetil Kjernsmo. W3C Solid Community Group. 17 December
-                      2021. Version 0.9.0. URL:
-                      <a href="https://solidproject.org/TR/protocol"
-                        >https://solidproject.org/TR/protocol</a
-                      >
+                      <cite><a href="https://solidproject.org/TR/protocol" rel="cito:citesAsAuthority">Solid Protocol</a></cite>. Sarven Capadisli; Tim Berners-Lee; Kjetil Kjernsmo. W3C Solid Community Group. 12 May
+                      2024. Draft Community Group Report, Version 0.11.0. URL:
+                      <a href="https://solidproject.org/TR/protocol">https://solidproject.org/TR/protocol</a>
                     </dd>
                     <dt id="bib-wac">[WAC]</dt>
                     <dd>
-                      <a
-                        href="https://solidproject.org/TR/wac"
-                        rel="cito:citesAsAuthority"
-                        ><cite>Web Access Control</cite></a
-                      >. Sarven Capadisli. W3C Solid Community Group. 11 July
-                      2021. Draft. URL:
-                      <a href="https://solidproject.org/TR/wac"
-                        >https://solidproject.org/TR/wac</a
-                      >
+                      <cite><a href="https://solidproject.org/TR/wac" rel="cito:citesAsAuthority">Web Access Control</a></cite>. Sarven Capadisli. W3C Solid Community Group. 12 May
+                      2024. Draft Community Group Report, Version 1.0.0. URL:
+                      <a href="https://solidproject.org/TR/wac">https://solidproject.org/TR/wac</a>
                     </dd>
                     <dt id="bib-webarch">[WEBARCH]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/TR/webarch/"
-                        rel="cito:citesAsAuthority"
-                        ><cite
-                          >Architecture of the World Wide Web, Volume One</cite
-                        ></a
-                      >. Ian Jacobs; Norman Walsh. W3C. 15 December 2004. W3C
+                      <cite><a href="https://www.w3.org/TR/webarch/" rel="cito:citesAsAuthority">Architecture of the World Wide Web, Volume One</a></cite>. Ian Jacobs; Norman Walsh. W3C. 15 December 2004. W3C
                       Recommendation. URL:
-                      <a href="https://www.w3.org/TR/webarch/"
-                        >https://www.w3.org/TR/webarch/</a
-                      >
+                      <a href="https://www.w3.org/TR/webarch/">https://www.w3.org/TR/webarch/</a>
                     </dd>
                     <dt id="bib-webid">[WEBID]</dt>
                     <dd>
-                      <a
-                        href="https://www.w3.org/2005/Incubator/webid/spec/identity/"
-                        rel="cito:citesAsAuthority"
-                        ><cite>WebID 1.0</cite></a
-                      >. Andrei Sambra; Stéphane Corlosquet. W3C WebID Community
+                      <cite><a href="https://www.w3.org/2005/Incubator/webid/spec/identity/" rel="cito:citesAsAuthority">WebID 1.0</a></cite>. Andrei Sambra; Stéphane Corlosquet. W3C WebID Community
                       Group. 5 March 2014. W3C Editor’s Draft. URL:
-                      <a
-                        href="https://www.w3.org/2005/Incubator/webid/spec/identity/"
-                        >https://www.w3.org/2005/Incubator/webid/spec/identity/</a
-                      >
+                      <a href="https://www.w3.org/2005/Incubator/webid/spec/identity/">https://www.w3.org/2005/Incubator/webid/spec/identity/</a>
                     </dd>
                   </dl>
                 </div>
               </section>
 
-              <section
-                id="informative-references"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#informative-references"
-              >
-                <h3 property="schema:name">Informative References</h3>
+              <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references"><a class="self-link" href="#informative-references"></a>
+                <h3><bdi class="secno">C.2</bdi> <span property="schema:name">Informative References</span></h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
                     <dt id="bib-coga-usable">[COGA-USABLE]</dt>
-                    <dd>
-                      <a
-                        href="https://www.w3.org/TR/coga-usable/"
-                        rel="cito:citesAsPotentialSolution"
-                        ><cite
-                          >Making content usable for people with cognitive and
-                          learning disabilities</cite
-                        ></a
-                      >. Lisa Seeman-Horwitz; Rachael Bradley Montgomery; Steve
-                      Lee; Ruoxi Ran. W3C. 11 December 2020. W3C Working Draft.
-                      URL:
-                      <a href="https://www.w3.org/TR/coga-usable/"
-                        >https://www.w3.org/TR/coga-usable/</a
-                      >
-                    </dd>
+                    <dd><cite><a href="https://www.w3.org/TR/coga-usable/" rel="cito:citesAsPotentialSolution">Making Content Usable for People with Cognitive and Learning Disabilities</a></cite>. Lisa Seeman-Horwitz; Rachael Bradley Montgomery; Steve Lee; Ruoxi Ran.  W3C. 29 April 2021. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/coga-usable/">https://www.w3.org/TR/coga-usable/</a></dd>
                     <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
-                    <dd>
-                      <a
-                        href="https://www.w3.org/TR/privacy-principles/"
-                        rel="cito:citesAsPotentialSolution"
-                        ><cite>Privacy Principles</cite></a
-                      >. Robin Berjon; Jeffrey Yasskin. W3C. 12 May 2022. W3C
-                      Group Draft Note. URL:
-                      <a href="https://www.w3.org/TR/privacy-principles/"
-                        >https://www.w3.org/TR/privacy-principles/</a
-                      >
-                    </dd>
+                    <dd><cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution">Privacy Principles</a></cite>. Robin Berjon; Jeffrey Yasskin.  W3C. 18 May 2024. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
                     <dt id="bib-security-privacy-questionnaire">
                       [SECURITY-PRIVACY-QUESTIONNAIRE]
                     </dt>
-                    <dd>
-                      <a
-                        href="https://www.w3.org/TR/security-privacy-questionnaire/"
-                        rel="cito:citesAsPotentialSolution"
-                        ><cite
-                          >Self-Review Questionnaire: Security and Privacy</cite
-                        ></a
-                      >. Theresa O'Connor; Peter Snyder. W3C. 23 March 2021. W3C
-                      Note. URL:
-                      <a
-                        href="https://www.w3.org/TR/security-privacy-questionnaire/"
-                        >https://www.w3.org/TR/security-privacy-questionnaire/</a
-                      >
-                    </dd>
-                    <dd>
-                      <a
-                        href="https://www.w3.org/TR/wcag-3.0/"
-                        rel="cito:citesAsPotentialSolution"
-                        ><cite>W3C Accessibility Guidelines (WCAG) 3.0</cite></a
-                      >. Jeanne F Spellman; Rachael Bradley Montgomery; Shawn
-                      Lauriat; Michael Cooper. W3C. 21 January 2021. W3C Working
-                      Draft. URL:
-                      <a href="https://www.w3.org/TR/wcag-3.0/"
-                        >https://www.w3.org/TR/wcag-3.0/</a
-                      >
-                    </dd>
+                    <dd><cite><a href="https://www.w3.org/TR/security-privacy-questionnaire/" rel="cito:citesAsPotentialSolution">Self-Review Questionnaire: Security and Privacy</a></cite>. Theresa O'Connor; Peter Snyder.  W3C. 16 December 2021. W3C Group Note. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a></dd>
+                    <dt id="bib-wcag-3.0">
+                      [WCAG-3.0]
+                    </dt>
+                    <dd><cite><a href="https://www.w3.org/TR/wcag-3.0/" rel="cito:citesAsPotentialSolution">W3C Accessibility Guidelines (WCAG) 3.0</a></cite>. Jeanne F Spellman; Alastair Campbell; Kevin White; Rachael Bradley Montgomery; Charles Adams.  W3C. 16 May 2024. W3C Working Draft. URL: <a href="https://www.w3.org/TR/wcag-3.0/">https://www.w3.org/TR/wcag-3.0/</a></dd>
+                    <dt id="bib-w3c-process">[W3C-PROCESS]</dt>
+                    <dd><cite><a href="https://www.w3.org/Consortium/Process/" rel="cito:citesAsPotentialSolution">W3C Process Document</a></cite>. Elika J. Etemad / fantasai; Florian Rivoal;  W3C Process Community Group. 3 November 2023. URL: <a href="https://www.w3.org/Consortium/Process/">https://www.w3.org/Consortium/Process/</a></dd>
                   </dl>
                 </div>
               </section>
