@@ -214,6 +214,72 @@ content:counter(appendix, upper-alpha) ".\00a0";
 section.appendix section > h3:before {
 content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
 }
+article section:not([id=abstract]):not([id=sotd]):not([id=references]):not([id=appendix]):not([id=acknowledgements]):not([id=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h2:before,
+section:not([id$=references]):not([id^=changelog]):not([id=exit-criteria]):not([id^=table-of-]):not([id^=list-of-]) > h3:before,
+section > h4:before,
+section.appendix > h2:before,
+section.appendix section > h3:before {
+content:"";
+}
+.self-link {
+display: inline-block;
+margin-right:0.25em;
+user-select: none;
+font-family: monospace;
+font-style:normal;
+font-weight:bold;
+outline:none;
+text-align:left;
+text-decoration:underline;
+border:0;
+background-color:transparent;
+line-height: 1;
+vertical-align: initial;
+}
+figure[id] figcaption {
+margin-left:1em;
+}
+figure[id] .self-link {
+position:absolute;
+top:1em;
+left:0.5em;
+}
+.self-link:after {
+content:"#";
+font-size: initial;
+}
+aside > .self-link:after {
+content:"|";
+}
+dl > .self-link:after {
+content:"☝";
+}
+nav > .self-link:after {
+content:"☛";
+}
+p > .self-link:after {
+content:"¶";
+}
+section > .self-link:after {
+content:"§";
+}
+figure > .self-link:after {
+content:"❦";
+}
+table > .self-link:after {
+content:"𝄜";
+}
+[rel~="spec:requirement"] .self-link:after {
+content:"◎";
+}
+[rel~="spec:advisement"] .self-link:after {
+content:"!";
+}
+h2,h3,h4,h5,h6 {
+display:inline-block;
+margin-block:0;
+margin-bottom:0.5rem;
+}
 </style>
     <link href="https://www.w3.org/StyleSheets/TR/2021/cg-draft" media="all" rel="stylesheet" title="CG-DRAFT" />
     <link href="https://www.w3.org/StyleSheets/TR/2021/dark.css" media="(prefers-color-scheme: dark)" rel="stylesheet" />
@@ -763,18 +829,10 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </nav>
 
-          <section
-            id="introduction"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#introduction"
-          >
-            <h2
-              about="#introduction"
-              property="schema:name"
-            >
+          <section id="introduction" inlist="" rel="schema:hasPart" resource="#introduction"><a class="self-link" href="#introduction"></a>
+            <h2><bdi class="secno">1.</bdi> <span about="#introduction" property="schema:name">
               Introduction
-            </h2>
+            </span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
               <blockquote cite="https://www.w3.org/DesignIssues/Gradient">
@@ -808,7 +866,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>
                 There are different circumstances under which profiles are used or shared, including: 
               </p>
-              <ul id="use-cases">
+              <ul id="use-cases"><a class="self-link" href="#use-cases"></a>
                 <li>Communication and use of multiple profiles for different purposes.</li>
                 <li>Connectivity of multiple profiles and cross-context recognition.</li>
                 <li>Cascade of profile information.</li>
@@ -841,14 +899,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </ul>
             </div>
 
-            <section
-              id="terminology"
-              inlist=""
-              rel="schema:hasPart"
-              resource="#terminology"
-              typeof="skos:ConceptScheme"
-            >
-              <h3 property="schema:name skos:prefLabel">Terminology</h3>
+            <section id="terminology" inlist="" rel="schema:hasPart" resource="#terminology" typeof="skos:ConceptScheme"><a class="self-link" href="#terminology"></a>
+              <h3><bdi class="secno">1.1</bdi> <span property="schema:name skos:prefLabel">Terminology</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <p><em>This section is non-normative.</em></p>
 
@@ -881,34 +933,22 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 </p>
 
                 <dl rel="skos:hasTopConcept">
-                  <dt
-                    about="#solid-profile"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="solid-profile">Solid Profile</dfn>
+                  <dt about="#solid-profile" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="solid-profile"><a class="self-link" href="#solid-profile"></a>Solid Profile</dfn>
                   </dt>
                   <dd about="#solid-profile" property="skos:definition">
                     A <em>Solid profile</em> is a description of a social agent's identity within the Solid ecosystem, which can be used to describe their persona, preferences, abilities, affiliations, social activities and relationships, characteristics, and digital presence, as well as to aid in the discovery of storage and location of specific data.
                   </dd>
 
-                  <dt
-                    about="#extended-profile"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="extended-profile">Extended Solid Profile</dfn>
+                  <dt about="#extended-profile" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="extended-profile"><a class="self-link" href="#extended-profile"></a>Extended Solid Profile</dfn>
                   </dt>
                   <dd about="#extended-profile" property="skos:definition">
                     An <em>extended Solid profile</em> is an additional profile document that provides supplemental description to a Solid profile to help distribute and manage information about a WebID for use in different circumstances. Extended profile documents can be used for various purposes, such as organizing information or limiting access to certain data.
                   </dd>
 
-                  <dt
-                    about="#preferences-document"
-                    property="skos:prefLabel"
-                    typeof="skos:Concept"
-                  >
-                    <dfn id="preferences-document">Preferences Document</dfn>
+                  <dt about="#preferences-document" property="skos:prefLabel" typeof="skos:Concept">
+                    <dfn id="preferences-document"><a class="self-link" href="#preferences-document"></a>Preferences Document</dfn>
                   </dt>
                   <dd about="#preferences-document" property="skos:definition">
                     A <em>preferences document</em> is a specific resource intended to store data which helps authorized applications accommodate the user's preferences, such as settings, personalization details, and pointers to the user's private data.
@@ -917,13 +957,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </div>
             </section>
 
-            <section
-              id="namespaces"
-              inlist=""
-              rel="schema:hasPart"
-              resource="#namespaces"
-            >
-              <h3 property="schema:name">Namespaces</h3>
+            <section id="namespaces" inlist="" rel="schema:hasPart" resource="#namespaces"><a class="self-link" href="#namespaces"></a>
+              <h3><bdi class="secno">1.2</bdi> <span property="schema:name">Namespaces</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <table>
                   <caption>
@@ -998,51 +1033,51 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </div>
             </section>
 
-            <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance">
-              <h3 property="schema:name">Conformance</h3>
+            <section id="conformance" inlist="" rel="schema:hasPart" resource="#conformance"><a class="self-link" href="#conformance"></a>
+              <h3><bdi class="secno">1.3</bdi> <span property="schema:name">Conformance</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
                 <p>This section describes the <span about="" rel="spec:conformance" resource="#conformance">conformance model of the Solid WebID Profile.</span>.</p>
           
-                <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content">
+                <section id="normative-informative-content" inlist="" rel="schema:hasPart" resource="#normative-informative-content"><a class="self-link" href="#normative-informative-content"></a>
                   <h4 property="schema:name">Normative and Informative Content</h4>
                   <div datatype="rdf:HTML" property="schema:description">
-                    <p id="normative-informative-sections">All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
-                    <p id="requirement-levels">The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
-                    <p id="advisement-levels">The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
+                    <p id="normative-informative-sections"><a class="self-link" href="#normative-informative-sections"></a>All assertions, diagrams, examples, and notes are non-normative, as are all sections explicitly marked non-normative. Everything else is normative.</p>
+                    <p id="requirement-levels"><a class="self-link" href="#requirement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:MUST">MUST</span>”, “<span rel="dcterms:subject" resource="spec:MUSTNOT">MUST NOT</span>”, “<span rel="dcterms:subject" resource="spec:SHOULD">SHOULD</span>”, and “<span rel="dcterms:subject" resource="spec:MAY">MAY</span>” are to be interpreted as described in <a href="https://tools.ietf.org/html/bcp14">BCP 14</a> [<cite><a class="bibref" href="#bib-rfc2119">RFC2119</a></cite>] [<cite><a class="bibref" href="#bib-rfc8174">RFC8174</a></cite>] when, and only when, they appear in all capitals, as shown here.</p>
+                    <p id="advisement-levels"><a class="self-link" href="#advisement-levels"></a>The key words “<span rel="dcterms:subject" resource="spec:StronglyEncouraged">strongly encouraged</span>”, “<span rel="dcterms:subject" resource="spec:StronglyDiscouraged">strongly discouraged</span>”, “<span rel="dcterms:subject" resource="spec:Encouraged">encouraged</span>", “<span rel="dcterms:subject" resource="spec:Discouraged">discouraged</span>", “<span rel="dcterms:subject" resource="spec:Can">can</span>", “<span rel="dcterms:subject" resource="spec:Cannot">cannot</span>”, “<span rel="dcterms:subject" resource="spec:Could">could</span>”, “<span rel="dcterms:subject" resource="spec:CouldNot">could not</span>”, “<span rel="dcterms:subject" resource="spec:Might">might</span>”, and “<span rel="dcterms:subject" resource="spec:MightNot">might not</span>” are used for non-normative content.</p>
                   </div>
                 </section>
           
-                <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme">
+                <section id="specification-category" inlist="" rel="schema:hasPart" resource="#specification-category" typeof="skos:ConceptScheme"><a class="self-link" href="#specification-category"></a>
                   <h4 property="schema:name skos:prefLabel">Specification Category</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p property="skos:definition">The <span about="" rel="spec:specificationCategory" resource="#specification-category">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/spec-variability/#spec-cat" rel="dcterms:subject" resource="spec:SpecificationCategory">Specification Category</a></cite> to distinguish the types of conformance: <span rel="skos:hasTopConcept" resource="spec:NotationSyntax">notation/syntax</span>, <span rel="skos:hasTopConcept" resource="spec:ProcessorBehaviour">processor behavior</span>, <span rel="skos:hasTopConcept" resource="spec:Protocol">protocol</span>.</p>
                   </div>
                 </section>
           
-                <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme">
+                <section id="classes-of-products" inlist="" rel="schema:hasPart" resource="#classes-of-products" typeof="skos:ConceptScheme"><a class="self-link" href="#classes-of-products"></a>
                   <h4 property="schema:name skos:prefLabel">Classes of Products</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p property="skos:definition">The <span about="" rel="spec:classesOfProducts" resource="#classes-of-products">Solid WebID Profile</span> identifies the following <cite><a href="https://www.w3.org/TR/qaframe-spec/#cop-def" rel="dcterms:subject" resource="spec:ClassesOfProducts">Classes of Products</a></cite> for conforming implementations. These products are referenced throughout this specification.</p>
           
                     <dl rel="skos:hasTopConcept">
-                      <dt about="#ReaderApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="ReaderApplication">Reader Application</dfn></dt>
+                      <dt about="#ReaderApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="ReaderApplication"><a class="self-link" href="#ReaderApplication"></a>Reader Application</dfn></dt>
                       <dd about="#ReaderApplication" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a> that issues HTTP requests to consume content pertaining to WebID Profiles.</dd>
-                      <dt about="#WriterApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="WriterApplication">Writer Application</dfn></dt>
+                      <dt about="#WriterApplication" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="WriterApplication"><a class="self-link" href="#WriterApplication"></a>Writer Application</dfn></dt>
                       <dd about="#WriterApplication" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#solid-app">Solid app</a> that issues HTTP requests to produce and consume content pertaining to WebID Profiles.</dd>
-                      <dt about="#Server" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Server">Server</dfn></dt>
+                      <dt about="#Server" property="skos:prefLabel" rel="skos:broadMatch" resource="spec:Consumer" typeof="skos:Concept"><dfn id="Server"><a class="self-link" href="#Server"></a>Server</dfn></dt>
                       <dd about="#Server" property="skos:definition">A <a href="https://solidproject.org/TR/protocol#Server">Solid Server</a> that responds to HTTP requests processing payloads pertaining to Solid WebID Profiles.</dd>
                     </dl>
                   </div>
                 </section>
           
-                <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability" typeof="skos:ConceptScheme">
+                <section id="interoperability" inlist="" rel="schema:hasPart" resource="#interoperability" typeof="skos:ConceptScheme"><a class="self-link" href="#interoperability"></a>
                   <h4 property="schema:name skos:prefLabel">Interoperability</h4>
                   <div datatype="rdf:HTML" property="schema:description">
                     <dl>
           
-                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability">Reader Application–Server interoperability</dfn></dt>
+                      <dt about="#reader-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="reader-application-server-interoperability"><a class="self-link" href="#reader-application-server-interoperability"></a>Reader Application–Server interoperability</dfn></dt>
                       <dd about="#reader-application-server-interoperability" property="skos:definition">Interoperability of implementations for <a href="#ReaderApplication" rel="rdfs:seeAlso">Reader Applications</a> and <a href="#Server" rel="rdfs:seeAlso">Servers</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
-                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability">Writer Application–Server interoperability</dfn></dt>
+                      <dt about="#writer-application-server-interoperability" property="skos:prefLabel" typeof="skos:Concept"><dfn id="writer-application-server-interoperability"><a class="self-link" href="#writer-application-server-interoperability"></a>Writer Application–Server interoperability</dfn></dt>
                       <dd about="#writer-application-server-interoperability" property="skos:definition">Interoperability of implementations for  <a href="#WriterApplication" rel="rdfs:seeAlso">Writer Applications</a> and <a href="#Server" rel="rdfs:seeAlso">Servers</a> is tested by evaluating an implementation’s ability to request and respond to HTTP messages that conform to this specification.</dd>
                     </dl>
                   </div>
@@ -1051,13 +1086,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </section>
           </section>
 
-          <section
-            id="discovery"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#discovery"
-          >
-            <h2 property="schema:name">Discovery</h2>
+          <section id="discovery" inlist="" rel="schema:hasPart" resource="#discovery"><a class="self-link" href="#discovery"></a>
+            <h2><bdi class="secno">2.</bdi> <span property="schema:name">Discovery</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>A <a href="#solid-profile">Solid profile</a> is comprised of statements expressing
               a social agent's identity, which can be found in one or more resources. The discovery
@@ -1074,12 +1104,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               <p>A profile can be assembled by collecting all statements that have the WebID as the subject or the object, regardless of their originating
                 documents, as illustrated below.</p>
               <figure id="solid-profile-discovery-overview" rel="schema:hasPart" resource="#solid-profile-discovery-overview">
-                <img src="profile-discovery.png" rel="schema:image" />
+                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption><a class="self-link" href="#solid-profile-discovery-overview"></a>
+                <img rel="schema:image" src="profile-discovery.png" />
 
-                <figcaption property="schema:name">Solid Profile Discovery Overview</figcaption>
               </figure>
-              <div class="note" id="restricted-access-resources" inlist="" rel="schema:hasPart"
-              resource="#restricted-access-resources">
+              <div class="note" id="restricted-access-resources" inlist="" rel="schema:hasPart" resource="#restricted-access-resources"><a class="self-link" href="#restricted-access-resources"></a>
               <h5 property="schema:name"><span>Note</span>:</h5>
               <div datatype="rdf:HTML" property="schema:description">
                 <p>Depending on the established access control rules, certain resources may be inaccessible to specific applications or agents.</p>
@@ -1088,23 +1117,20 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles">
+          <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles"><a class="self-link" href="#reading-writing-profiles"></a>
             <h2 property="schema:name">Reading and Writing Profiles</h2>
-            <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile">
-              <h3 property="schema:name">Reading Profile</h3>
+            <section id="reading-profile" inlist="" rel="schema:hasPart" resource="#reading-profile"><a class="self-link" href="#reading-profile"></a>
+              <h3><bdi class="secno">3.1</bdi> <span property="schema:name">Reading Profile</span></h3>
               <div datatype="rdf:HTML" property="schema:description">
-                <p about="" id="reader-application-webid-profile" rel="spec:requirement"
-                  resource="#reader-application-webid-profile">
-                  <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a
-                      rel="spec:requirementSubject" href="#ReaderApplication">Reader Application</a> <span
-                      rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
+                <p about="" id="reader-application-webid-profile" rel="spec:requirement" resource="#reader-application-webid-profile"><a class="self-link" href="#reader-application-webid-profile"></a>
+                  <span property="spec:statement">To retrieve a representation of a Solid WebID Profile, <a href="#ReaderApplication" rel="spec:requirementSubject">Reader Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> make
                     an HTTP <code>GET</code> request targeting a Solid WebID Profile resource and include an
                     <code>Accept</code> header requesting a representation in <code>text/turtle</code> or
                     <code>application/ld+json</code>.</span>
                 </p>
               </div>
-              <div id="webid-profile-data-model">
-                <h3 property="schema:name" content="Solid WebID Profile Data Model">Solid WebID Profile</h3>
+              <div id="webid-profile-data-model"><a class="self-link" href="#webid-profile-data-model"></a>
+                <h3 content="Solid WebID Profile Data Model" property="schema:name">Solid WebID Profile</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#solid-profile">Solid WebID Profile</a> has the following properties:</p>
                   <ul>
@@ -1116,8 +1142,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                         extending the profile.</a></li>
                   </ul>
                 </div>
-                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart"
-                  resource="#webid-profile-data-model-extended">
+                <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart" resource="#webid-profile-data-model-extended"><a class="self-link" href="#webid-profile-data-model-extended"></a>
                   <h5 property="schema:name"><span>Note</span>:</h5>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p>The Solid WebID Profiles may include other information pertaining to scenarios in
@@ -1126,7 +1151,7 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </div>
                 </div>
               </div>
-              <div id="preferences-document">
+              <div id="preferences-document"><a class="self-link" href="#preferences-document"></a>
                 <h3 property="schema:name">Preferences Document</h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <p>The <a href="#private-preferences">Preferences Document</a> has the following properties:</p>
@@ -1136,16 +1161,14 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                   </ul>
                 </div>
               </div>
-              <div id="reading-extended-profile">
+              <div id="reading-extended-profile"><a class="self-link" href="#reading-extended-profile"></a>
                 <h3 content="Extended Profile Documents" property="schema:name">Extended Profile Documents</h3>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a
-                      href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
+                  <p>The <a href="#extended-profile">Extended Profile Documents</a> are also <a href="https://www.w3.org/2001/tag/doc/selfDescribingDocuments">self-describing</a>
                     Solid WebID Profiles and share the same data model. <a href="#ReaderApplication">Reader
                       Applications</a> retrieve representations of Extended Profile Documents the same way as they
                     retrieve Solid WebID Profiles.</p>
-                  <p about="" id="reader-application-extended-profile" rel="spec:requirement"
-                    resource="#reader-application-extended-profile">
+                  <p about="" id="reader-application-extended-profile" rel="spec:requirement" resource="#reader-application-extended-profile"><a class="self-link" href="#reader-application-extended-profile"></a>
                     <span property="spec:statement"><a href="#ReaderApplication" rel="spec:requirementSubject">Reader
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MAY">MAY</span> retrieve a
                       representation of an <a href="#extended-profile">Extended Profile Document</a>.</span>
@@ -1153,48 +1176,44 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 </div>
               </div>
             </section>
-                <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile">
-                  <h3 property="schema:name">Updating Profile</h3>
+                <section id="updating-profile" inlist="" rel="schema:hasPart" resource="#updating-profile"><a class="self-link" href="#updating-profile"></a>
+                  <h3><bdi class="secno">3.2</bdi> <span property="schema:name">Updating Profile</span></h3>
                   <div datatype="rdf:HTML" property="schema:description">
-                    <p><a href="#WriterApplication">Writer Applications</a> perform <a
-                        href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
-                        href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
-                    <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile">
+                    <p><a href="#WriterApplication">Writer Applications</a> perform <a href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a href="https://solidproject.org/TR/protocol#Server">servers</a>.</p>
+                    <div class="note" id="prioritize-webid-profile" inlist="" rel="schema:hasPart" resource="#prioritize-webid-profile"><a class="self-link" href="#prioritize-webid-profile"></a>
                       <h5 property="schema:name"><span>Note</span>:</h5>
                       <div datatype="rdf:HTML" property="schema:description">
-                        <p about="" id="self-describing-webid-profile" rel="spec:advisement" resource="#self-describing-webid-profile"><span property="spec:statement">To promote self-describing resources and efficient discovery and reuse of profile
+                        <p about="" id="self-describing-webid-profile" rel="spec:advisement" resource="#self-describing-webid-profile"><a class="self-link" href="#self-describing-webid-profile"></a><span property="spec:statement">To promote self-describing resources and efficient discovery and reuse of profile
                           information, implementations and authors are <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> to prioritize using the <a href="#solid-profile">Solid
                             WebID Profile</a> before resorting to an <a href="#extended-profile">Extended WebID Profile.</a></span>
                         </p>
                       </div>
                     </div>
                   </div>
-                  <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="#writer-application-webid-profile">
+                  <p about="" id="writer-application-webid-profile" rel="spec:requirement" resource="#writer-application-webid-profile"><a class="self-link" href="#writer-application-webid-profile"></a>
                     <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Solid WebID Profile to be
                       updated.</span>
                   </p>
-                  <p about="" id="protected-properties" property="schema:description">
+                  <p about="" id="protected-properties" property="schema:description"><a class="self-link" href="#protected-properties"></a>
                     Solid WebID Profile might include protected properties, such as <code>solid:oidcIssuer</code>.
                   </p>
-                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples">
-                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span
-                        rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
+                  <p about="" id="server-update-protected-triples" rel="spec:requirement" resource="#server-update-protected-triples"><a class="self-link" href="#server-update-protected-triples"></a>
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> allow
                       HTTP <code>PUT</code> or <code>PATCH</code> on a Solid WebID Profile to update its protected
                       triples; if the server receives such a request, it <span rel="spec:requirementLevel"
                         resource="spec:MUST">MUST</span> respond with a <code>409</code> status code.</span>
                   </p>
-                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content">
-                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span
-                        rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
+                  <p about="" id="server-unprocessable-content" rel="spec:requirement" resource="#server-unprocessable-content"><a class="self-link" href="#server-unprocessable-content"></a>
+                    <span property="spec:statement"><a href="#Server" rel="spec:requirementSubject">Servers</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> respond with a <code>422</code>
                       status code [<cite><a class="bibref" href="#bib-rfc4918">RFC4918</a></cite>] when unable to
                       process the contained instructions, including unrecognised JSON-LD context in representation
                       data, semantically erroneous Solid WebID Profile or Preferences Document data.</span>
                   </p>
                 </section>
-                <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile">
-                  <h3 property="schema:name">Extending a Profile</h3>
+                <section id="extending-profile" inlist="" rel="schema:hasPart" resource="#extending-profile"><a class="self-link" href="#extending-profile"></a>
+                  <h3><bdi class="secno">3.3</bdi> <span property="schema:name">Extending a Profile</span></h3>
                   <div datatype="rdf:HTML" property="schema:description">
                     <p><a href="#WriterApplications">Writer Applications</a> perform <a
                         href="https://solidproject.org/TR/protocol#writing-resources">write operations</a> against Solid Protocol <a
@@ -1204,42 +1223,33 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                       identifies, including access to perform write operations targeting the Solid WebID Profile.</p>
                   </div>
                 
-                  <p about="" id="writer-application-create-extended-profile" rel="spec:requirement"
-                    resource="#writer-application-create-extended-profile">
+                  <p about="" id="writer-application-create-extended-profile" rel="spec:requirement" resource="#writer-application-create-extended-profile"><a class="self-link" href="#writer-application-create-extended-profile"></a>
                     <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be created.</span>
                   </p>
-                  <p about="" id="writer-application-update-extended-profile" rel="spec:requirement"
-                    resource="#writer-application-update-extended-profile">
+                  <p about="" id="writer-application-update-extended-profile" rel="spec:requirement" resource="#writer-application-update-extended-profile"><a class="self-link" href="#writer-application-update-extended-profile"></a>
                     <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> use an
                       HTTP <code>PUT</code> or <code>PATCH</code> request targeting the Extended Profile to be updated</span>
                   </p>
-                  <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement"
-                    resource="#writer-application-link-extended-profile-webid">
+                  <p about="" id="writer-application-link-extended-profile-webid" rel="spec:requirement" resource="#writer-application-link-extended-profile-webid"><a class="self-link" href="#writer-application-link-extended-profile-webid"></a>
                     <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
                         href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
                       <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
                   </p>
-                  <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart"
-                    resource="#sameness-between-identities">
+                  <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart" resource="#sameness-between-identities"><a class="self-link" href="#sameness-between-identities"></a>
                     <h5 property="schema:name"><span>Note</span>:</h5>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><span property="spec:statement">While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
+                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><a class="self-link" href="#connecting-same-entities"></a><span property="spec:statement">While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
                     </div>
                   </div>
                 </section>
         </section>
 
-          <section
-            id="private-preferences"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#private-preferences"
-          >
-            <h2 property="schema:name">Private Preferences</h2>
+          <section id="private-preferences" inlist="" rel="schema:hasPart" resource="#private-preferences"><a class="self-link" href="#private-preferences"></a>
+            <h2><bdi class="secno">4.</bdi> <span property="schema:name">Private Preferences</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 The Preferences Document is a resource intended to hold
@@ -1271,13 +1281,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
               </p>
             </div>
           </section>
-          <section
-            id="identity-provider"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#identity-provider"
-          >
-            <h2 property="schema:name">Identity Provider</h2>
+          <section id="identity-provider" inlist="" rel="schema:hasPart" resource="#identity-provider"><a class="self-link" href="#identity-provider"></a>
+            <h2><bdi class="secno">5.</bdi> <span property="schema:name">Identity Provider</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 The <code>solid:oidcIssuer</code> predicate denotes a <cite><a href="https://solidproject.org/TR/oidc#oidc-issuer-discovery">Solid OIDC Identity Provider</a></cite>
@@ -1287,13 +1292,13 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox">
-            <h2 property="schema:name">Inbox</h2>
+          <section id="inbox" inlist="" rel="schema:hasPart" resource="#inbox"><a class="self-link" href="#inbox"></a>
+            <h2><bdi class="secno">6.</bdi> <span property="schema:name">Inbox</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A Solid WebID Profile can advertise an inbox with the <code>ldp:inbox</code> property [<cite><a class="bibref" href="#bib-ldn">LDN</a></cite>] to allow applications to send
                 and discover notifications about activities, interactions, and new information
-                for the attention of the owner of the WebID. <span about="" id="webid-profile-single-inbox" rel="spec:advisement" resource="#webid-profile-single-inbox"><span property="spec:statement">It is <span rel="spec:advisementLevel" resource="spec:Discouraged">discouraged</span> for Solid WebID Profiles to advertise more than one inbox.</span></span>
+                for the attention of the owner of the WebID. <span about="" id="webid-profile-single-inbox" rel="spec:advisement" resource="#webid-profile-single-inbox"><a class="self-link" href="#webid-profile-single-inbox"></a><span property="spec:statement">It is <span rel="spec:advisementLevel" resource="spec:Discouraged">discouraged</span> for Solid WebID Profiles to advertise more than one inbox.</span></span>
               </p>
               <p>
                 Applications can create an inbox (see <a href="https://solidproject.org/TR/protocol#resource-containment">resource
@@ -1303,13 +1308,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section
-            id="other-predicates"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#other-predicates"
-          >
-            <h2 property="schema:name">Other predicates</h2>
+          <section id="other-predicates" inlist="" rel="schema:hasPart" resource="#other-predicates"><a class="self-link" href="#other-predicates"></a>
+            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Other predicates</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A user, a server or an application with appropriate permissions can add
@@ -1325,8 +1325,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog">
-            <h2 property="schema:name">Changelog</h2>
+          <section class="appendix" id="changelog" inlist="" rel="schema:hasPart" resource="#changelog" typeof="spec:Changelog"><a class="self-link" href="#changelog"></a>
+            <h2><bdi class="secno">A.</bdi> <span property="schema:name">Changelog</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p><em>This section is non-normative.</em></p>
 
@@ -1334,8 +1334,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements">
-            <h2 property="schema:name">Acknowledgements</h2>
+          <section class="appendix" id="acknowledgements" inlist="" rel="schema:hasPart" resource="#acknowledgements"><a class="self-link" href="#acknowledgements"></a>
+            <h2><bdi class="secno">B.</bdi> <span property="schema:name">Acknowledgements</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>The Community Group gratefully acknowledges the work that led to the creation of this specification, and extends sincere appreciation to those individuals that worked on technologies and specifications that deeply influenced our work.</p>
 
@@ -1387,22 +1387,11 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
             </div>
           </section>
 
-          <section
-            class="appendix"
-            id="references"
-            inlist=""
-            rel="schema:hasPart"
-            resource="#references"
-          >
-            <h2 property="schema:name">References</h2>
+          <section class="appendix" id="references" inlist="" rel="schema:hasPart" resource="#references"><a class="self-link" href="#references"></a>
+            <h2><bdi class="secno">C.</bdi> <span property="schema:name">References</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
-              <section
-                id="normative-references"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#normative-references"
-              >
-                <h3 property="schema:name">Normative References</h3>
+              <section id="normative-references" inlist="" rel="schema:hasPart" resource="#normative-references"><a class="self-link" href="#normative-references"></a>
+                <h3><bdi class="secno">C.1</bdi> <span property="schema:name">Normative References</span></h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
@@ -1516,13 +1505,8 @@ content:counter(appendix, upper-alpha) "." counter(sub-appendix) "\00a0";
                 </div>
               </section>
 
-              <section
-                id="informative-references"
-                inlist=""
-                rel="schema:hasPart"
-                resource="#informative-references"
-              >
-                <h3 property="schema:name">Informative References</h3>
+              <section id="informative-references" inlist="" rel="schema:hasPart" resource="#informative-references"><a class="self-link" href="#informative-references"></a>
+                <h3><bdi class="secno">C.2</bdi> <span property="schema:name">Informative References</span></h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
                     <dt id="bib-coga-usable">[COGA-USABLE]</dt>
