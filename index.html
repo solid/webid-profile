@@ -776,8 +776,14 @@ margin-bottom:0.5rem;
                   >
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#other-predicates"
+                  <a class="tocxref" href="#proxy"
                     ><bdi class="secno">7.</bdi>
+                    <span>Proxy</span></a
+                  >
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#other-predicates"
+                    ><bdi class="secno">8.</bdi>
                     <span>Other predicates</span></a
                   >
                 </li>
@@ -1278,8 +1284,19 @@ margin-bottom:0.5rem;
             </div>
           </section>
 
+          <section id="proxy" inlist="" rel="schema:hasPart" resource="#proxy"><a class="self-link" href="#proxy"></a>
+            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Proxy</span></h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>When an application needs to make a Cross-Origin Resource Sharing (<abbr title="Cross-Origin Resource Sharing">CORS</abbr>) request using the <cite><a href="https://fetch.spec.whatwg.org/#cors-protocol" rel="cito:citesAsAuthority">CORS protocol</a></cite> [<cite><a class="bibref" href="#bib-fetch">FETCH</a></cite>], the recipient server may not participate in CORS or may often be improperly configured for it. This poses challenges for interoperability in environments like Solid.</p>
+
+              <p>One way for applications to practically bypass this limitation in some situations is by using a trusted or preferred proxy. An application can discover a resource's advertised proxy via the <code>solid:proxy</code> property. While any resource, such as a storage, could advertise a proxy, applications can also discover an agent's preferred proxy by checking this property in their WebID Profile Document.</p>
+
+              <p>Additionally, using a proxy allows applications to mask their <code>Origin</code>, enhancing privacy and security during requests. This capability can further protect user data in decentralised environments, though it may not fully address all related challenges on its own.</p>
+            </div>
+          </section>
+
           <section id="other-predicates" inlist="" rel="schema:hasPart" resource="#other-predicates"><a class="self-link" href="#other-predicates"></a>
-            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Other predicates</span></h2>
+            <h2><bdi class="secno">8.</bdi> <span property="schema:name">Other predicates</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A user, a server or an application with appropriate permissions can add
