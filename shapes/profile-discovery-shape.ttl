@@ -1,0 +1,122 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix vcard: <http://www.w3.org/2006/vcard/ns#> .
+@prefix solid: <http://xmlns.com/foaf/0.1/> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix pim: <http://www.w3.org/ns/pim/space#>.
+@prefix interop: <http://www.w3.org/ns/solid/interop#> .
+
+##########################################################################
+#
+# SHAPE FOR DISCOVERY OF THE MAJAR ENDPOINTS IN A SOLID WEBID-PROFILE
+#
+# This shape includes discovery predicates mentioned in
+# the Solid WebID Profile draft specification. The intention
+# is to support most currently extant Solid Profiles. Therefore 
+# the shape also includes discovery predicates in common use but
+# not in the draft specification. These inlude :
+#
+#   * the non-standard `foaf:primaryTopicOf`.
+#   * the most common validation endpoint - `solid:oidcIssuer`.
+#   * both currently used discovery mechanisms - type indexes and SAI
+# 
+# The shape is agnostic regarding whether the WebID document is located
+# on a Solid server or not, whether the WebID document and the "social profile"
+# are the same document or not, and whether the profile uses type indexes
+# or SAI for further discovery.
+# 
+# To use this shape for validation, one must first load the full profile,
+# i.e. all of the available endpoints in the shape.  The resulting graph
+# can then be validated against this shape.
+# 
+##########################################################################
+
+<>
+   dcterms:issued "2026-01-25"^^xsd:date ;
+   dct:creator <https://jeff-zucker.solidcommunity.net/profile/card#me> .
+
+<#Webid-profile-discovery-shape> a sh:Shape ;
+
+    sh:targetClass foaf:Agent, foaf:Person, foaf:Organization ;
+    sh:name "WebID Profile Shape" ;
+    sh:description "Shape for discovery of Solid WebID Profile endpoints." ;
+    sh:property
+
+    # PREFERENCES-FILE
+    #
+    [
+      sh:path pim:preferencesFile ;
+      sh:nodeKind sh:IRI ;
+      sh:minCount 1 ;
+      sh:maxCount 1 ;
+      sh:description "The profile must have exactly 1 preferences file."
+    ] ,
+
+    # INBOX
+    #
+    [
+      sh:path ldp:inbox ;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 1 ;
+      sh:description "The profile may have 0 or one inbox."
+    ] ,
+
+    # STORAGE
+    #
+    [
+      sh:path solid:storage ;
+      sh:nodeKind sh:IRI ;
+      sh:description "The profile may have 0 or more storage endpoints."
+    ] ,
+
+    # SEE-ALSO
+    #
+    [
+      sh:path rdfs:seeAlso ;
+      sh:nodeKind sh:IRI ;
+      sh:description "The profile may have 0 or more seeAlso endpoints."
+    ] ,
+
+    # ISSUER
+    #
+    [
+      sh:path solid:oidcIssuer ;
+      sh:nodeKind sh:IRI ;
+      sh:description "The profile may have 0 or more OIDC issuer endpoints."
+   ] ,
+
+    # TYPE INDEXES
+    #
+    [
+      sh:path solid:publicTypeIndex ;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 1 ;
+      sh:description "The profile may have 0 or 1 publicTypeIndex endpoint."
+    ] ,
+    [
+      sh:path solid:privateTypeIndex ;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 1 ;
+      sh:description "The profile may have 0 or 1 privateTypeIndex endpoint."
+    ] ,
+
+    # PRIMARY-TOPIC-OF
+    #
+    [
+      sh:path foaf:primaryTopicOf ;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 1 ;
+      sh:description "The profile may have 0 or 1 primary-topic-of endpoints."
+    ],
+
+    # SAI 
+    [
+      sh:path interop:authorizationAgent ;
+      sh:nodeKind sh:IRI ;
+      sh:maxCount 1 ;
+      sh:description "The profile may have 0 or 1 authorization agent."
+    ] 
+
+.
