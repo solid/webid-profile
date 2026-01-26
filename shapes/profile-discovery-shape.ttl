@@ -67,7 +67,7 @@
     # STORAGE
     #
     [
-      sh:path solid:storage ;
+      sh:path pim:storage ;
       sh:nodeKind sh:IRI ;
       sh:description "The profile may have 0 or more storage endpoints."
     ] ,
