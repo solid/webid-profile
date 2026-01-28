@@ -1108,8 +1108,8 @@ margin-bottom:0.5rem;
                     <li>One <code>pim:preferencesFile</code>.</li>
                     <li>Zero or one <code>ldp:inbox</code>.</li>
                     <li>Zero or more <code>pim:storage</code> properties to indicate agent's storages.</li>
-                    <li>Zero or more <code>rdfs:seeAlso</code> to refer to related <a href="#extended-profile-documents">documents
-                        extending the profile.</a></li>
+                    <li>Zero or more <code>rdfs:seeAlso</code> to refer to related resources, such as <a href="#extended-profile-documents">extended profile documents</a> or other relevant information.</li>
+                    <li>Zero or more <code>foaf:isPrimaryTopicOf</code> to refer to resources for which this agent is the primary subject, such as <a href="#extended-profile-documents">extended profile documents</a> or other documents.</li>
                   </ul>
                 </div>
                 <div class="note" id="webid-profile-data-model-extended" inlist="" rel="schema:hasPart" resource="#webid-profile-data-model-extended"><a class="self-link" href="#webid-profile-data-model-extended"></a>
@@ -1207,12 +1207,12 @@ margin-bottom:0.5rem;
                     <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
                         Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
                         href="#solid-profile">Solid WebID Profile</a> by adding a triple of the form
-                      <code>?webid rdfs:seeAlso ?extendedProfile.</code></span>
+                      <code>?webid rdfs:seeAlso ?extendedProfile.</code> or <code>?webid foaf:isPrimaryTopicOf ?extendedProfile.</code></span>
                   </p>
                   <div class="note" id="sameness-between-identities" inlist="" rel="schema:hasPart" resource="#sameness-between-identities"><a class="self-link" href="#sameness-between-identities"></a>
                     <h5 property="schema:name"><span>Note</span>:</h5>
                     <div datatype="rdf:HTML" property="schema:description">
-                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><a class="self-link" href="#connecting-same-entities"></a><span property="spec:statement">While the <code>rdfs:seeAlso</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
+                      <p about="" id="connecting-same-entities" rel="spec:advisement" resource="#connecting-same-entities"><a class="self-link" href="#connecting-same-entities"></a><span property="spec:statement">While the <code>rdfs:seeAlso</code> or <code>foaf:isPrimaryTopicOf</code> property is recommended to establish links to extended profiles or additional information, the use of the <code>owl:sameAs</code> property is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span> when connecting two WebIDs that denote the same entity, as shown in the example: <code>&lt;https://dbpedia.org/resource/Tim_Berners-Lee&gt; owl:sameAs &lt;https://www.w3.org/People/Berners-Lee/card#i&gt;</code>.</span></p>
                     </div>
                   </div>
                 </section>
