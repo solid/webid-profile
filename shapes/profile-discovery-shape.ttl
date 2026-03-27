@@ -14,10 +14,10 @@
 # SHAPE FOR DISCOVERY OF THE MAJAR ENDPOINTS IN A SOLID WEBID-PROFILE
 #
 # This shape includes discovery predicates mentioned in
-# the Solid WebID Profile draft specification. The intention
-# is to support most currently extant Solid Profiles. Therefore 
-# the shape also includes discovery predicates in common use but
-# not in the draft specification. These inlude :
+# the Solid WebID Profile draft specification. The intent
+# is to support most currently extant Solid Profiles. Therefore, 
+# this shape includes discovery predicates in common use but not
+# in the draft specification. These include the following:
 #
 #   * the non-standard `foaf:primaryTopicOf`.
 #   * the most common validation endpoint - `solid:oidcIssuer`.
