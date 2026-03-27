@@ -11,7 +11,7 @@
 
 ##########################################################################
 #
-# SHAPE FOR DISCOVERY OF THE MAJAR ENDPOINTS IN A SOLID WEBID-PROFILE
+# SHAPE FOR DISCOVERY OF THE MAJOR ENDPOINTS IN A SOLID WEBID-PROFILE
 #
 # This shape includes discovery predicates mentioned in
 # the Solid WebID Profile draft specification. The intent
