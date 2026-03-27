@@ -52,7 +52,7 @@
       sh:nodeKind sh:IRI ;
       sh:minCount 1 ;
       sh:maxCount 1 ;
-      sh:description "The profile must have exactly 1 preferences file."
+      sh:description "The profile must have exactly 1 preference file."
     ] ,
 
     # INBOX
