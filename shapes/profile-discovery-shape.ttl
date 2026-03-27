@@ -19,9 +19,9 @@
 # this shape includes discovery predicates in common use but not
 # in the draft specification. These include the following:
 #
-#   * the non-standard `foaf:primaryTopicOf`.
-#   * the most common validation endpoint - `solid:oidcIssuer`.
-#   * both currently used discovery mechanisms - type indexes and SAI.
+#   * the non-standard `foaf:primaryTopicOf`
+#   * the most common validation endpoint — `solid:oidcIssuer`
+#   * both discovery mechanisms in current use — type indexes and SAI
 # 
 # The shape is agnostic as to whether the WebID document is located
 # on a Solid server or not, whether the WebID document and the "social profile"
