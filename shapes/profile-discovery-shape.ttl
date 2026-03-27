@@ -21,9 +21,9 @@
 #
 #   * the non-standard `foaf:primaryTopicOf`.
 #   * the most common validation endpoint - `solid:oidcIssuer`.
-#   * both currently used discovery mechanisms - type indexes and SAI
+#   * both currently used discovery mechanisms - type indexes and SAI.
 # 
-# The shape is agnostic regarding whether the WebID document is located
+# The shape is agnostic as to whether the WebID document is located
 # on a Solid server or not, whether the WebID document and the "social profile"
 # are the same document or not, and whether the profile uses type indexes
 # or SAI for further discovery.
