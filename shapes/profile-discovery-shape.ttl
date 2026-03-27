@@ -61,7 +61,7 @@
       sh:path ldp:inbox ;
       sh:nodeKind sh:IRI ;
       sh:maxCount 1 ;
-      sh:description "The profile may have 0 or one inbox."
+      sh:description "The profile may have 0 or 1 inbox."
     ] ,
 
     # STORAGE
