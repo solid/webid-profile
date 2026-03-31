@@ -109,14 +109,6 @@
       sh:nodeKind sh:IRI ;
       sh:maxCount 1 ;
       sh:description "The profile may have 0 or 1 primary-topic-of endpoints."
-    ],
-
-    # SAI 
-    [
-      sh:path interop:hasAuthorizationAgent ;
-      sh:nodeKind sh:IRI ;
-      sh:maxCount 1 ;
-      sh:description "The profile may have 0 or 1 authorization agent."
     ] 
 
 .
