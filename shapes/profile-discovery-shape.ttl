@@ -12,7 +12,7 @@
 #
 # SHAPE FOR DISCOVERY OF THE MAJOR ENDPOINTS IN A SOLID WEBID-PROFILE
 #
-# The shape is agnostic as to whether the WebID document is located
+# The shape is agnostic as to whether or not the WebID document is located
 # on a Solid server, and whether or not the WebID document and the "social profile"
 # are the same document or not.
 # 
