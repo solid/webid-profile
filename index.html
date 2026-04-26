@@ -782,6 +782,12 @@ margin-bottom:0.5rem;
                   >
                 </li>
                 <li class="tocline">
+                  <a class="tocxref" href="#privacy-and-security-considerations"
+                    ><bdi class="secno">8.</bdi>
+                    <span>Privacy and Security Considerations</span></a
+                  >
+                </li>
+                <li class="tocline">
                   <a class="tocxref" href="#changelog"><bdi class="secno">A.</bdi> <span>Changelog</span></a>
                 </li>
                 <li class="tocline">
@@ -1292,6 +1298,25 @@ margin-bottom:0.5rem;
                 working on proposals which will add additional infrastructure
                 related predicates to Solid profiles.
               </p>
+            </div>
+          </section>
+
+          <section id="privacy-and-security-considerations" inlist="" rel="schema:hasPart" resource="#privacy-and-security-considerations"><a class="self-link" href="#privacy-and-security-considerations"></a>
+            <h2><bdi class="secno">8.</bdi> <span property="schema:name">Privacy and Security Considerations</span></h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p><em>This section is non-normative.</em></p>
+
+              <section id="impact-of-not-enforcing-protected-properties" inlist="" rel="schema:hasPart" resource="#impact-of-not-enforcing-protected-properties">
+                <h3>Impact of not enforcing Protected Properties</h3>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The <a href="#protected-properties">Protected Properties</a> requirement is intended to prevent agents other than the WebID owner from modifying specific properties, notably <code>solid:oidcIssuer</code>. When a Solid server does not enforce these protections, the WebID Profile is open to attack:</p>
+                  <ul>
+                    <li>An agent with write access to the WebID Document can rewrite <code>solid:oidcIssuer</code>, redirecting Solid-OIDC authentication to an attacker-controlled OpenID Provider and impersonating the WebID owner.</li>
+                    <li>Other Protected Properties may be similarly tampered with by an agent granted write access, depending on which properties a particular server fails to protect.</li>
+                  </ul>
+                  <p>Implementations of Solid WebID Profile clients should not assume that a hosted WebID Document's Protected Properties have been preserved as the WebID owner intended; clients reading these properties should weigh the trust they place in the hosting server.</p>
+                </div>
+              </section>
             </div>
           </section>
 
