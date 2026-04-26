@@ -722,6 +722,16 @@ margin-bottom:0.5rem;
                       >Discovery</span
                     ></a
                   >
+                  <ol>
+                    <li class="tocline">
+                      <a class="tocxref" href="#assembling-profile"
+                        ><bdi class="secno">2.1</bdi>
+                        <span
+                          >Assembling the Profile</span
+                        ></a
+                      >
+                    </li>
+                  </ol>
                 </li>
                 <li class="tocline">
                   <a href="#reading-writing-profiles"
@@ -1085,6 +1095,45 @@ margin-bottom:0.5rem;
               </div>
             </div>
             </div>
+
+            <section id="assembling-profile" inlist="" rel="schema:hasPart" resource="#assembling-profile"><a class="self-link" href="#assembling-profile"></a>
+              <h3><bdi class="secno">2.1</bdi> <span property="schema:name">Assembling the Profile</span></h3>
+              <div datatype="rdf:HTML" property="schema:description">
+                <p>The <a href="#solid-profile">Solid profile</a> is the set <em>S</em> of statements assembled by the procedure below. The <em>user's WebIDs</em> are the original WebID together with every WebID transitively equated to it via <code>owl:sameAs</code> within <em>S</em>; this set grows as <em>S</em> grows. Apply cycle detection throughout: do not re-fetch a document already retrieved. On <code>401</code>/<code>403</code> with a logged-in user, retry authenticated; missing links are not errors.</p>
+                <ol>
+                  <li><strong>Initialise.</strong> <code>GET</code> the WebID Profile Document for the original WebID. If it cannot be retrieved, surface a clear error. Add its triples to <em>S</em>.</li>
+                  <li><strong>Discovery-link expansion.</strong> For each triple <code>?w ?p ?o</code> in <em>S</em> where <code>?p</code> is a <dfn id="discovery-link">discovery link</dfn> (<code>rdfs:seeAlso</code>, <code>foaf:isPrimaryTopicOf</code>, <code>pim:preferencesFile</code>, or <code>owl:sameAs</code>), <code>?w</code> is one of the user's WebIDs, and <code>?o</code> is a URL whose document has not yet been fetched, <code>GET</code> <code>?o</code> and add its triples to <em>S</em>. Repeat until no new documents are discovered.</li>
+                  <li><strong>Type Indexes.</strong> For each triple in <em>S</em> with predicate <code>solid:publicTypeIndex</code> or <code>solid:privateTypeIndex</code> whose subject is one of the user's WebIDs, <code>GET</code> the document at the object (if not already fetched) and add its triples to <em>S</em>.</li>
+                  <li><strong>Authoritative filter.</strong> Drop every <code>solid:oidcIssuer</code> triple in <em>S</em> that did not originate in a WebID Profile Document; that predicate is authoritative only when sourced there, mirroring the write protection in <a href="#updating-profile">§ Updating Profile</a>.</li>
+                  <li><strong>Subject filter.</strong> Restrict <em>S</em> to triples whose subject or object is one of the user's WebIDs. The result is the <a href="#solid-profile">Solid profile</a>.</li>
+                </ol>
+              </div>
+
+              <div class="note" id="bounded-traversal" inlist="" rel="schema:hasPart" resource="#bounded-traversal"><a class="self-link" href="#bounded-traversal"></a>
+                <h5 property="schema:name"><span>Note</span> (Bounded traversal):</h5>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Traversal of discovery links is unbounded; clients SHOULD apply cycle detection (no document fetched twice). Clients MAY also consider terminating traversal at a depth or document-count limit appropriate to their environment, to bound fetch cost and protect against pathological link chains.</p>
+                </div>
+              </div>
+
+              <div class="note" id="preferences-leniency" inlist="" rel="schema:hasPart" resource="#preferences-leniency"><a class="self-link" href="#preferences-leniency"></a>
+                <h5 property="schema:name"><span>Note</span> (Preferences leniency):</h5>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>Including <code>pim:preferencesFile</code> in the discovery-link set is intentionally lenient. In practice an agent has a single Preferences Document linked from the original WebID Profile Document; the algorithm tolerates the <code>pim:preferencesFile</code> link appearing in any document already in <em>S</em>, provided its subject is one of the user's WebIDs.</p>
+                </div>
+              </div>
+
+              <div class="note" id="entity-reconciliation" inlist="" rel="schema:hasPart" resource="#entity-reconciliation"><a class="self-link" href="#entity-reconciliation"></a>
+                <h5 property="schema:name"><span>Note</span> (Entity reconciliation):</h5>
+                <div datatype="rdf:HTML" property="schema:description">
+                  <p>The assembled graph may contain triples about more than one of the user's WebIDs. Depending on the client's context, these typically need to be reconciled into a single subject. Two common strategies:</p>
+                  <ul>
+                    <li><strong>Augmentation</strong> — for every triple in which one of the user's WebIDs appears as subject or object, add a parallel triple substituting the original WebID. Non-destructive; original sources are preserved.</li>
+                    <li><strong>Rewriting</strong> — replace every occurrence of any of the user's WebIDs (subject or object) with the original WebID, then delete the <code>owl:sameAs</code> triples.</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </section>
 
           <section id="reading-writing-profiles" inlist="" rel="schema:hasPart" resource="#reading-writing-profiles"><a class="self-link" href="#reading-writing-profiles"></a>
