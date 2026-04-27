@@ -1112,7 +1112,7 @@ margin-bottom:0.5rem;
               <div class="note" id="bounded-traversal" inlist="" rel="schema:hasPart" resource="#bounded-traversal"><a class="self-link" href="#bounded-traversal"></a>
                 <h5 property="schema:name"><span>Note</span> (Bounded traversal):</h5>
                 <div datatype="rdf:HTML" property="schema:description">
-                  <p>Traversal of discovery links is unbounded; clients SHOULD apply cycle detection (no document fetched twice). Clients MAY also consider terminating traversal at a depth or document-count limit appropriate to their environment, to bound fetch cost and protect against pathological link chains.</p>
+                  <p>Traversal of discovery links is unbounded. Clients apply cycle detection to avoid re-fetching documents. To ensure that owners of WebIDs hosted outside Solid storage can extend their profile via documents they control, clients follow at least two hops of discovery links from each WebID Profile Document (the document itself, the documents it links, and the documents those link in turn). Beyond two hops, clients can terminate at a depth or document-count limit appropriate to their environment.</p>
                 </div>
               </div>
 
