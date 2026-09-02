@@ -776,8 +776,14 @@ margin-bottom:0.5rem;
                   >
                 </li>
                 <li class="tocline">
-                  <a class="tocxref" href="#other-predicates"
+                  <a class="tocxref" href="#public-keys"
                     ><bdi class="secno">7.</bdi>
+                    <span>Public Keys</span></a
+                  >
+                </li>
+                <li class="tocline">
+                  <a class="tocxref" href="#other-predicates"
+                    ><bdi class="secno">8.</bdi>
                     <span>Other predicates</span></a
                   >
                 </li>
@@ -986,6 +992,17 @@ margin-bottom:0.5rem;
                       <td><code>acl</code></td>
                       <td>http://www.w3.org/ns/auth/acl#</td>
                       <td>ACL Ontology</td>
+                    </tr>
+                    <tr>
+                      <td><code>sec</code></td>
+                      <td>https://w3id.org/security#</td>
+                      <td>
+                        [<cite
+                          ><a class="bibref" href="#bib-cid"
+                            >CID</a
+                          ></cite
+                        >]
+                      </td>
                     </tr>
                     <tr>
                       <td><code>dcterms</code></td>
@@ -1278,8 +1295,96 @@ margin-bottom:0.5rem;
             </div>
           </section>
 
+          <section id="public-keys" inlist="" rel="schema:hasPart" resource="#public-keys"><a class="self-link" href="#public-keys"></a>
+            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Public Keys</span></h2>
+            <div datatype="rdf:HTML" property="schema:description">
+              <p>
+                A Solid WebID Profile can advertise public keys so that applications can encrypt data to the WebID
+                owner or verify data signed by the WebID owner. Public keys are expressed using the verification
+                method model of Controlled Identifiers [<cite><a class="bibref" href="#bib-cid">CID</a></cite>]:
+                the WebID is linked to a verification method by a verification relationship that denotes the
+                purpose of the key, for example <code>sec:keyAgreementMethod</code> for key agreement (encryption)
+                or <code>sec:assertionMethod</code> for verifying signed data. For example:
+              </p>
+              <pre><code>&lt;?WebID&gt; &lt;https://w3id.org/security#keyAgreementMethod&gt; &lt;?VerificationMethod&gt; .</code></pre>
+              <p>
+                A verification method describes a public key with a type, such as <code>sec:JsonWebKey</code> or
+                <code>sec:Multikey</code>, the agent that controls the key (<code>sec:controller</code>), and the
+                public key material (<code>sec:publicKeyJwk</code> or <code>sec:publicKeyMultibase</code>). For example:
+              </p>
+              <pre><code>@prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
+@prefix sec: &lt;https://w3id.org/security#&gt; .
+
+&lt;https://website.example/profile/card#me&gt;
+  sec:keyAgreementMethod &lt;https://website.example/profile/card#key-0&gt; .
+
+&lt;https://website.example/profile/card#key-0&gt;
+  a sec:JsonWebKey ;
+  sec:controller &lt;https://website.example/profile/card#me&gt; ;
+  sec:publicKeyJwk "{\"kty\":\"EC\",\"crv\":\"P-256\",\"x\":\"...\",\"y\":\"...\",\"kid\":\"...\"}"^^rdf:JSON .</code></pre>
+            </div>
+
+            <p about="" id="writer-application-public-key-verification-method" rel="spec:requirement" resource="#writer-application-public-key-verification-method"><a class="self-link" href="#writer-application-public-key-verification-method"></a>
+              <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
+                  Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> describe a
+                public key as a verification method in accordance with Controlled Identifiers
+                [<cite><a class="bibref" href="#bib-cid">CID</a></cite>], including exactly one
+                <code>sec:controller</code> property whose value is the WebID.</span>
+            </p>
+            <p about="" id="writer-application-link-public-key-webid" rel="spec:requirement" resource="#writer-application-link-public-key-webid"><a class="self-link" href="#writer-application-link-public-key-webid"></a>
+              <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
+                  Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> update the <a
+                  href="#solid-profile">Solid WebID Profile</a> so that the verification method is the object of
+                at least one verification relationship whose subject is the WebID, by adding a triple of the form
+                <code>?webid ?verificationRelationship ?verificationMethod.</code> where
+                <code>?verificationRelationship</code> is a verification relationship defined in
+                [<cite><a class="bibref" href="#bib-cid">CID</a></cite>] corresponding to the intended use of the
+                key: <code>sec:keyAgreementMethod</code> for key agreement, or <code>sec:assertionMethod</code> for
+                verifying assertions.</span>
+            </p>
+            <div class="note" id="why-verification-relationship" inlist="" rel="schema:hasPart" resource="#why-verification-relationship"><a class="self-link" href="#why-verification-relationship"></a>
+              <h5 property="schema:name"><span>Note</span>:</h5>
+              <div datatype="rdf:HTML" property="schema:description">
+                <p>
+                  [<cite><a class="bibref" href="#bib-cid">CID</a></cite>] permits a verification method to be
+                  associated with a controlled identifier by <code>sec:verificationMethod</code> alone, which does
+                  not express the purpose of the key. This specification requires one of the verification
+                  relationships above because a <a href="#ReaderApplication">Reader Application</a> cannot
+                  otherwise distinguish a key intended for key agreement from one intended for verifying
+                  assertions, and using a key for an operation it was not published for weakens the guarantees
+                  of both.
+                </p>
+              </div>
+            </div>
+            <p about="" id="writer-application-public-key-no-secrets" rel="spec:requirement" resource="#writer-application-public-key-no-secrets"><a class="self-link" href="#writer-application-public-key-no-secrets"></a>
+              <span property="spec:statement"><a href="#WriterApplication" rel="spec:requirementSubject">Writer
+                  Application</a> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> include
+                private or secret key material in a Solid WebID Profile Document or an Extended Profile Document.</span>
+            </p>
+            <p about="" id="reader-application-public-key-controller" rel="spec:requirement" resource="#reader-application-public-key-controller"><a class="self-link" href="#reader-application-public-key-controller"></a>
+              <span property="spec:statement"><a href="#ReaderApplication" rel="spec:requirementSubject">Reader
+                  Application</a> <span rel="spec:requirementLevel" resource="spec:MUST">MUST</span> verify that the
+                value of the <code>sec:controller</code> property of a verification method matches the WebID before
+                using the public key.</span>
+            </p>
+            <p about="" id="reader-application-public-key-purpose" rel="spec:requirement" resource="#reader-application-public-key-purpose"><a class="self-link" href="#reader-application-public-key-purpose"></a>
+              <span property="spec:statement"><a href="#ReaderApplication" rel="spec:requirementSubject">Reader
+                  Application</a> <span rel="spec:requirementLevel" resource="spec:MUSTNOT">MUST NOT</span> use a
+                verification method for an operation that does not correspond to a verification relationship
+                linking the WebID to that verification method.</span>
+            </p>
+
+            <div class="note" id="public-key-access-control" inlist="" rel="schema:hasPart" resource="#public-key-access-control"><a class="self-link" href="#public-key-access-control"></a>
+              <h5 property="schema:name"><span>Note</span>:</h5>
+              <div datatype="rdf:HTML" property="schema:description">
+                <p about="" id="restricting-public-key-writes" rel="spec:advisement" resource="#restricting-public-key-writes"><a class="self-link" href="#restricting-public-key-writes"></a><span property="spec:statement">Public key triples are security-critical: an agent that can add or replace them can cause data intended for the WebID owner to be encrypted to a key the owner does not control. Restricting write access to verification method triples in the same manner as protected properties (see <a href="#updating-profile">Updating Profile</a>) is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span>.</span></p>
+                <p about="" id="jwk-thumbprint-kid" rel="spec:advisement" resource="#jwk-thumbprint-kid"><a class="self-link" href="#jwk-thumbprint-kid"></a><span property="spec:statement">A verification method is identified by its IRI, so the JWK <code>kid</code> parameter has no role in the discovery described by this specification. It is significant to protocols in which a JOSE message carries a <code>kid</code> that a recipient must resolve to a key. Where a <code>kid</code> is set, using the JWK Thumbprint [<cite><a class="bibref" href="#bib-rfc7638">RFC7638</a></cite>] of the public key as its value is <span rel="spec:advisementLevel" resource="spec:Encouraged">encouraged</span>, because a thumbprint is derived from the key material itself: it does not collide across keys published independently, and a recipient can recompute it rather than trusting the label. This does not apply to <code>sec:Multikey</code>, which has no <code>kid</code>.</span></p>
+              </div>
+            </div>
+          </section>
+
           <section id="other-predicates" inlist="" rel="schema:hasPart" resource="#other-predicates"><a class="self-link" href="#other-predicates"></a>
-            <h2><bdi class="secno">7.</bdi> <span property="schema:name">Other predicates</span></h2>
+            <h2><bdi class="secno">8.</bdi> <span property="schema:name">Other predicates</span></h2>
             <div datatype="rdf:HTML" property="schema:description">
               <p>
                 A user, a server or an application with appropriate permissions can add
@@ -1288,9 +1393,8 @@ margin-bottom:0.5rem;
                 that are in common use at the time of this writing and which we
                 recommend as a standard. Some of the other predicates you might
                 encounter include <code>acl:trustedApp</code> and
-                <code>cert:key.</code> The Interoperability panel is also
-                working on proposals which will add additional infrastructure
-                related predicates to Solid profiles.
+                <code>cert:key</code>; for the recommended way to advertise
+                public keys, see <a href="#public-keys">Public Keys</a>.
               </p>
             </div>
           </section>
@@ -1364,6 +1468,12 @@ margin-bottom:0.5rem;
                 <h3><bdi class="secno">C.1</bdi> <span property="schema:name">Normative References</span></h3>
                 <div datatype="rdf:HTML" property="schema:description">
                   <dl class="bibliography" resource="">
+                    <dt id="bib-cid">[CID]</dt>
+                    <dd>
+                      <cite><a href="https://www.w3.org/TR/cid-1.0/" rel="cito:citesAsAuthority">Controlled Identifiers v1.0</a></cite>. Manu Sporny; Michael Jones. W3C. 15 May 2025. W3C
+                      Recommendation. URL:
+                      <a href="https://www.w3.org/TR/cid-1.0/">https://www.w3.org/TR/cid-1.0/</a>
+                    </dd>
                     <dt id="bib-dc-terms">[DC-TERMS]</dt>
                     <dd>
                       <cite><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/" rel="cito:citesAsAuthority">Dublin Core Metadata Terms, version 1.1</a></cite>. DCMI Usage Board. DCMI. 11 October 2010. DCMI
@@ -1483,6 +1593,8 @@ margin-bottom:0.5rem;
                     <dd><cite><a href="https://www.w3.org/TR/coga-usable/" rel="cito:citesAsPotentialSolution">Making Content Usable for People with Cognitive and Learning Disabilities</a></cite>. Lisa Seeman-Horwitz; Rachael Bradley Montgomery; Steve Lee; Ruoxi Ran.  W3C. 29 April 2021. W3C Working Group Note. URL: <a href="https://www.w3.org/TR/coga-usable/">https://www.w3.org/TR/coga-usable/</a></dd>
                     <dt id="bib-privacy-principles">[PRIVACY-PRINCIPLES]</dt>
                     <dd><cite><a href="https://www.w3.org/TR/privacy-principles/" rel="cito:citesAsPotentialSolution">Privacy Principles</a></cite>. Robin Berjon; Jeffrey Yasskin.  W3C. 18 May 2024. W3C Group Draft Note. URL: <a href="https://www.w3.org/TR/privacy-principles/">https://www.w3.org/TR/privacy-principles/</a></dd>
+                    <dt id="bib-rfc7638">[RFC7638]</dt>
+                    <dd><cite><a href="https://datatracker.ietf.org/doc/html/rfc7638" rel="cito:citesAsPotentialSolution">JSON Web Key (JWK) Thumbprint</a></cite>. M. Jones; N. Sakimura. IETF. September 2015. Proposed Standard. URL: <a href="https://datatracker.ietf.org/doc/html/rfc7638">https://datatracker.ietf.org/doc/html/rfc7638</a></dd>
                     <dt id="bib-security-privacy-questionnaire">
                       [SECURITY-PRIVACY-QUESTIONNAIRE]
                     </dt>
